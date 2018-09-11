@@ -32,5 +32,5 @@
   "pre-commit": [
     "lint",
     "test"
-  ],
+  ]
 }
