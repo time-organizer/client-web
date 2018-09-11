@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-class SignUp extends Component {
-    render() {
-        return (
-            <div>
-                Sign up
-            </div>
-        );
-    }
-}
-
-SignUp.propTypes = {};
-SignUp.defaultProps = {};
+const SignUp = () => (
+  <div>
+    Sign up
+  </div>
+);
 
 export default SignUp;

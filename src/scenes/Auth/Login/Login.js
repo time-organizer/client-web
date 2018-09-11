@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-class Login extends Component {
-    render() {
-        return (
-            <div>
-                Login
-            </div>
-        );
-    }
-}
-
-Login.propTypes = {};
-Login.defaultProps = {};
+const Login = () => (
+  <div>
+    Login
+  </div>
+);
 
 export default Login;
