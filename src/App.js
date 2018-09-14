@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Auth from './Auth/index';
+import Auth from './scenes/Auth/index';
 
 const App = () => (
   <div className="App">
