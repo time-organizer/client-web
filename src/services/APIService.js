@@ -1,27 +1,32 @@
+/* eslint-env browser */
 import axios from 'axios';
+import decode from 'jwt-decode';
 
 const {
   DATA_FLOW_URL = 'localhost:3001',
 } = process.env;
 
-const getApiKey = () => '';
 
-const API = {
+const APIService = {
+  isTokenExpired: token => decode(token).exp < Date.now() / 1000,
+
   get: url => axios.get(`${DATA_FLOW_URL}${url}`, {
-    headers: { Authorization: getApiKey() },
+    headers: { Authorization: this.getToken() },
   }),
 
   post: (url, body) => axios.post(`${DATA_FLOW_URL}${url}`, body, {
     headers: {
-      Authorization: getApiKey(),
+      Authorization: this.getToken(),
     },
   }),
 
   put: (url, body) => axios.put(`${DATA_FLOW_URL}${url}`, body, {
     headers: {
-      Authorization: getApiKey(),
+      Authorization: this.getToken(),
     },
   }),
+
+
 };
 
-export default API;
+export default APIService;
