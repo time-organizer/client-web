@@ -2,24 +2,28 @@
 import axios from 'axios';
 
 const {
-  DATA_FLOW_URL = 'localhost:3001',
+  DATA_FLOW_URL = 'http://localhost:3001',
 } = process.env;
 
 
 const APIService = {
+  getToken: () => localStorage.getItem('auth-token'),
+
   get: url => axios.get(`${DATA_FLOW_URL}${url}`, {
-    headers: { Authorization: this.getToken() },
+    headers: {
+      'x-auth-token': APIService.getToken(),
+    },
   }),
 
   post: (url, body) => axios.post(`${DATA_FLOW_URL}${url}`, body, {
     headers: {
-      Authorization: this.getToken(),
+      'x-auth-token': APIService.getToken(),
     },
   }),
 
   put: (url, body) => axios.put(`${DATA_FLOW_URL}${url}`, body, {
     headers: {
-      Authorization: this.getToken(),
+      'x-auth-token': APIService.getToken(),
     },
   }),
 };
