@@ -1,6 +1,5 @@
 /* eslint-env browser */
 import axios from 'axios';
-import decode from 'jwt-decode';
 
 const {
   DATA_FLOW_URL = 'localhost:3001',
@@ -8,8 +7,6 @@ const {
 
 
 const APIService = {
-  isTokenExpired: token => decode(token).exp < Date.now() / 1000,
-
   get: url => axios.get(`${DATA_FLOW_URL}${url}`, {
     headers: { Authorization: this.getToken() },
   }),
@@ -25,8 +22,6 @@ const APIService = {
       Authorization: this.getToken(),
     },
   }),
-
-
 };
 
 export default APIService;
