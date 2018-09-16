@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import APIService from '../../../../services/APIService';
+import AuthService from '../../../../services/AuthService';
 import SignUpForm from './SignUpForm';
 
 class SignUp extends Component {
@@ -32,7 +33,11 @@ class SignUp extends Component {
       password,
     };
 
-    APIService.post('/auth/sign-up', userData);
+    APIService.post('/auth/sign-up', userData)
+      .then((res) => {
+        const { token } = res.data;
+        AuthService.setToken(token);
+      });
   };
 
   render() {
