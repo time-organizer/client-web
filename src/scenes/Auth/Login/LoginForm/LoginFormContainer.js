@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import APIService from '../../../../services/APIService';
 import AuthService from '../../../../services/AuthService';
-import SignUpForm from './SignUpForm';
+import LoginForm from './LoginForm';
 
-class SignUpFormContainer extends Component {
+class LoginFormContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: '',
       email: '',
       password: '',
     };
@@ -26,28 +27,29 @@ class SignUpFormContainer extends Component {
   };
 
   onSubmit = () => {
-    const { name, email, password } = this.state;
+    const { email, password } = this.state;
     const userData = {
-      name,
       email,
       password,
     };
 
-    APIService.post('/auth/sign-up', userData)
+    APIService.post('/auth/login', userData)
       .then((res) => {
+        const { history } = this.props;
         const { token } = res.data;
+
         AuthService.setToken(token);
+        history.replace('/app');
       });
   };
 
   render() {
-    const { name, email, password } = this.state;
+    const { email, password } = this.state;
 
     return (
-      <SignUpForm
+      <LoginForm
         onSubmit={this.onSubmit}
         handleInputChange={this.handleInputChange}
-        name={name}
         email={email}
         password={password}
       />
@@ -55,7 +57,8 @@ class SignUpFormContainer extends Component {
   }
 }
 
-SignUpFormContainer.propTypes = {};
-SignUpFormContainer.defaultProps = {};
+LoginFormContainer.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
-export default SignUpFormContainer;
+export default withRouter(LoginFormContainer);

@@ -2,14 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../../components/Button';
 
-const SignUpForm = ({ handleInputChange, onSubmit }) => (
+const LoginForm = ({ handleInputChange, onSubmit }) => (
   <div>
-    <input
-      name="name"
-      placeholder="Name"
-      type="text"
-      onChange={handleInputChange}
-    />
     <input
       name="email"
       placeholder="Email"
@@ -28,9 +22,9 @@ const SignUpForm = ({ handleInputChange, onSubmit }) => (
   </div>
 );
 
-SignUpForm.propTypes = {
+LoginForm.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default SignUpForm;
+export default LoginForm;
