@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import APIService from '../../../../services/APIService';
-import AuthService from '../../../../services/AuthService';
 import LoginForm from './LoginForm';
+import { login } from '../../actions';
 
 class LoginFormContainer extends Component {
   constructor(props) {
@@ -27,23 +28,19 @@ class LoginFormContainer extends Component {
   };
 
   onSubmit = () => {
+    const { loginAction, history } = this.props;
     const { email, password } = this.state;
-    const userData = {
+    const credentials = {
       email,
       password,
     };
 
-    APIService.post('/auth/login', userData)
-      .then((res) => {
-        const { history } = this.props;
-        const { token } = res.data;
-
-        AuthService.setToken(token);
-        history.replace('/app');
-      });
+    const onSuccess = () => history.replace('/app');
+    loginAction(credentials, onSuccess);
   };
 
   render() {
+    const { loginErrorMessage } = this.props;
     const { email, password } = this.state;
 
     return (
@@ -52,6 +49,7 @@ class LoginFormContainer extends Component {
         handleInputChange={this.handleInputChange}
         email={email}
         password={password}
+        errorMessage={loginErrorMessage}
       />
     );
   }
@@ -59,6 +57,25 @@ class LoginFormContainer extends Component {
 
 LoginFormContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  loginAction: PropTypes.func.isRequired,
+  loginErrorMessage: PropTypes.string,
 };
 
-export default withRouter(LoginFormContainer);
+LoginFormContainer.defaultProps = {
+  loginErrorMessage: '',
+};
+
+function mapStateToProps({ auth: { isFetching, loginErrorMessage } }) {
+  return {
+    isFetching,
+    loginErrorMessage,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    loginAction: (userData, onSuccess) => dispatch(login(userData, onSuccess)),
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginFormContainer));
