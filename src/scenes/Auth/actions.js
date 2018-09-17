@@ -30,7 +30,7 @@ function signUpFailure(errorMessage) {
   };
 }
 
-export function signUp(userData) {
+export function signUp(userData, onSuccess) {
   return (dispatch) => {
     dispatch(signUpRequest());
 
@@ -38,6 +38,7 @@ export function signUp(userData) {
       .then((res) => {
         const { token } = res.data;
         dispatch(signUpSuccess(token));
+        onSuccess();
       })
       .catch((error) => {
         dispatch(signUpFailure(error.response.data.message));

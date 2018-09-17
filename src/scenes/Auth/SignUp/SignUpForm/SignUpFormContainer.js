@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import validator from 'validator';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import SignUpForm from './SignUpForm';
 
@@ -14,6 +17,7 @@ class SignUpFormContainer extends Component {
       name: '',
       email: '',
       password: '',
+      formErrors: [],
     };
   }
 
@@ -27,36 +31,78 @@ class SignUpFormContainer extends Component {
     });
   };
 
+  addFormError = (error) => {
+    this.setState(previousState => ({
+      formErrors: [
+        ...previousState.formErrors,
+        error,
+      ],
+    }));
+  };
+
+  resetFormErrors = () => {
+    this.setState({
+      formErrors: [],
+    });
+  };
+
+  isFormInvalid = () => {
+    const { name, email, password } = this.state;
+    let isFormInvalid = false;
+
+    if (name.length < 1) {
+      this.addFormError('Provide a name');
+      isFormInvalid = true;
+    }
+    if (!validator.isEmail(email)) {
+      this.addFormError('Provide a valid email');
+      isFormInvalid = true;
+    }
+    if (password.length < 3) {
+      this.addFormError('Password must be at least 8 signs long');
+      isFormInvalid = true;
+    }
+
+    return isFormInvalid;
+  };
+
   onSubmit = () => {
-    const { signUpAction } = this.props;
+    const { signUpAction, history } = this.props;
     const { name, email, password } = this.state;
     const userData = {
       name,
       email,
       password,
     };
+    this.resetFormErrors();
 
-    signUpAction(userData);
+    if (!this.isFormInvalid()) {
+      const onSuccess = () => history.replace('/app');
+      signUpAction(userData, onSuccess);
+    }
   };
 
   render() {
-    const { isFetching, signUpErrorMessage } = this.props;
-    const { name, email, password } = this.state;
+    const { signUpErrorMessage, isFetching } = this.props;
+    const {
+      name, email, password, formErrors,
+    } = this.state;
+    const values = {
+      name,
+      email,
+      password,
+    };
 
-    return !isFetching
-      ? (
-        <SignUpForm
-          onSubmit={this.onSubmit}
-          handleInputChange={this.handleInputChange}
-          name={name}
-          email={email}
-          password={password}
-          errorMessage={signUpErrorMessage}
-        />
-      )
-      : (
-        <div>Loading</div>
-      );
+    return (
+      <SignUpForm
+        onSubmit={this.onSubmit}
+        handleInputChange={this.handleInputChange}
+        values={values}
+        errorMessage={signUpErrorMessage}
+        formErrors={formErrors}
+        isFetching={isFetching}
+      />
+    );
   }
 }
 
@@ -64,6 +110,7 @@ SignUpFormContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   signUpErrorMessage: PropTypes.string.isRequired,
   signUpAction: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 SignUpFormContainer.defaultProps = {};
 
@@ -76,8 +123,8 @@ function mapStateToProps({ auth: { isFetching, signUpErrorMessage } }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    signUpAction: userData => dispatch(signUp(userData)),
+    signUpAction: (userData, onSuccess) => dispatch(signUp(userData, onSuccess)),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUpFormContainer));
