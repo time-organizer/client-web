@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import APIService from '../../../../services/APIService';
-import AuthService from '../../../../services/AuthService';
 import SignUpForm from './SignUpForm';
+
+import { signUp } from '../../actions';
 
 class SignUpFormContainer extends Component {
   constructor(props) {
@@ -26,6 +28,7 @@ class SignUpFormContainer extends Component {
   };
 
   onSubmit = () => {
+    const { signUpAction } = this.props;
     const { name, email, password } = this.state;
     const userData = {
       name,
@@ -33,29 +36,48 @@ class SignUpFormContainer extends Component {
       password,
     };
 
-    APIService.post('/auth/sign-up', userData)
-      .then((res) => {
-        const { token } = res.data;
-        AuthService.setToken(token);
-      });
+    signUpAction(userData);
   };
 
   render() {
+    const { isFetching, signUpErrorMessage } = this.props;
     const { name, email, password } = this.state;
 
-    return (
-      <SignUpForm
-        onSubmit={this.onSubmit}
-        handleInputChange={this.handleInputChange}
-        name={name}
-        email={email}
-        password={password}
-      />
-    );
+    return !isFetching
+      ? (
+        <SignUpForm
+          onSubmit={this.onSubmit}
+          handleInputChange={this.handleInputChange}
+          name={name}
+          email={email}
+          password={password}
+          errorMessage={signUpErrorMessage}
+        />
+      )
+      : (
+        <div>Loading</div>
+      );
   }
 }
 
-SignUpFormContainer.propTypes = {};
+SignUpFormContainer.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  signUpErrorMessage: PropTypes.string.isRequired,
+  signUpAction: PropTypes.func.isRequired,
+};
 SignUpFormContainer.defaultProps = {};
 
-export default SignUpFormContainer;
+function mapStateToProps({ auth: { isFetching, signUpErrorMessage } }) {
+  return {
+    isFetching,
+    signUpErrorMessage,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    signUpAction: userData => dispatch(signUp(userData)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpFormContainer);
