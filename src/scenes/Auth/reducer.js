@@ -10,46 +10,40 @@ const initialState = {
 const auth = (state = initialState, action) => {
   switch (action.type) {
   case actions.SIGN_UP_REQUEST:
-    return {
-      ...state,
+    return Object.assign({}, state, {
       isFetching: true,
       signUpErrorMessage: '',
-    };
+    });
 
   case actions.SIGN_UP_SUCCESS:
-    return {
-      ...state,
+    return Object.assign({}, state, {
       isFetching: false,
       signUpErrorMessage: '',
-    };
+    });
 
   case actions.SIGN_UP_FAILURE:
-    return {
-      ...state,
+    return Object.assign({}, state, {
       isFetching: false,
       signUpErrorMessage: action.errorMessage,
-    };
+    });
 
   case actions.LOGIN_REQUEST:
-    return {
-      ...state,
+    return Object.assign({}, state, {
       isFetching: true,
       loginErrorMessage: '',
-    };
+    });
 
   case actions.LOGIN_SUCCESS:
-    return {
-      ...state,
+    return Object.assign({}, state, {
       isFetching: false,
       loginErrorMessage: '',
-    };
+    });
 
   case actions.LOGIN_FAILURE:
-    return {
-      ...state,
+    return Object.assign({}, state, {
       isFetching: false,
       loginErrorMessage: action.errorMessage,
-    };
+    });
   default:
     return state;
   }
