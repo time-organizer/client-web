@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import Auth from './scenes/Auth';
 import App from './scenes/App';
 
+import './common_styles/global.css';
+
 const AppRoot = ({ store }) => (
   <Provider store={store}>
     <Switch>

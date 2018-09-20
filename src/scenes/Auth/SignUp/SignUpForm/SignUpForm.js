@@ -6,7 +6,7 @@ import Input from '../../../components/Input';
 const SignUpForm = ({
   handleInputChange, onSubmit, values, errorMessage, formErrors,
 }) => (
-  <div>
+  <div className="form signup-form">
     <Input
       name="name"
       placeholder="Name"

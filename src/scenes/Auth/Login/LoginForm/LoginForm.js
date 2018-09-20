@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../../../components/Button';
 
 const LoginForm = ({ handleInputChange, onSubmit, errorMessage }) => (
-  <div>
+  <div className="form login-form">
     <input
       name="email"
       placeholder="Email"
