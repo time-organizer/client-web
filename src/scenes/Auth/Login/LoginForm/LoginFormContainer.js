@@ -40,7 +40,7 @@ class LoginFormContainer extends Component {
   };
 
   render() {
-    const { loginErrorMessage } = this.props;
+    const { loginServerError } = this.props;
     const { email, password } = this.state;
     const values = {
       email,
@@ -53,7 +53,7 @@ class LoginFormContainer extends Component {
         handleInputChange={this.handleInputChange}
         email={email}
         password={password}
-        errorMessage={loginErrorMessage}
+        errorMessage={loginServerError}
         values={values}
       />
     );
@@ -63,17 +63,17 @@ class LoginFormContainer extends Component {
 LoginFormContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
   loginAction: PropTypes.func.isRequired,
-  loginErrorMessage: PropTypes.string,
+  loginServerError: PropTypes.string,
 };
 
 LoginFormContainer.defaultProps = {
-  loginErrorMessage: '',
+  loginServerError: '',
 };
 
-function mapStateToProps({ auth: { isFetching, loginErrorMessage } }) {
+function mapStateToProps({ auth: { isFetching, loginServerError } }) {
   return {
     isFetching,
-    loginErrorMessage,
+    loginServerError,
   };
 }
 

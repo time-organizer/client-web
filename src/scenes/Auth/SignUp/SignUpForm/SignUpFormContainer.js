@@ -83,7 +83,7 @@ class SignUpFormContainer extends Component {
   };
 
   render() {
-    const { signUpErrorMessage, isFetching } = this.props;
+    const { signUpServerError, isFetching } = this.props;
     const {
       name, email, password, formErrors,
     } = this.state;
@@ -98,7 +98,7 @@ class SignUpFormContainer extends Component {
         onSubmit={this.onSubmit}
         handleInputChange={this.handleInputChange}
         values={values}
-        errorMessage={signUpErrorMessage}
+        errorMessage={signUpServerError}
         formErrors={formErrors}
         isFetching={isFetching}
       />
@@ -108,16 +108,16 @@ class SignUpFormContainer extends Component {
 
 SignUpFormContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  signUpErrorMessage: PropTypes.string.isRequired,
+  signUpServerError: PropTypes.string.isRequired,
   signUpAction: PropTypes.func.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
 };
 SignUpFormContainer.defaultProps = {};
 
-function mapStateToProps({ auth: { isFetching, signUpErrorMessage } }) {
+function mapStateToProps({ auth: { isFetching, signUpServerError } }) {
   return {
     isFetching,
-    signUpErrorMessage,
+    signUpServerError,
   };
 }
 

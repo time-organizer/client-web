@@ -3,8 +3,8 @@ import * as actions from './actions';
 const initialState = {
   user: null,
   isFetching: false,
-  signUpErrorMessage: '',
-  loginErrorMessage: '',
+  signUpServerError: '',
+  loginServerError: '',
 };
 
 const auth = (state = initialState, action) => {
@@ -12,37 +12,37 @@ const auth = (state = initialState, action) => {
   case actions.SIGN_UP_REQUEST:
     return Object.assign({}, state, {
       isFetching: true,
-      signUpErrorMessage: '',
+      signUpServerError: '',
     });
 
   case actions.SIGN_UP_SUCCESS:
     return Object.assign({}, state, {
       isFetching: false,
-      signUpErrorMessage: '',
+      signUpServerError: '',
     });
 
   case actions.SIGN_UP_FAILURE:
     return Object.assign({}, state, {
       isFetching: false,
-      signUpErrorMessage: action.errorMessage,
+      signUpServerError: action.errorMessage,
     });
 
   case actions.LOGIN_REQUEST:
     return Object.assign({}, state, {
       isFetching: true,
-      loginErrorMessage: '',
+      loginServerError: '',
     });
 
   case actions.LOGIN_SUCCESS:
     return Object.assign({}, state, {
       isFetching: false,
-      loginErrorMessage: '',
+      loginServerError: '',
     });
 
   case actions.LOGIN_FAILURE:
     return Object.assign({}, state, {
       isFetching: false,
-      loginErrorMessage: action.errorMessage,
+      loginServerError: action.errorMessage,
     });
   default:
     return state;

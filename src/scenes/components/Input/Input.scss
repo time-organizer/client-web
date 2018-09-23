@@ -1,26 +1,41 @@
 @import '../../../common_styles/_variables.scss';
 
+$input-details-color: #d4d4d4;
+
 .input-wrapper {
   border: none;
 
   input {
     background: $bg-color;
     -webkit-box-shadow: 0 0 0 30px $bg-color inset;
-    -webkit-text-fill-color: $text-color;
+    //-webkit-text-fill-color: $text-color;
     padding: 12px;
     width: 100%;
     outline: none;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
     transition: border-color .3s;
     font-size: 1em;
     box-sizing : border-box;
     border: none;
-    border-bottom: 2px solid $text-color-light;
+    border-bottom: 2px solid $input-details-color;
     border-radius: 0;
     font-weight: lighter;
+    color: $text-color;
 
     &:focus {
       border-color: $accent-color;
     }
+  }
+}
+
+::placeholder {
+  color: $input-details-color;
+}
+
+.input-message {
+  margin: 12px;
+
+  &.error {
+    color: $error-color;
   }
 }

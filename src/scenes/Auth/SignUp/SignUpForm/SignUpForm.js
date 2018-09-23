@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input/Input';
+import ErrorMessage from '../../../components/Input/ErrorMessage';
 
 import './SignUpForm.css';
 
@@ -24,6 +25,7 @@ const SignUpForm = ({
       onChange={handleInputChange}
     />
     <Input
+      className="margin-bottom-24"
       name="password"
       placeholder="Password"
       type="password"
@@ -31,7 +33,9 @@ const SignUpForm = ({
       onChange={handleInputChange}
     />
     {
-      formErrors.map(error => error)
+      formErrors.map(error => (
+        <ErrorMessage message={error} />
+      ))
     }
     <Button className="pull-right" onClick={onSubmit}>
       SUBMIT
