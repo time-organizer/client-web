@@ -8,13 +8,16 @@ import './Auth.css';
 
 const Auth = () => (
   <div className="auth-wrapper">
-    <div className="auth-background" />
-    <div className="auth-forms">
-      <Switch>
-        <Route path="/auth/login" component={Login} />
-        <Route path="/auth/sign-up" component={SignUp} />
-      </Switch>
+    <div className="auth-forms-section">
+      <div className="auth-forms">
+        {/* <div className="auth-logo">Time organizer</div> */}
+        <Switch>
+          <Route path="/auth/login" component={Login} />
+          <Route path="/auth/sign-up" component={SignUp} />
+        </Switch>
+      </div>
     </div>
+    <div className="auth-background-section" />
   </div>
 );
 

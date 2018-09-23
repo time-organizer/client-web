@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Button.css';
+
 const buttonTypes = {
   CANCEL: 'cancel',
   SUBMIT: 'submit',
@@ -13,7 +15,7 @@ const Button = ({
   <button
     type="button"
     onClick={onClick}
-    className={`${buttonType} ${className}`}
+    className={`to-button ${buttonType} ${className}`}
   >
     {children}
   </button>

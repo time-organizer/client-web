@@ -1,0 +1,28 @@
+@import '../../../common_styles/_variables.scss';
+
+.input-wrapper {
+  border: none;
+
+  input {
+    background: $bg-color;
+    -webkit-box-shadow: 0 0 0 30px $bg-color inset;
+    -webkit-text-fill-color: $text-color;
+    padding: 12px;
+    width: 100%;
+    outline: none;
+    margin-bottom: 24px;
+    transition: border-color .3s;
+    font-size: 1em;
+    box-sizing : border-box;
+    //border: 1px solid #e5e5e5;
+    //box-shadow: 0 0 3px -2px black;
+    border: none;
+    border-bottom: 2px solid $text-color-light;
+    border-radius: 0;
+    font-weight: lighter;
+
+    &:focus {
+      border-color: $accent-color;
+    }
+  }
+}

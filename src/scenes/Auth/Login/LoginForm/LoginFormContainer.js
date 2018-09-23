@@ -42,6 +42,10 @@ class LoginFormContainer extends Component {
   render() {
     const { loginErrorMessage } = this.props;
     const { email, password } = this.state;
+    const values = {
+      email,
+      password,
+    };
 
     return (
       <LoginForm
@@ -50,6 +54,7 @@ class LoginFormContainer extends Component {
         email={email}
         password={password}
         errorMessage={loginErrorMessage}
+        values={values}
       />
     );
   }

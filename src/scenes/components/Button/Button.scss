@@ -1,0 +1,23 @@
+@import '../../../common_styles/variables';
+
+.to-button {
+  border: none;
+  background: $accent-color;
+  color: $text-color-light;
+  padding: 12px 24px;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px 0 $accent-color;
+  transition: .3s;
+  font-size: 0.8em;
+  font-weight: 300;
+
+  &:hover {
+    cursor: pointer;
+    background: $bg-color;
+    color: $accent-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

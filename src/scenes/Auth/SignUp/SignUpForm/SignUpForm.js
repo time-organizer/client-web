@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../../components/Button';
-import Input from '../../../components/Input';
+import Button from '../../../components/Button/Button';
+import Input from '../../../components/Input/Input';
+
+import './SignUpForm.css';
 
 const SignUpForm = ({
   handleInputChange, onSubmit, values, errorMessage, formErrors,
@@ -31,8 +33,8 @@ const SignUpForm = ({
     {
       formErrors.map(error => error)
     }
-    <Button onClick={onSubmit}>
-      Submit
+    <Button className="pull-right" onClick={onSubmit}>
+      SUBMIT
     </Button>
     {errorMessage}
   </div>

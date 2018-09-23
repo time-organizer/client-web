@@ -1,23 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../../components/Button';
+import Button from '../../../components/Button/Button';
+import Input from '../../../components/Input/Input';
 
-const LoginForm = ({ handleInputChange, onSubmit, errorMessage }) => (
+const LoginForm = ({
+  handleInputChange, onSubmit, errorMessage, values,
+}) => (
   <div className="form login-form">
-    <input
+    <Input
       name="email"
       placeholder="Email"
       type="text"
+      value={values.email}
       onChange={handleInputChange}
     />
-    <input
+    <Input
       name="password"
       placeholder="Password"
       type="password"
+      value={values.password}
       onChange={handleInputChange}
     />
-    <Button onClick={onSubmit}>
-      Submit
+    <Button className="pull-right" onClick={onSubmit}>
+      LOGIN
     </Button>
     {errorMessage}
   </div>
@@ -27,6 +32,10 @@ LoginForm.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,
+  values: PropTypes.shape({
+    email: PropTypes.string,
+    password: PropTypes.string,
+  }).isRequired,
 };
 
 LoginForm.defaultProps = {

@@ -5,16 +5,26 @@
   height: 100%;
   display: flex;
 
-  .auth-background {
+  .auth-background-section {
     flex: 1;
-    background-image: url('../../images/to-bg-2.jpg');
+    background-image: url('../../images/to-bg-3.jpg');
     background-size: cover;
     background-position: center;
   }
 
-  .auth-forms {
+  .auth-forms-section {
     width: 30%;
-    min-width: 300px;
     background: $bg-color;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+
+    .auth-forms {
+      margin: 0 auto;
+      align-self: center;
+      width: 80%;
+      max-width: 300px;
+    }
   }
 }

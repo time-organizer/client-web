@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Input.css';
+
 const Input = ({
   onChange, name, type, placeholder, className, value,
 }) => (
-  <input
-    className={`${className}`}
-    name={name}
-    placeholder={placeholder}
-    type={type}
-    value={value}
-    onChange={onChange}
-  />
+  <div className="input-wrapper">
+    <input
+      className={`${className}`}
+      name={name}
+      placeholder={placeholder}
+      type={type}
+      value={value}
+      onChange={onChange}
+    />
+  </div>
 );
 
 Input.propTypes = {
