@@ -10,7 +10,6 @@ const Auth = () => (
   <div className="auth-wrapper">
     <div className="auth-forms-section">
       <div className="auth-forms">
-        {/* <div className="auth-logo">Time organizer</div> */}
         <Switch>
           <Route path="/auth/login" component={Login} />
           <Route path="/auth/sign-up" component={SignUp} />
