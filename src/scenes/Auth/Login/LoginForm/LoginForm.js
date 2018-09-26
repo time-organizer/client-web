@@ -18,7 +18,6 @@ const LoginForm = ({
       onChange={handleInputChange}
     />
     <Input
-      className="margin-bottom-24"
       name="password"
       placeholder="Password"
       type="password"

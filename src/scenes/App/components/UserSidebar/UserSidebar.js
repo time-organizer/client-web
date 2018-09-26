@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+// TODO refactor!
+import Logout from './components/Logout';
+import Avatar from './components/Avatar';
 
 import './UserSidebar.css';
-
-import Avatar from './components/Avatar';
 
 const UserSidebar = ({ userSidebarOpened, onToggleUserSidebar, name }) => (
   <Fragment>
@@ -28,6 +29,7 @@ const UserSidebar = ({ userSidebarOpened, onToggleUserSidebar, name }) => (
           <i className="icon-cancel" />
         </div>
         <Avatar name={name} />
+        <Logout />
       </div>
     </CSSTransition>
   </Fragment>

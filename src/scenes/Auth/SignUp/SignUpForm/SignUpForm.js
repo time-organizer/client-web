@@ -26,7 +26,6 @@ const SignUpForm = ({
       onChange={handleInputChange}
     />
     <Input
-      className="margin-bottom-24"
       name="password"
       placeholder="Password"
       type="password"
@@ -34,7 +33,7 @@ const SignUpForm = ({
       onChange={handleInputChange}
     />
     {formErrors.map(error => (
-      <ErrorMessage message={error} />
+      <ErrorMessage key={error} message={error} />
     ))}
     <ErrorMessage message={errorMessage} />
     <div className="form-button-wrapper">
