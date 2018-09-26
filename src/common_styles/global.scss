@@ -8,3 +8,11 @@ html, body, #root {
   color: $text-color;
   font-family: 'Lato', sans-serif;
 }
+
+h2 {
+  font-size: 1.5em;
+
+  &.italic {
+    font-style: italic;
+  }
+}

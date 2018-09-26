@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './UserSidebar.css';
 import { CSSTransition } from 'react-transition-group';
 
-const UserSidebar = ({ userSidebarOpened, onToggleUserSidebar }) => (
+import './UserSidebar.css';
+
+import Avatar from './components/Avatar';
+
+const UserSidebar = ({ userSidebarOpened, onToggleUserSidebar, name }) => (
   <CSSTransition
     in={userSidebarOpened}
     timeout={300}
     classNames="user-sidebar-transition"
     unmountOnExit
-    onExited={() => {
-    }}
   >
     <div className="user-sidebar">
-      <div onClick={onToggleUserSidebar}>close</div>
+      <div className="user-sidebar-close" onClick={onToggleUserSidebar}>
+        <i className="icon-cancel" />
+      </div>
+      <Avatar name={name} />
     </div>
   </CSSTransition>
 );
@@ -22,6 +25,7 @@ const UserSidebar = ({ userSidebarOpened, onToggleUserSidebar }) => (
 UserSidebar.propTypes = {
   userSidebarOpened: PropTypes.bool,
   onToggleUserSidebar: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
 };
 UserSidebar.defaultProps = {
   userSidebarOpened: false,

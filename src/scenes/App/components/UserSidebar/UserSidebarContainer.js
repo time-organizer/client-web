@@ -5,16 +5,18 @@ import PropTypes from 'prop-types';
 import { toggleUserSidebar } from '../../../generalActions';
 import UserSidebar from './UserSidebar';
 
-const UserSidebarContainer = ({ userSidebarOpened, onToggleUserSidebar }) => (
+const UserSidebarContainer = ({ userSidebarOpened, onToggleUserSidebar, name }) => (
   <UserSidebar
     onToggleUserSidebar={onToggleUserSidebar}
     userSidebarOpened={userSidebarOpened}
+    name={name}
   />
 );
 
 UserSidebarContainer.propTypes = {
   onToggleUserSidebar: PropTypes.func.isRequired,
   userSidebarOpened: PropTypes.bool,
+  name: PropTypes.string.isRequired,
 };
 
 UserSidebarContainer.defaultProps = {
@@ -24,6 +26,7 @@ UserSidebarContainer.defaultProps = {
 function mapStateToProps({ general: { userSidebarOpened } }) {
   return {
     userSidebarOpened,
+    name: 'Michał',
   };
 }
 

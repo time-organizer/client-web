@@ -1,4 +1,5 @@
 @import '../../../../common_styles/_variables.scss';
+@import '../../../../common_styles/_mixins.scss';
 
 .user-sidebar {
   width: 300px;
@@ -8,22 +9,44 @@
   right: 0;
   height: 100%;
   box-shadow: $box-shadow;
-}
 
+  .user-sidebar-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    transition: .3s;
+
+    &:hover {
+      color: $accent-color;
+      cursor: pointer;
+    }
+
+    i {
+      font-size: 1.5em;
+    }
+  }
+
+  @include phone {
+    width: 100%;
+  }
+}
 
 .user-sidebar-transition-enter {
   opacity: 0.01;
   transform: translateX(50%);
 }
+
 .user-sidebar-transition-enter-active {
   opacity: 1;
   transform: translateX(0%);
   transition: all 300ms ease-out;
 }
+
 .user-sidebar-transition-exit {
   opacity: 1;
   transform: translateX(0%);
 }
+
 .user-sidebar-transition-exit-active {
   opacity: 0.01;
   transform: translateX(50%);

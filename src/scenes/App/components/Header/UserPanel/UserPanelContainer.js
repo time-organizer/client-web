@@ -5,13 +5,20 @@ import PropTypes from 'prop-types';
 import { toggleUserSidebar } from '../../../../generalActions';
 import UserPanel from './UserPanel';
 
-const UserPanelContainer = ({ onToggleUserSidebar }) => (
-  <UserPanel onToggleUserSidebar={onToggleUserSidebar} />
+const UserPanelContainer = ({ onToggleUserSidebar, name }) => (
+  <UserPanel onToggleUserSidebar={onToggleUserSidebar} name={name} />
 );
 
 UserPanelContainer.propTypes = {
   onToggleUserSidebar: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
 };
+
+function mapStateToProps() {
+  return {
+    name: 'Michał',
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -19,4 +26,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(UserPanelContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPanelContainer);
