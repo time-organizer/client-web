@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './UserPanel.css';
 
-const UserPanel = () => (
+const UserPanel = ({ onToggleUserSidebar }) => (
   <div className="user-panel">
     <div className="header-button">
       <i className="icon-bell-o" />
     </div>
-    <div className="user-panel-avatar">
+    <div className="user-panel-avatar" onClick={onToggleUserSidebar}>
       <div className="user-panel-avatar-wrapper">
         <i className="icon-user" />
       </div>
@@ -17,5 +18,9 @@ const UserPanel = () => (
     </div>
   </div>
 );
+
+UserPanel.propTypes = {
+  onToggleUserSidebar: PropTypes.func.isRequired,
+};
 
 export default UserPanel;

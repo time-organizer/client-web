@@ -1,0 +1,31 @@
+@import '../../../../common_styles/_variables.scss';
+
+.user-sidebar {
+  width: 300px;
+  position: absolute;
+  background: $bg-color;
+  top: 0;
+  right: 0;
+  height: 100%;
+  box-shadow: $box-shadow;
+}
+
+
+.user-sidebar-transition-enter {
+  opacity: 0.01;
+  transform: translateX(50%);
+}
+.user-sidebar-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 300ms ease-out;
+}
+.user-sidebar-transition-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.user-sidebar-transition-exit-active {
+  opacity: 0.01;
+  transform: translateX(50%);
+  transition: all 300ms ease-out;
+}
