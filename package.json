@@ -35,8 +35,8 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
-    "test": "CI=true react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
+    "test": "CI=true env=test react-scripts test --env=jsdom",
+    "test:watch": "env=test react-scripts test --env=jsdom",
     "lint": "./node_modules/.bin/eslint src",
     "eject": "react-scripts eject"
   },
