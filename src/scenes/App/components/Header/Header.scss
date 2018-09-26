@@ -1,0 +1,36 @@
+@import '../../../../common_styles/variables';
+
+.header {
+  width: 100%;
+  height: 70px;
+  background: $bg-color;
+  box-shadow: $box-shadow;
+  display: flex;
+
+  .header-logo {
+    align-self: center;
+    margin: 0 auto;
+    height: 100%;
+    padding: 16px;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .header-button {
+    display: flex;
+    transition: .3s;
+
+    i {
+      align-self: center;
+      padding: 24px;
+      font-size: 1em;
+
+      &:hover {
+        cursor: pointer;
+        color: $accent-color;
+      }
+    }
+  }
+}
