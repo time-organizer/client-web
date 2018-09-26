@@ -5,9 +5,6 @@ import './UserPanel.css';
 
 const UserPanel = ({ onToggleUserSidebar, name }) => (
   <div className="user-panel">
-    <div className="header-button">
-      <i className="icon-bell-o" />
-    </div>
     <div className="user-panel-avatar">
       <div className="user-panel-avatar-wrapper" onClick={onToggleUserSidebar}>
         <i className="icon-user" />

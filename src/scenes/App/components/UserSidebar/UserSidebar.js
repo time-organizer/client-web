@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 
@@ -7,19 +7,30 @@ import './UserSidebar.css';
 import Avatar from './components/Avatar';
 
 const UserSidebar = ({ userSidebarOpened, onToggleUserSidebar, name }) => (
-  <CSSTransition
-    in={userSidebarOpened}
-    timeout={300}
-    classNames="user-sidebar-transition"
-    unmountOnExit
-  >
-    <div className="user-sidebar">
-      <div className="user-sidebar-close" onClick={onToggleUserSidebar}>
-        <i className="icon-cancel" />
+  <Fragment>
+    <CSSTransition
+      in={userSidebarOpened}
+      timeout={300}
+      classNames="user-sidebar-overlay-transition"
+      unmountOnExit
+    >
+      <div className="user-sidebar-overlay" onClick={onToggleUserSidebar} />
+    </CSSTransition>
+
+    <CSSTransition
+      in={userSidebarOpened}
+      timeout={300}
+      classNames="user-sidebar-transition"
+      unmountOnExit
+    >
+      <div className="user-sidebar">
+        <div className="user-sidebar-close" onClick={onToggleUserSidebar}>
+          <i className="icon-cancel" />
+        </div>
+        <Avatar name={name} />
       </div>
-      <Avatar name={name} />
-    </div>
-  </CSSTransition>
+    </CSSTransition>
+  </Fragment>
 );
 
 UserSidebar.propTypes = {

@@ -1,8 +1,19 @@
 @import '../../../../common_styles/_variables.scss';
 @import '../../../../common_styles/_mixins.scss';
 
+$sidebarWidth: 300px;
+
+.user-sidebar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: $bg-overlay;
+}
+
 .user-sidebar {
-  width: 300px;
+  width: $sidebarWidth;
   position: absolute;
   background: $bg-color;
   top: 0;
@@ -50,5 +61,23 @@
 .user-sidebar-transition-exit-active {
   opacity: 0.01;
   transform: translateX(50%);
+  transition: all 300ms ease-out;
+}
+
+.user-sidebar-overlay-transition-enter {
+  opacity: 0.01;
+}
+
+.user-sidebar-overlay-transition-enter-active {
+  opacity: 1;
+  transition: all 300ms ease-out;
+}
+
+.user-sidebar-overlay-transition-exit {
+  opacity: 1;
+}
+
+.user-sidebar-overlay-transition-exit-active {
+  opacity: 0.01;
   transition: all 300ms ease-out;
 }
