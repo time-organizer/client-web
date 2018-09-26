@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 import { toggleUserSidebar } from '../../../../generalActions';
 import UserPanel from './UserPanel';
@@ -11,12 +12,17 @@ const UserPanelContainer = ({ onToggleUserSidebar, name }) => (
 
 UserPanelContainer.propTypes = {
   onToggleUserSidebar: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
 };
 
-function mapStateToProps() {
+UserPanelContainer.defaultProps = {
+  name: '',
+};
+
+function mapStateToProps({ user: { profile } }) {
+  const name = _.get(profile, 'name', '');
   return {
-    name: 'Michał',
+    name,
   };
 }
 

@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import APIService from '../../services/APIService';
 import AuthService from '../../services/AuthService';
 
@@ -41,7 +43,7 @@ export function signUp(userData, onSuccess) {
         onSuccess();
       })
       .catch((error) => {
-        dispatch(signUpFailure(error.response.data.message));
+        dispatch(signUpFailure(_.get(error, 'response.data.message')));
       });
   };
 }
@@ -79,7 +81,7 @@ export function login(credentials, onSuccess) {
         onSuccess();
       })
       .catch((error) => {
-        dispatch(loginFailure(error.response.data.message));
+        dispatch(loginFailure(_.get(error, 'response.data.message')));
       });
   };
 }

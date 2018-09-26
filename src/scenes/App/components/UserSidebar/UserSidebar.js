@@ -36,10 +36,11 @@ const UserSidebar = ({ userSidebarOpened, onToggleUserSidebar, name }) => (
 UserSidebar.propTypes = {
   userSidebarOpened: PropTypes.bool,
   onToggleUserSidebar: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
 };
 UserSidebar.defaultProps = {
   userSidebarOpened: false,
+  name: '',
 };
 
 export default UserSidebar;
