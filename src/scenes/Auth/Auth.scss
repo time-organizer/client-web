@@ -9,8 +9,8 @@
   .auth-background-section {
     flex: 1;
     background-image: url('../../images/to-bg-3.jpg');
-    background-size: cover;
     background-position: center;
+    background-size: cover;
 
     @include phone {
       display: none;
@@ -20,17 +20,42 @@
   .auth-forms-section {
     width: 30%;
     background: $bg-color;
-    display: flex;
-    flex-wrap: wrap;
     box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.5);
     z-index: 2;
+    padding-top: 120px;
+
+    .auth-logo {
+      width: 100px;
+      margin: 0 auto;
+      position: relative;
+
+      img {
+        width: 100%;
+      }
+    }
 
     .auth-forms {
-      margin: 0 auto;
-      align-self: center;
       width: 100%;
       padding: 0 24px;
       max-width: 300px;
+      margin: 120px auto 0;
+
+      .auth-form {
+        .form-button-wrapper {
+          width: 100%;
+          text-align: right;
+        }
+
+        .form-text-button {
+          margin-top: 56px;
+          text-align: center;
+
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
     }
 
     @include tablet {
@@ -39,6 +64,11 @@
 
     @include phone {
       width: 100%;
+      padding-top: 80px;
+
+      .auth-forms {
+        margin: 80px auto 0;
+      }
     }
   }
 }

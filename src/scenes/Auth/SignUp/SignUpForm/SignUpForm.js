@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input/Input';
 import ErrorMessage from '../../../components/Input/ErrorMessage';
 
-import './SignUpForm.css';
 
 const SignUpForm = ({
   handleInputChange, onSubmit, values, errorMessage, formErrors,
 }) => (
-  <div className="form signup-form">
+  <div className="auth-form">
     <Input
       name="name"
       placeholder="Name"
@@ -32,15 +33,20 @@ const SignUpForm = ({
       value={values.password}
       onChange={handleInputChange}
     />
-    {
-      formErrors.map(error => (
-        <ErrorMessage message={error} />
-      ))
-    }
-    <Button className="pull-right" onClick={onSubmit}>
-      SUBMIT
-    </Button>
-    {errorMessage}
+    {formErrors.map(error => (
+      <ErrorMessage message={error} />
+    ))}
+    <ErrorMessage message={errorMessage} />
+    <div className="form-button-wrapper">
+      <Button onClick={onSubmit}>
+        SUBMIT
+      </Button>
+    </div>
+    <Link to="/auth/login">
+      <div className="form-text-button">
+        Already have an account?
+      </div>
+    </Link>
   </div>
 );
 

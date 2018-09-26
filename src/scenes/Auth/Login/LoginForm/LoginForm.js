@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input/Input';
+import ErrorMessage from '../../../components/Input/ErrorMessage';
 
 const LoginForm = ({
   handleInputChange, onSubmit, errorMessage, values,
 }) => (
-  <div className="form login-form">
+  <div className="auth-form">
     <Input
       name="email"
       placeholder="Email"
@@ -15,16 +18,24 @@ const LoginForm = ({
       onChange={handleInputChange}
     />
     <Input
+      className="margin-bottom-24"
       name="password"
       placeholder="Password"
       type="password"
       value={values.password}
       onChange={handleInputChange}
     />
-    <Button className="pull-right" onClick={onSubmit}>
-      LOGIN
-    </Button>
-    {errorMessage}
+    <ErrorMessage message={errorMessage} />
+    <div className="form-button-wrapper">
+      <Button onClick={onSubmit}>
+        LOGIN
+      </Button>
+    </div>
+    <Link to="/auth/sign-up">
+      <div className="form-text-button">
+        {'Don\'t have account?'}
+      </div>
+    </Link>
   </div>
 );
 

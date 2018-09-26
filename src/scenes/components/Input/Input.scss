@@ -8,7 +8,7 @@ $input-details-color: #d4d4d4;
   input {
     background: $bg-color;
     -webkit-box-shadow: 0 0 0 30px $bg-color inset;
-    //-webkit-text-fill-color: $text-color;
+    -webkit-text-fill-color: $text-color;
     padding: 12px;
     width: 100%;
     outline: none;
@@ -38,4 +38,26 @@ $input-details-color: #d4d4d4;
   &.error {
     color: $error-color;
   }
+}
+
+.error-message-transition-enter {
+  opacity: 0.01;
+  transform: translateX(50%);
+}
+
+.error-message-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 300ms ease-out;
+}
+
+.error-message-transition-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.error-message-transition-exit-active {
+  opacity: 0.01;
+  transform: translateX(50%);
+  transition: all 300ms ease-out;
 }
