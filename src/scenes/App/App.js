@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import withAuth from '../Auth/withAuth';
 import Header from './components/Header';
 import UserSidebar from './components/UserSidebar';
+import { fetchUserIfNeeded } from './components/UserSidebar/actions';
 import './App.css';
 
-const App = () => (
-  <div className="app-layout">
-    <Header />
-    <UserSidebar />
-  </div>
-);
+class App extends Component {
+  componentDidMount() {
+    const { refreshUser } = this.props;
 
-App.propTypes = {};
-App.defaultProps = {};
+    refreshUser();
+  }
 
-export default withRouter(withAuth(App));
+  render() {
+    return (
+      <div className="app-layout">
+        <Header />
+        <UserSidebar />
+      </div>
+    );
+  }
+}
+
+App.propTypes = {
+  refreshUser: PropTypes.func.isRequired,
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    refreshUser: () => dispatch(fetchUserIfNeeded()),
+  };
+}
+
+export default withRouter(withAuth(connect(null, mapDispatchToProps)(App)));

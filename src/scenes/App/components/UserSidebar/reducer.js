@@ -4,7 +4,9 @@ const initialState = {
   profile: null,
   isFetching: false,
   didInvalidate: false,
-  fetchUserServerError: '',
+  userServerError: '',
+  isUploadingAvatar: false,
+  uploadError: '',
 };
 
 const user = (state = initialState, action) => {
@@ -23,7 +25,26 @@ const user = (state = initialState, action) => {
   case actions.FETCH_USER_FAILURE:
     return Object.assign({}, state, {
       isFetching: false,
-      fetchUserServerError: action.error,
+      userServerError: action.error,
+    });
+
+  case actions.UPLOAD_AVATAR_REQUEST: {
+    return Object.assign({}, state, {
+      isUploadingAvatar: true,
+    });
+  }
+
+  case actions.UPLOAD_AVATAR_SUCCESS:
+    return Object.assign({}, state, {
+      didInvalidate: false,
+      isUploadingAvatar: false,
+      profile: action.profile,
+    });
+
+  case actions.UPLOAD_AVATAR_FAILURE:
+    return Object.assign({}, state, {
+      uploadError: action.errorMessage,
+      isUploadingAvatar: false,
     });
 
   default:

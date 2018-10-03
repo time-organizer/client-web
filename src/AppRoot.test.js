@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import AppRoot from '../AppRoot';
-import configureStore from '../store/configureStore';
+import AppRoot from './AppRoot';
+import configureStore from './store/configureStore';
 
 const store = configureStore();
 

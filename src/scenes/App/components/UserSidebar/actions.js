@@ -6,6 +6,12 @@ export const FETCH_USER_REQUEST = 'FETCH_USER_REQUEST';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
 
+export const UPLOAD_AVATAR_REQUEST = 'UPLOAD_AVATAR_REQUEST';
+export const UPLOAD_AVATAR_SUCCESS = 'UPLOAD_AVATAR_SUCCESS';
+export const UPLOAD_AVATAR_FAILURE = 'UPLOAD_AVATAR_FAILURE';
+
+export const SET_USER_PROFILE = 'SET_USER_PROFILE';
+
 function shouldFetchUser(state) {
   const { user: { profile, isFetching, didInvalidate } } = state;
 
@@ -49,5 +55,47 @@ export function fetchUserIfNeeded() {
           dispatch(fetchUserFailure(_.get(error, 'response.data.message', '')));
         });
     }
+  };
+}
+
+function uploadAvatarRequest() {
+  return {
+    type: UPLOAD_AVATAR_REQUEST,
+  };
+}
+
+function uploadAvatarSuccess(profile) {
+  return {
+    type: UPLOAD_AVATAR_SUCCESS,
+    profile,
+  };
+}
+
+function uploadAvatarFailure(errorMessage) {
+  return {
+    type: UPLOAD_AVATAR_FAILURE,
+    errorMessage,
+  };
+}
+
+export function uploadAvatar(acceptedFiled) {
+  return (dispatch) => {
+    const data = new FormData(); // eslint-disable-line
+    data.append('file', acceptedFiled[0]);
+
+    // const config = { // with progress
+    //   onUploadProgress: (progressEvent) => {
+    //     const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+    //   },
+    // };
+
+    dispatch(uploadAvatarRequest());
+    APIService.put('/api/avatar', data)
+      .then((updatedUser) => {
+        dispatch(uploadAvatarSuccess(updatedUser.data));
+      })
+      .catch((error) => {
+        dispatch(uploadAvatarFailure(_.get(error, 'response.data.message', 'Upload error')));
+      });
   };
 }

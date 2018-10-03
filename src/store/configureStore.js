@@ -5,7 +5,7 @@ import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 
 
-const configureStore = (process.env === 'production' || 'test')
+const configureStore = (process.env === 'production' || process.env === 'test')
   ? () => createStore(
     rootReducer,
     compose(

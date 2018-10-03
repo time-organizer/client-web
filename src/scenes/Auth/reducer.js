@@ -1,7 +1,6 @@
 import * as actions from './actions';
 
 const initialState = {
-  user: null,
   isFetching: false,
   signUpServerError: '',
   loginServerError: '',

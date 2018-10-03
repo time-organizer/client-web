@@ -2,26 +2,28 @@
 import axios from 'axios';
 
 const {
-  DATA_FLOW_URL = 'http://localhost:3001',
+  REACT_APP_DATA_FLOW_URL = 'https://localhost:3001',
 } = process.env;
 
 
 const APIService = {
   getToken: () => localStorage.getItem('auth_token'),
 
-  get: url => axios.get(`${DATA_FLOW_URL}${url}`, {
+  get: url => axios.get(`${REACT_APP_DATA_FLOW_URL}${url}`, {
     headers: {
       auth_token: APIService.getToken(),
     },
   }),
 
-  post: (url, body) => axios.post(`${DATA_FLOW_URL}${url}`, body, {
+  post: (url, body, config) => axios.post(`${REACT_APP_DATA_FLOW_URL}${url}`, body, {
+    ...config,
     headers: {
       auth_token: APIService.getToken(),
     },
   }),
 
-  put: (url, body) => axios.put(`${DATA_FLOW_URL}${url}`, body, {
+  put: (url, body, config) => axios.put(`${REACT_APP_DATA_FLOW_URL}${url}`, body, {
+    ...config,
     headers: {
       auth_token: APIService.getToken(),
     },
