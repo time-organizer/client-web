@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import withAuth from '../Auth/withAuth';
 import Header from './components/Header';
 import UserSidebar from './components/UserSidebar';
+import Boards from './scenes/Boards';
+
 import { fetchUserIfNeeded } from './components/UserSidebar/actions';
 import './App.css';
 
@@ -21,6 +23,7 @@ class App extends Component {
       <div className="app-layout">
         <Header />
         <UserSidebar />
+        <Route path="/app/boards" component={Boards} />
       </div>
     );
   }
