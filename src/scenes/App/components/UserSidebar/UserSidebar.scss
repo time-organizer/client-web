@@ -10,6 +10,7 @@ $sidebarWidth: 300px;
   bottom: 0;
   right: 0;
   background: $bg-overlay;
+  z-index: $z-index-5;
 }
 
 .user-sidebar {
@@ -20,6 +21,7 @@ $sidebarWidth: 300px;
   right: 0;
   height: 100%;
   box-shadow: $box-shadow;
+  z-index: $z-index-5;
 
   .user-sidebar-close {
     position: absolute;

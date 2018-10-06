@@ -9,9 +9,18 @@ $text-color-light: #f3f3f3;
 
 $error-color: #E5645B;
 
-$box-shadow-flat: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-$box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
-$box-shadow-moved: -5px -5px 20px 5px rgba(0, 0, 0, 0.3);
+$box-shadow-flat: 0px 0px 10px -5px rgba(0, 0, 0, 0.3);
+$box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.3);
+$box-shadow-moved: -8px 8px 50px -15px rgba(0,0,0,0.3);
+
+$border-radius: 4px;
 
 //dimensions
 $header-height: 70px;
+
+//z-index
+$z-index-5: 5;
+$z-index-4: 4;
+$z-index-3: 3;
+$z-index-2: 2;
+$z-index-1: 1;

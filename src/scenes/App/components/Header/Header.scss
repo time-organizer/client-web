@@ -1,11 +1,13 @@
 @import '../../../../common_styles/variables';
 
 .header {
+  position: relative;
   width: 100%;
   height: $header-height;
   background: $bg-color;
   box-shadow: $box-shadow;
   display: flex;
+  z-index: $z-index-4;
 
   .header-logo {
     align-self: center;

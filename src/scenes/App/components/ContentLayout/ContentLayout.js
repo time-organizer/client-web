@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import './ContentLayout.css';
 
 const ContentLayout = ({ children }) => (
-  <div className="content-layout">
-    {children}
+  <div className="content-layout-scroll">
+    <div className="content-layout">
+      {children}
+    </div>
   </div>
 );
 

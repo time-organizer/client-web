@@ -1,6 +1,6 @@
-$tablet-width: 768px;
-$desktop-width: 1024px;
-$desktop-large: 1600px;
+$tablet-width: 640px;
+$desktop-width: 940px;
+$desktop-large: 1200px;
 
 @mixin phone {
   @media (max-width: #{$tablet-width}) {

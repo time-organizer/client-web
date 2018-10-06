@@ -1,0 +1,26 @@
+@import '../../../../../../common_styles/_variables.scss';
+@import '../../../../../../common_styles/_mixins.scss';
+
+.new-board-button {
+  font-weight: 200;
+  color: $accent-color;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+
+  }
+
+  i {
+    font-size: 3em;
+    line-height: 0.8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    @include phone {
+      font-size: 2em;
+    }
+  }
+}
