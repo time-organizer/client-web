@@ -23,22 +23,6 @@ $sidebarWidth: 300px;
   box-shadow: $box-shadow;
   z-index: $z-index-5;
 
-  .user-sidebar-close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    transition: .3s;
-
-    &:hover {
-      color: $accent-color;
-      cursor: pointer;
-    }
-
-    i {
-      font-size: 1.5em;
-    }
-  }
-
   .user-sidebar-message {
     margin-top: 40px;
     font-size: 1.5em;
@@ -64,6 +48,8 @@ $sidebarWidth: 300px;
     width: 100%;
   }
 }
+
+// TRANSITIONS
 
 .user-sidebar-transition-enter {
   opacity: 0.01;

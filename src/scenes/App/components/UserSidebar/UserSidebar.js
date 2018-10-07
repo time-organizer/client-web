@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import Logout from './components/Logout';
 import Avatar from './components/Avatar';
+import CloseButton from '../../../components/CloseButton';
 
 import './UserSidebar.css';
 
@@ -27,9 +28,7 @@ const UserSidebar = ({
       unmountOnExit
     >
       <div className="user-sidebar">
-        <div className="user-sidebar-close" onClick={onToggleUserSidebar}>
-          <i className="icon-cancel" />
-        </div>
+        <CloseButton onClose={onToggleUserSidebar} />
         <Avatar />
         <div className="user-sidebar-message">
           {`Hello, ${name}`}
