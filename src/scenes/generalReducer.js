@@ -2,6 +2,9 @@ import * as actions from './generalActions';
 
 const initialState = {
   userSidebarOpened: false,
+  forms: {
+    newBoardFormOpened: false,
+  },
 };
 
 const general = (state = initialState, action) => {
@@ -9,6 +12,14 @@ const general = (state = initialState, action) => {
   case actions.TOGGLE_USER_SIDEBAR:
     return Object.assign({}, state, {
       userSidebarOpened: !state.userSidebarOpened,
+    });
+
+  case actions.TOGGLE_NEW_BOARD_FORM:
+    return Object.assign({}, state, {
+      forms: {
+        ...state.forms,
+        newBoardFormOpened: !state.forms.newBoardFormOpened,
+      },
     });
 
   default:

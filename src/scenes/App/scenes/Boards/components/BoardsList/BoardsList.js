@@ -1,12 +1,12 @@
 import React from 'react';
 
-import NewBoard from '../NewBoard';
+import NewBoardButton from '../NewBoardButton';
 
 import './BoardsList.css';
 
 const BoardsList = () => (
   <div className="boards-list">
-    <NewBoard />
+    <NewBoardButton />
   </div>
 );
 
