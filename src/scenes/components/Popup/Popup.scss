@@ -2,6 +2,7 @@
 @import '../../../common_styles/_mixins.scss';
 
 $popup-margin: 24px;
+$popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-50% - #{$popup-margin}));
 
 .popup-overlay {
   position: absolute;
@@ -17,13 +18,14 @@ $popup-margin: 24px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-50% - #{$popup-margin}));
+  transform: $popup-translation;
   background: $bg-color;
   border-radius: $border-radius;
   width: 100%;
   max-width: 1000px;
   height: 100%;
   max-height: 600px;
+  z-index: $z-index-overlay + 1;
 
   &.small {
 
@@ -67,4 +69,47 @@ $popup-margin: 24px;
     height: 100%;
     border-radius: 0;
   }
+}
+
+// TRANSITIONS
+// POPUP
+.popup-transition-enter {
+  opacity: 0.01;
+  transform: $popup-translation scale(0);
+}
+
+.popup-transition-enter-active {
+  opacity: 1;
+  transition: all 300ms ease-out;
+  transform: $popup-translation scale(1);
+}
+
+.popup-transition-exit {
+  opacity: 1;
+  transform: $popup-translation scale(1);
+}
+
+.popup-transition-exit-active {
+  opacity: 0.01;
+  transition: all 300ms ease-out;
+  transform: $popup-translation scale(0);
+}
+
+// OVERLAY
+.popup-overlay-transition-enter {
+  opacity: 0.01;
+}
+
+.popup-overlay-transition-enter-active {
+  opacity: 1;
+  transition: all 300ms ease-out;
+}
+
+.popup-overlay-transition-exit {
+  opacity: 1;
+}
+
+.popup-overlay-transition-exit-active {
+  opacity: 0.01;
+  transition: all 300ms ease-out;
 }
