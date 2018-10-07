@@ -14,15 +14,8 @@ describe('<Auth />', () => {
   it('renders switch with proper routes', () => {
     const wrapper = shallow(<Auth />);
 
-    expect(wrapper.find(Switch))
-      .toHaveLength(1);
-    expect(wrapper.find(Route)
-      .at(0)
-      .props().path)
-      .toEqual('/auth/login');
-    expect(wrapper.find(Route)
-      .at(1)
-      .props().path)
-      .toEqual('/auth/sign-up');
+    expect(wrapper.find(Switch)).toHaveLength(1);
+    expect(wrapper.find(Route).at(0).props().path).toEqual('/auth/login');
+    expect(wrapper.find(Route).at(1).props().path).toEqual('/auth/sign-up');
   });
 });
