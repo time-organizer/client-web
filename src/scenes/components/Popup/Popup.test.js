@@ -10,14 +10,21 @@ describe('<Popup />', () => {
 
   beforeAll(() => {
     wrapper = mount(
-      <Popup
-        onClose={() => {}}
-      />
+      <Popup onClose={() => {}}>
+        <div className="child" />
+        <div className="child" />
+        <div className="child" />
+        <div className="child" />
+      </Popup>
     );
   });
 
   it('renders without crashing', () => {
     expect(wrapper.find(Portal)).toHaveLength(1);
+  });
+
+  it('renders children', () => {
+    expect(wrapper.find('.child')).toHaveLength(4);
   });
 
   it('renders CSSTransition for popup-overlay', () => {
@@ -36,18 +43,30 @@ describe('<Popup />', () => {
   });
 
   it('closes when <CloseButton /> is clicked', () => {
-    wrapper.find('.close-button').simulate('click');
-    const overlayCSSTransition = wrapper.find(CSSTransition).at(0);
-    const popupCSSTransition = wrapper.find(CSSTransition).at(1);
+    const wrapperForSimulation = mount(
+      <Popup
+        onClose={() => {}}
+      />
+    );
+
+    wrapperForSimulation.find('.close-button').simulate('click');
+    const overlayCSSTransition = wrapperForSimulation.find(CSSTransition).at(0);
+    const popupCSSTransition = wrapperForSimulation.find(CSSTransition).at(1);
 
     expect(overlayCSSTransition.props().in).toEqual(false);
     expect(popupCSSTransition.props().in).toEqual(false);
   });
 
   it('closes when <div className=".popup-overlay"/> is clicked', () => {
-    wrapper.find('.popup-overlay').simulate('click');
-    const overlayCSSTransition = wrapper.find(CSSTransition).at(0);
-    const popupCSSTransition = wrapper.find(CSSTransition).at(1);
+    const wrapperForSimulation = mount(
+      <Popup
+        onClose={() => {}}
+      />
+    );
+
+    wrapperForSimulation.find('.popup-overlay').simulate('click');
+    const overlayCSSTransition = wrapperForSimulation.find(CSSTransition).at(0);
+    const popupCSSTransition = wrapperForSimulation.find(CSSTransition).at(1);
 
     expect(overlayCSSTransition.props().in).toEqual(false);
     expect(popupCSSTransition.props().in).toEqual(false);
