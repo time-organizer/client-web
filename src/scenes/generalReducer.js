@@ -1,6 +1,6 @@
 import * as actions from './generalActions';
 
-const initialState = {
+export const initialState = {
   userSidebarOpened: false,
   forms: {
     newBoardFormOpened: false,
