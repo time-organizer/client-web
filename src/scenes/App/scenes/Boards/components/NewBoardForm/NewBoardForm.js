@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Popup from '../../../../../components/Popup';
 
 const NewBoardForm = ({ onToggleNewBoardForm }) => (
-  <Popup onClose={onToggleNewBoardForm} />
+  <Popup onClose={onToggleNewBoardForm} title="Create new board" />
 );
 
 NewBoardForm.propTypes = {

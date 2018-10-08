@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import Portal from '../Portal';
 import CloseButton from '../CloseButton';
+import PopupTitle from './components/PopupTitle';
 
 import './Popup.css';
 
@@ -35,7 +36,7 @@ class Popup extends Component {
 
   render() {
     const {
-      children, popupType, withCloseButton,
+      children, popupType, withCloseButton, title,
     } = this.props;
     const { animationTriggered } = this.state;
 
@@ -56,8 +57,11 @@ class Popup extends Component {
           timeout={300}
         >
           <div className={`popup ${popupType}`}>
+            {title && (
+              <PopupTitle title={title} />
+            )}
             {withCloseButton && (
-              <CloseButton onClose={this.closePopup} />
+              <CloseButton onClose={this.closePopup} edgeOffset={24} />
             )}
             {children}
           </div>
@@ -80,11 +84,13 @@ Popup.propTypes = {
     popupTypes.fullscreen,
   ]),
   withCloseButton: PropTypes.bool,
+  title: PropTypes.string,
 };
 Popup.defaultProps = {
   children: null,
   popupType: popupTypes.normal,
   withCloseButton: true,
+  title: '',
 };
 
 export default Popup;
