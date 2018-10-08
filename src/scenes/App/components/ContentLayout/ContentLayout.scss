@@ -2,7 +2,7 @@
 
 .content-layout-scroll {
   width: 100%;
-  overflow: scroll;
+  overflow: auto;
   height: calc(100% - #{$header-height});
 }
 

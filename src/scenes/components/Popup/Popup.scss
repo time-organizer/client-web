@@ -12,6 +12,14 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
   left: 0;
   background: $bg-overlay;
   z-index: $z-index-overlay;
+
+  &.fullscreen {
+    display: none;
+  }
+
+  @include phone {
+    display: none;
+  }
 }
 
 .popup {
@@ -28,20 +36,19 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
   z-index: $z-index-overlay + 1;
 
   &.small {
-
+    width: calc(100% - #{$popup-margin * 2});
+    max-width: calc(400px - #{$popup-margin * 2});
+    height: calc(100% - #{$popup-margin * 2});
+    max-height: 200px;
+    margin: $popup-margin;
   }
 
   &.medium {
-    width: 100%;
-    max-width: 600px;
-    height: 100%;
+    width: calc(100% - #{$popup-margin * 2});
+    max-width: calc(600px - #{$popup-margin * 2});
+    height: calc(100% - #{$popup-margin * 2});
     max-height: 300px;
-
-    @include phone {
-      width: 100%;
-      height: 100%;
-      border-radius: 100%;
-    }
+    margin: $popup-margin;
   }
 
   &.normal {
@@ -50,8 +57,12 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
     height: calc(100% - #{$popup-margin * 2});
     max-height: 600px;
     margin: $popup-margin;
+  }
 
-    @include phone {
+  @include phone {
+    &.small,
+    &.medium,
+    &.normal {
       width: 100%;
       height: 100%;
       top: 0;
@@ -65,51 +76,79 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
   }
 
   &.fullscreen {
+    max-width: none;
+    max-height: none;
     width: 100%;
     height: 100%;
     border-radius: 0;
+    margin: 0;
+    transform: none;
+    left: 0;
+    top: 0;
   }
 }
 
 // TRANSITIONS
 // POPUP
-.popup-transition-enter {
-  opacity: 0.01;
-  transform: $popup-translation scale(0);
-}
+.popup-transition {
+  &-enter {
+    opacity: 0.01;
+    transform: $popup-translation scale(0.7);
 
-.popup-transition-enter-active {
-  opacity: 1;
-  transition: all 300ms ease-out;
-  transform: $popup-translation scale(1);
-}
+    @include phone {
+      transform: scale(0);
+    }
+  }
 
-.popup-transition-exit {
-  opacity: 1;
-  transform: $popup-translation scale(1);
-}
+  &-enter-active {
+    opacity: 1;
+    transition: all 300ms ease-out;
+    transform: $popup-translation scale(1);
 
-.popup-transition-exit-active {
-  opacity: 0.01;
-  transition: all 300ms ease-out;
-  transform: $popup-translation scale(0);
+    @include phone {
+      transform: scale(1);
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: $popup-translation scale(1);
+
+    @include phone {
+      transform: scale(1);
+    }
+  }
+
+  &-exit-active {
+    opacity: 0.01;
+    transition: all 300ms ease-out;
+    transform: $popup-translation scale(0.7);
+
+    @include phone {
+      transform: scale(0.7);
+    }
+  }
 }
 
 // OVERLAY
-.popup-overlay-transition-enter {
-  opacity: 0.01;
+.popup-overlay-transition {
+
+  &-enter {
+    opacity: 0.01;
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: all 300ms ease-out;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active {
+    opacity: 0.01;
+    transition: all 300ms ease-out;
+  }
 }
 
-.popup-overlay-transition-enter-active {
-  opacity: 1;
-  transition: all 300ms ease-out;
-}
-
-.popup-overlay-transition-exit {
-  opacity: 1;
-}
-
-.popup-overlay-transition-exit-active {
-  opacity: 0.01;
-  transition: all 300ms ease-out;
-}

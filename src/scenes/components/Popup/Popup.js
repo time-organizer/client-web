@@ -47,7 +47,7 @@ class Popup extends Component {
           unmountOnExit
           timeout={300}
         >
-          <div className="popup-overlay" onClick={this.closePopup} />
+          <div className={`popup-overlay ${popupType}`} onClick={this.closePopup} />
         </CSSTransition>
         <CSSTransition
           in={animationTriggered}
