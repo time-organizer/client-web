@@ -67,11 +67,11 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
       height: 100%;
       top: 0;
       left: 0;
-      transform: none;
       max-width: none;
       max-height: none;
       border-radius: 0;
       margin: 0;
+      transform: none;
     }
   }
 
@@ -82,9 +82,9 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
     height: 100%;
     border-radius: 0;
     margin: 0;
-    transform: none;
     left: 0;
     top: 0;
+    transform: none;
   }
 }
 
@@ -93,40 +93,20 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
 .popup-transition {
   &-enter {
     opacity: 0.01;
-    transform: $popup-translation scale(0.7);
-
-    @include phone {
-      transform: scale(0);
-    }
   }
 
   &-enter-active {
     opacity: 1;
     transition: all 300ms ease-out;
-    transform: $popup-translation scale(1);
-
-    @include phone {
-      transform: scale(1);
-    }
   }
 
   &-exit {
     opacity: 1;
-    transform: $popup-translation scale(1);
-
-    @include phone {
-      transform: scale(1);
-    }
   }
 
   &-exit-active {
     opacity: 0.01;
     transition: all 300ms ease-out;
-    transform: $popup-translation scale(0.7);
-
-    @include phone {
-      transform: scale(0.7);
-    }
   }
 }
 
