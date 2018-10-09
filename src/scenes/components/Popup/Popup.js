@@ -63,7 +63,9 @@ class Popup extends Component {
             {withCloseButton && (
               <CloseButton onClose={this.closePopup} edgeOffset={24} />
             )}
-            {children}
+            <div className="popup-content" style={{ padding: '24px' }}>
+              {children}
+            </div>
           </div>
         </CSSTransition>
       </Portal>
