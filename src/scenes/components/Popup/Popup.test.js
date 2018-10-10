@@ -31,7 +31,7 @@ describe('<Popup />', () => {
     const overlayCSSTransition = wrapper.find(CSSTransition).at(0);
 
     expect(wrapper.find('.popup-overlay')).toHaveLength(1);
-    expect(overlayCSSTransition.props().classNames).toEqual('popup-overlay-transition');
+    expect(overlayCSSTransition.props().classNames).toEqual('fade');
     expect(overlayCSSTransition.props().in).toEqual(true);
   });
 

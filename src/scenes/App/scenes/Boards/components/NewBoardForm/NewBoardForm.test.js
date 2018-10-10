@@ -4,11 +4,25 @@ import { shallow } from 'enzyme';
 import NewBoardForm from './NewBoardForm';
 import Popup from '../../../../../components/Popup';
 
+const props = {
+  title: 'testBoardTittle',
+  boardTheme: 'testBoardTheme',
+};
+
 describe('<NewBoardForm />', () => {
   let wrapper;
+
   beforeAll(() => {
     wrapper = shallow(
-      <NewBoardForm onToggleNewBoardForm={() => {}} />
+      <NewBoardForm
+        onToggleNewBoardForm={() => {}}
+        handleInputChange={() => {}}
+        changeBoardTheme={() => {}}
+        values={{
+          title: props.title,
+          boardTheme: props.boardTheme
+        }}
+      />
     );
   });
 
@@ -20,5 +34,5 @@ describe('<NewBoardForm />', () => {
     expect(wrapper.find(Popup).props().title).toEqual('Create new board');
     expect(wrapper.find(Popup).props().popupType).toEqual('normal');
     expect(wrapper.find(Popup).props().withCloseButton).toEqual(true);
-  })
+  });
 });

@@ -5,6 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import Portal from '../Portal';
 import CloseButton from '../CloseButton';
 import PopupTitle from './components/PopupTitle';
+import Fade from '../transitions/Fade';
 
 import './Popup.css';
 
@@ -42,14 +43,9 @@ class Popup extends Component {
 
     return (
       <Portal>
-        <CSSTransition
-          in={animationTriggered}
-          classNames="popup-overlay-transition"
-          unmountOnExit
-          timeout={300}
-        >
+        <Fade trigger={animationTriggered}>
           <div className={`popup-overlay ${popupType}`} onClick={this.closePopup} />
-        </CSSTransition>
+        </Fade>
         <CSSTransition
           in={animationTriggered}
           classNames="popup-transition"
@@ -61,7 +57,7 @@ class Popup extends Component {
               <PopupTitle title={title} />
             )}
             {withCloseButton && (
-              <CloseButton onClose={this.closePopup} edgeOffset={24} />
+              <CloseButton onClose={this.closePopup} edgeOffset={20} />
             )}
             <div className="popup-content" style={{ padding: '24px' }}>
               {children}

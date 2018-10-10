@@ -2,6 +2,7 @@
   "name": "client-web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://Miriloth.github.io/client-web",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
@@ -39,7 +40,9 @@
     "test": "NODE_ENV=test CI=true react-scripts test --env=jsdom",
     "test:watch": "NODE_ENV=test react-scripts test --env=jsdom",
     "lint": "./node_modules/.bin/eslint src",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint": "^5.5.0",
@@ -47,6 +50,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
+    "gh-pages": "^2.0.1",
     "jest": "^23.6.0",
     "pre-commit": "^1.2.2"
   },

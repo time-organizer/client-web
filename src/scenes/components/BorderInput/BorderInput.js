@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Input.css';
+import './BorderInput.css';
 
-const Input = ({
+const BorderInput = ({
   onChange, name, type, placeholder, className, value, withLabel,
 }) => (
-  <div className="input-wrapper">
+  <div className="border-input-wrapper">
     {withLabel && (
       <label htmlFor={name}>{placeholder}</label>
     )}
@@ -21,7 +21,7 @@ const Input = ({
   </div>
 );
 
-Input.propTypes = {
+BorderInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
@@ -30,7 +30,8 @@ Input.propTypes = {
   value: PropTypes.string,
   withLabel: PropTypes.bool,
 };
-Input.defaultProps = {
+
+BorderInput.defaultProps = {
   type: 'text',
   placeholder: '',
   className: '',
@@ -38,4 +39,4 @@ Input.defaultProps = {
   withLabel: false,
 };
 
-export default Input;
+export default BorderInput;

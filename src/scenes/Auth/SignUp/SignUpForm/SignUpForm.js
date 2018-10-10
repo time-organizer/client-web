@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Button from '../../../components/Button/Button';
-import Input from '../../../components/Input/Input';
+import Input from '../../../components/Input';
 import ErrorMessage from '../../../components/Input/ErrorMessage';
 
 

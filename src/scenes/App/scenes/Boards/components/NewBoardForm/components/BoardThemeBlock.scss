@@ -1,0 +1,26 @@
+@import '../../../../../../../common_styles/_variables.scss';
+
+.board-theme-block {
+  height: 100px;
+  width: 100%;
+  border-radius: 4px;
+  margin: 12px 0;
+  background-position: bottom;
+  background-size: cover;
+  transition: border .3s;
+  box-sizing: content-box;
+  background-clip: border-box;
+  box-shadow: $box-shadow;
+  position: relative;
+
+  .selected-status {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: $accent-color;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

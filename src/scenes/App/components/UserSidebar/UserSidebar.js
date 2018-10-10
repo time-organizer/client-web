@@ -5,6 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import Logout from './components/Logout';
 import Avatar from './components/Avatar';
 import CloseButton from '../../../components/CloseButton';
+import Fade from '../../../components/transitions/Fade';
 
 import './UserSidebar.css';
 
@@ -12,14 +13,9 @@ const UserSidebar = ({
   userSidebarOpened, onToggleUserSidebar, name,
 }) => (
   <Fragment>
-    <CSSTransition
-      in={userSidebarOpened}
-      timeout={300}
-      classNames="user-sidebar-overlay-transition"
-      unmountOnExit
-    >
+    <Fade trigger={userSidebarOpened}>
       <div className="user-sidebar-overlay" onClick={onToggleUserSidebar} />
-    </CSSTransition>
+    </Fade>
 
     <CSSTransition
       in={userSidebarOpened}
