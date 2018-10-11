@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import c from 'classnames';
 
 import Portal from '../Portal';
 import CloseButton from '../CloseButton';
@@ -37,7 +38,7 @@ class Popup extends Component {
 
   render() {
     const {
-      children, popupType, withCloseButton, title,
+      children, popupType, withCloseButton, title, footer,
     } = this.props;
     const { animationTriggered } = this.state;
 
@@ -52,16 +53,22 @@ class Popup extends Component {
           unmountOnExit
           timeout={300}
         >
-          <div className={`popup ${popupType}`}>
+          <div className={c(
+            `popup ${popupType}`, {
+              'with-footer': !!footer,
+            },
+          )}
+          >
             {title && (
               <PopupTitle title={title} />
             )}
             {withCloseButton && (
               <CloseButton onClose={this.closePopup} edgeOffset={20} />
             )}
-            <div className="popup-content" style={{ padding: '24px' }}>
+            <div className="popup-content">
               {children}
             </div>
+            {footer}
           </div>
         </CSSTransition>
       </Portal>
@@ -83,12 +90,14 @@ Popup.propTypes = {
   ]),
   withCloseButton: PropTypes.bool,
   title: PropTypes.string,
+  footer: PropTypes.node,
 };
 Popup.defaultProps = {
   children: null,
   popupType: popupTypes.normal,
   withCloseButton: true,
   title: '',
+  footer: null,
 };
 
 export default Popup;

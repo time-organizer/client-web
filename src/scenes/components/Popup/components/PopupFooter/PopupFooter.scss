@@ -1,0 +1,21 @@
+$popup-footer-height: 60px; // defined also in Popup.scss
+
+.popup-footer {
+  height: $popup-footer-height;
+  width: 100%;
+  display: flex;
+  padding: 0 24px;
+  align-items: center;
+}
+
+.popup-footer-buttons {
+  margin-left: auto;
+
+  .popup-footer-button {
+    margin: 0 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

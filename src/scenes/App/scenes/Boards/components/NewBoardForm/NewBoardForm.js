@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Popup from '../../../../../components/Popup';
 import BorderInput from '../../../../../components/BorderInput';
+import PopupFooter from '../../../../../components/Popup/components/PopupFooter';
 import boardThemes from '../../utilities/boardThemes';
 import BoardThemeBlock from './components/BoardThemeBlock';
 
@@ -13,7 +14,13 @@ const NewBoardForm = ({
 }) => {
   const { title, boardTheme: chosenTheme } = values;
   return (
-    <Popup onClose={onToggleNewBoardForm} title="Create new board">
+    <Popup
+      onClose={onToggleNewBoardForm}
+      title="Create new board"
+      footer={(
+        <PopupFooter cancel={onToggleNewBoardForm} accept={() => {}} />
+      )}
+    >
       <div className="new-board-form">
         <div className="new-board-form-section">
           <BorderInput
@@ -42,7 +49,7 @@ NewBoardForm.propTypes = {
   onToggleNewBoardForm: PropTypes.func.isRequired,
   values: PropTypes.shape({
     title: PropTypes.string,
-    boardTheme: PropTypes.string,
+    boardTheme: PropTypes.number,
   }).isRequired,
   changeBoardTheme: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
