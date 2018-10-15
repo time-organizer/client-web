@@ -10,12 +10,20 @@ const PopupFooter = ({ children, cancel, accept }) => (
     {children}
     <div className="popup-footer-buttons">
       {cancel && (
-        <Button className="popup-footer-button" onClick={cancel} buttonType={buttonTypes.CANCEL}>
+        <Button
+          className="popup-footer-button"
+          onClick={cancel}
+          buttonType={buttonTypes.CANCEL}
+        >
           Cancel
         </Button>
       )}
       {accept && (
-        <Button className="popup-footer-button" onClick={accept} buttonType={buttonTypes.SUBMIT}>
+        <Button
+          className="popup-footer-button"
+          onClick={accept}
+          buttonType={buttonTypes.SUBMIT}
+        >
           Accept
         </Button>
       )}

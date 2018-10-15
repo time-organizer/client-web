@@ -6,26 +6,26 @@
   color: $text-color-light;
   padding: 12px 24px;
   border-radius: 4px;
-  box-shadow: 0 2px 15px -5px $accent-color;
+  box-shadow: 0 0 15px -3px $accent-color;
   transition: .3s;
   font-size: 0.8em;
   font-weight: 300;
+  cursor: pointer;
 
   &.cancel {
     background: $bg-color;
     color: $text-color;
+    box-shadow: 0 0 8px 0 $error-color;
 
     &:hover {
-      background: $error-color;
-      color: $text-color-light;
-      box-shadow: 0 2px 8px 0 $error-color;
+      color: $error-color;
     }
   }
 
-  &:hover {
-    cursor: pointer;
-    background: $bg-color;
-    color: $accent-color;
+  &.submit {
+    &:hover {
+      //color: $accent-color;
+    }
   }
 
   &:focus {

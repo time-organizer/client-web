@@ -49,7 +49,7 @@ NewBoardForm.propTypes = {
   onToggleNewBoardForm: PropTypes.func.isRequired,
   values: PropTypes.shape({
     title: PropTypes.string,
-    boardTheme: PropTypes.number,
+    boardTheme: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   }).isRequired,
   changeBoardTheme: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
