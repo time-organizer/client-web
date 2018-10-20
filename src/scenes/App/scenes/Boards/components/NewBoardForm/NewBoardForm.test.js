@@ -22,6 +22,8 @@ describe('<NewBoardForm />', () => {
           title: props.title,
           boardTheme: props.boardTheme
         }}
+        submitForm={() => {}}
+        formErrors={[]}
       />
     );
   });
