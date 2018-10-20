@@ -6,7 +6,7 @@ import Popup from '../../../../../components/Popup';
 
 const props = {
   title: 'testBoardTittle',
-  boardTheme: 'testBoardTheme',
+  boardTheme: 0,
 };
 
 describe('<NewBoardForm />', () => {
