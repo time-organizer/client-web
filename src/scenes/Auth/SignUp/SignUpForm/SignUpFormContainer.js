@@ -6,6 +6,7 @@ import validator from 'validator';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import SignUpForm from './SignUpForm';
+import addFormError from '../../../../utilities/addFormError';
 
 import { signUp } from '../../actions';
 
@@ -19,6 +20,8 @@ class SignUpFormContainer extends Component {
       password: '',
       formErrors: [],
     };
+
+    this.addFormError = addFormError.bind(this);
   }
 
   handleInputChange = (event) => {
@@ -31,15 +34,6 @@ class SignUpFormContainer extends Component {
     });
   };
 
-  addFormError = (error) => {
-    this.setState(previousState => ({
-      formErrors: [
-        ...previousState.formErrors,
-        error,
-      ],
-    }));
-  };
-
   resetFormErrors = () => {
     this.setState({
       formErrors: [],
@@ -48,22 +42,21 @@ class SignUpFormContainer extends Component {
 
   isFormInvalid = () => {
     const { name, email, password } = this.state;
-    let isFormInvalid = false;
 
     if (name.length < 1) {
       this.addFormError('Provide a name');
-      isFormInvalid = true;
+      return true;
     }
     if (!validator.isEmail(email)) {
       this.addFormError('Provide a valid email');
-      isFormInvalid = true;
+      return true;
     }
     if (password.length < 3) {
       this.addFormError('Password must be at least 8 signs long');
-      isFormInvalid = true;
+      return true;
     }
 
-    return isFormInvalid;
+    return false;
   };
 
   onSubmit = () => {

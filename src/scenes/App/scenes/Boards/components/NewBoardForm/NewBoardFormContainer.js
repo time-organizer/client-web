@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import NewBoardForm from './NewBoardForm';
 import { toggleNewBoardForm } from '../../../../../generalActions';
+import addFormError from '../../../../../../utilities/addFormError';
 
 class NewBoardFormContainer extends Component {
   constructor(props) {
@@ -12,7 +13,10 @@ class NewBoardFormContainer extends Component {
     this.state = {
       title: '',
       boardTheme: null,
+      formErrors: [],
     };
+
+    this.addFormError = addFormError.bind(this);
   }
 
   handleInputChange = (event) => {
@@ -35,9 +39,26 @@ class NewBoardFormContainer extends Component {
     this.setState({ boardTheme });
   };
 
+  submitNewBoard = () => {
+    if (this.isFormInvalid()) {
+      return; // eslint-disable-line
+    }
+  };
+
+  isFormInvalid = () => {
+    const { title } = this.state;
+
+    if (title.trim().length < 1) {
+      this.addFormError('Please provide a title');
+      return true;
+    }
+
+    return false;
+  };
+
   render() {
     const { onToggleNewBoardForm } = this.props;
-    const { title, boardTheme } = this.state;
+    const { title, boardTheme, formErrors } = this.state;
 
     return (
       <NewBoardForm
@@ -48,6 +69,8 @@ class NewBoardFormContainer extends Component {
           title,
           boardTheme,
         }}
+        formErrors={formErrors}
+        submitForm={this.submitNewBoard}
       />
     );
   }

@@ -22,3 +22,11 @@ h2 {
     font-style: italic;
   }
 }
+
+.label {
+  font-weight: 300;
+}
+
+::placeholder {
+  color: #dbdbdb;
+}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input';
-import ErrorMessage from '../../../components/Input/ErrorMessage';
+import ErrorMessage from '../../../components/ErrorMessage';
 
 const LoginForm = ({
   handleInputChange, onSubmit, errorMessage, values,

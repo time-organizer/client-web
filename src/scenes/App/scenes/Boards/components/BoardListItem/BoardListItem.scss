@@ -21,12 +21,13 @@ $rows-phone: 3;
   &:hover {
     box-shadow: $box-shadow-moved;
     transform: scale(1.05);
+    cursor: pointer;
   }
 
   &:after {
     content: "";
     display: block;
-    padding-bottom: 100%;
+    padding-bottom: 80%;
   }
 
   @include tablet {
@@ -50,5 +51,6 @@ $rows-phone: 3;
     background: $bg-color;
     padding: 12px;
     text-transform: uppercase;
+    font-weight: 300;
   }
 }

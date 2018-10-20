@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input';
-import ErrorMessage from '../../../components/Input/ErrorMessage';
-
+import ErrorMessage from '../../../components/ErrorMessage';
 
 const SignUpForm = ({
   handleInputChange, onSubmit, values, errorMessage, formErrors,
@@ -31,6 +30,7 @@ const SignUpForm = ({
       type="password"
       value={values.password}
       onChange={handleInputChange}
+      className="margin-bottom-16"
     />
     {formErrors.map(error => (
       <ErrorMessage key={error} message={error} />
