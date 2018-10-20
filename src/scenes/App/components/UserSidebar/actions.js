@@ -10,12 +10,14 @@ export const UPLOAD_AVATAR_REQUEST = 'UPLOAD_AVATAR_REQUEST';
 export const UPLOAD_AVATAR_SUCCESS = 'UPLOAD_AVATAR_SUCCESS';
 export const UPLOAD_AVATAR_FAILURE = 'UPLOAD_AVATAR_FAILURE';
 
-export const SET_USER_PROFILE = 'SET_USER_PROFILE';
-
 function shouldFetchUser(state) {
   const { user: { profile, isFetching, didInvalidate } } = state;
 
-  if (!profile && !isFetching) {
+  if (isFetching) {
+    return false;
+  }
+
+  if (!profile) {
     return true;
   }
 

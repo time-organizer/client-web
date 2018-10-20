@@ -11,7 +11,7 @@ class NewBoardFormContainer extends Component {
 
     this.state = {
       title: '',
-      boardTheme: '',
+      boardTheme: null,
     };
   }
 
@@ -28,7 +28,7 @@ class NewBoardFormContainer extends Component {
   changeBoardTheme = (boardTheme) => {
     const { boardTheme: chosenTheme } = this.state;
     if (boardTheme === chosenTheme) {
-      this.setState({ boardTheme: '' });
+      this.setState({ boardTheme: null });
       return;
     }
 

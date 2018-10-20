@@ -11,7 +11,7 @@ const BoardThemeBlock = ({ boardTheme, chosenTheme, changeBoardTheme }) => {
   return (
     <div
       onClick={() => changeBoardTheme(boardTheme.key)}
-      className={c('board-theme-block', { isSelected })}
+      className={c('board-theme-block', { 'is-selected': isSelected })}
       style={{ backgroundImage: `url(${boardTheme.bgThumb})` }}
     >
       <Fade trigger={isSelected}>
@@ -28,7 +28,7 @@ BoardThemeBlock.propTypes = {
     key: PropTypes.number.isRequired,
     bgThumb: PropTypes.string.isRequired,
   }).isRequired,
-  chosenTheme: PropTypes.string,
+  chosenTheme: PropTypes.number,
   changeBoardTheme: PropTypes.func.isRequired,
 };
 BoardThemeBlock.defaultProps = {

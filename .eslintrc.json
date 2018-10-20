@@ -18,7 +18,8 @@
     "react/jsx-indent-props": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-one-expression-per-line": "off",
-    "browser": "off"
+    "browser": "off",
+    "no-underscore-dangle": "off"
   },
   "settings": {
     "import/resolver": {

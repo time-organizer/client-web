@@ -1,4 +1,5 @@
 import minBg1 from '../../../../../images/board-backgrounds/1-min.jpg';
+import minBg2 from '../../../../../images/board-backgrounds/2-min.jpg';
 import minBg9 from '../../../../../images/board-backgrounds/9-min.jpg';
 import minBg3 from '../../../../../images/board-backgrounds/3-min.jpg';
 import minBg4 from '../../../../../images/board-backgrounds/4-min.jpg';
@@ -23,6 +24,9 @@ const boardThemes = [
   }, {
     key: 1,
     bgThumb: minBg1,
+  }, {
+    key: 2,
+    bgThumb: minBg2,
   }, {
     key: 9,
     bgThumb: minBg9,

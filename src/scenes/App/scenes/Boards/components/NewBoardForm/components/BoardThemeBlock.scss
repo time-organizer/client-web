@@ -7,11 +7,16 @@
   margin: 12px 0;
   background-position: bottom;
   background-size: cover;
-  transition: border .3s;
+  transition: border, opacity .3s;
   box-sizing: content-box;
   background-clip: border-box;
   box-shadow: $box-shadow;
   position: relative;
+  opacity: 0.4;
+
+  &.is-selected {
+    opacity: 1;
+  }
 
   .selected-status {
     position: absolute;
@@ -22,5 +27,6 @@
 
   &:hover {
     cursor: pointer;
+    opacity: 1;
   }
 }

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import get from 'lodash/get';
 
 import { fetchUserIfNeeded } from '../../App/components/UserSidebar/actions';
 import AssetModel from '../../../models/Asset';
 import AssetPreviewer from './AssetPreviewer';
 
 const AssetPreviewerContainer = ({ asset, userId, mockIcon }) => {
-  const assetId = _.get(asset, 'assetId', '');
+  const assetId = get(asset, 'assetId', '');
   const imagePath = `${process.env.REACT_APP_DATA_FLOW_URL}/assets/${userId}/${assetId}`;
-  const isVertical = _.get(asset, 'size.height', 1) > _.get(asset, 'size.width', 0);
+  const isVertical = get(asset, 'size.height', 1) > get(asset, 'size.width', 0);
 
   return (
     <AssetPreviewer
@@ -35,7 +35,7 @@ AssetPreviewerContainer.defaultProps = {
 
 function mapStateToProps({ user: { profile } }) {
   return {
-    userId: _.get(profile, '_id', ''),
+    userId: get(profile, '_id', ''),
   };
 }
 

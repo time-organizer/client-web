@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import get from 'lodash/get';
 
 import { uploadAvatar } from '../../actions';
 import AssetModel from '../../../../../../models/Asset';
@@ -27,7 +27,7 @@ AvatarContainer.defaultProps = {
 };
 
 function mapStateToProps({ user: { profile, isUploadingAvatar } }) {
-  const avatar = _.get(profile, 'avatar', null);
+  const avatar = get(profile, 'avatar', null);
   return {
     avatar,
     isUploadingAvatar,

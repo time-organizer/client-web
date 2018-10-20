@@ -1,14 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import map from 'lodash/map';
 
 import BoardsList from './BoardsList';
+import { fetchBoardsIfNeeded } from '../../actions';
+import BoardModel from '../../../../../../models/Board';
 
-const BoardsListContainer = () => (
-  <div>
-    <BoardsList />
-  </div>
-);
+class BoardsListContainer extends Component {
+  componentDidMount() {
+    const { refreshBoards } = this.props;
+    refreshBoards();
+  }
 
-BoardsListContainer.propTypes = {};
-BoardsListContainer.defaultProps = {};
+  render() {
+    const { boards } = this.props;
 
-export default BoardsListContainer;
+    return (
+      <BoardsList boards={boards} />
+    );
+  }
+}
+
+BoardsListContainer.propTypes = {
+  refreshBoards: PropTypes.func.isRequired,
+  boards: PropTypes.arrayOf(BoardModel),
+};
+BoardsListContainer.defaultProps = {
+  boards: [],
+};
+
+function mapStateToProps({ boards: { boardsById } }) {
+  const boards = map(boardsById, board => board);
+
+  return {
+    boards,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    refreshBoards: () => dispatch(fetchBoardsIfNeeded()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BoardsListContainer);

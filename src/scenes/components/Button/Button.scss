@@ -15,7 +15,7 @@
   &.cancel {
     background: $bg-color;
     color: $text-color;
-    box-shadow: 0 0 8px 0 $error-color;
+    box-shadow: 0 0 8px 0 $bg-overlay;
 
     &:hover {
       color: $error-color;
