@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import NewBoardForm from './NewBoardForm';
 import { toggleNewBoardForm } from '../../../../../generalActions';
-import addFormError from '../../../../../../utilities/addFormError';
+import { addNewBoard } from '../../actions';
+import { addFormError, removeFormError } from '../../../../../../utilities/handleFormErrors';
 
 class NewBoardFormContainer extends Component {
   constructor(props) {
@@ -12,11 +13,15 @@ class NewBoardFormContainer extends Component {
 
     this.state = {
       title: '',
-      boardTheme: null,
+      chosenTheme: null,
       formErrors: [],
     };
 
     this.addFormError = addFormError.bind(this);
+    this.removeFormError = removeFormError.bind(this);
+    this.possibleFormErrors = {
+      noTitle: 'Please provide a title',
+    };
   }
 
   handleInputChange = (event) => {
@@ -26,49 +31,60 @@ class NewBoardFormContainer extends Component {
 
     this.setState({
       [name]: value,
+    }, () => {
+      this.isFormInvalid();
     });
   };
 
   changeBoardTheme = (boardTheme) => {
-    const { boardTheme: chosenTheme } = this.state;
+    const { chosenTheme } = this.state;
     if (boardTheme === chosenTheme) {
-      this.setState({ boardTheme: null });
+      this.setState({ chosenTheme: null });
       return;
     }
 
-    this.setState({ boardTheme });
+    this.setState({ chosenTheme: boardTheme });
   };
 
   submitNewBoard = () => {
+    const { onAddNewBoard } = this.props;
+    const { title, chosenTheme } = this.state;
+
     if (this.isFormInvalid()) {
       return; // eslint-disable-line
     }
+
+    const newBoard = {
+      title,
+      theme: chosenTheme,
+    };
+
+    onAddNewBoard(newBoard);
   };
 
   isFormInvalid = () => {
     const { title } = this.state;
 
-    if (title.trim().length < 1) {
-      this.addFormError('Please provide a title');
+    if (title.trim().length === 0) {
+      this.addFormError(this.possibleFormErrors.noTitle);
       return true;
     }
 
+    this.removeFormError(this.possibleFormErrors.noTitle);
     return false;
   };
 
   render() {
     const { onToggleNewBoardForm } = this.props;
-    const { title, boardTheme, formErrors } = this.state;
+    const { title, chosenTheme, formErrors } = this.state;
 
     return (
       <NewBoardForm
         onToggleNewBoardForm={onToggleNewBoardForm}
         changeBoardTheme={this.changeBoardTheme}
         handleInputChange={this.handleInputChange}
-        values={{
-          title,
-          boardTheme,
-        }}
+        title={title}
+        chosenTheme={chosenTheme}
         formErrors={formErrors}
         submitForm={this.submitNewBoard}
       />
@@ -78,12 +94,14 @@ class NewBoardFormContainer extends Component {
 
 NewBoardFormContainer.propTypes = {
   onToggleNewBoardForm: PropTypes.func.isRequired,
+  onAddNewBoard: PropTypes.func.isRequired,
 };
 NewBoardFormContainer.defaultProps = {};
 
 function mapDispatchToProps(dispatch) {
   return {
     onToggleNewBoardForm: () => dispatch(toggleNewBoardForm()),
+    onAddNewBoard: board => dispatch(addNewBoard(board)),
   };
 }
 

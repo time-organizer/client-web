@@ -6,7 +6,7 @@ import validator from 'validator';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import SignUpForm from './SignUpForm';
-import addFormError from '../../../../utilities/addFormError';
+import { addFormError } from '../../../../utilities/handleFormErrors';
 
 import { signUp } from '../../actions';
 
