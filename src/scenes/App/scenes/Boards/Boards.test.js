@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Switch, Route } from 'react-router-dom';
 
 import Boards from './Boards';
 import ContentLayout from '../../components/ContentLayout';
@@ -26,8 +27,16 @@ describe('<Boards />', () => {
   });
 
 
-  it('renders <Content /> with <BoardsListContainer />', () => {
-    expect(wrapper.find(Content).find(BoardsListContainer)).toHaveLength(1);
+  it('renders <Content /> with <Switch />', () => {
+    expect(wrapper.find(Content).find(Switch)).toHaveLength(1);
+  });
+
+  it('renders <Route /> for List and Workspace', () => {
+    expect(wrapper.find(Route)).toHaveLength(2);
+    expect(wrapper.find(Route).at(0).props().path)
+      .toEqual('/app/boards/');
+    expect(wrapper.find(Route).at(1).props().path)
+      .toEqual('/app/boards/:id');
   });
 
   it('renders <NewBoardFormContainer /> when newBoardFormOpened is true', () => {

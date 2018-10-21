@@ -70,7 +70,7 @@ class SignUpFormContainer extends Component {
     this.resetFormErrors();
 
     if (!this.isFormInvalid()) {
-      const onSuccess = () => history.replace('/app');
+      const onSuccess = () => history.replace('/app/boards');
       signUpAction(userData, onSuccess);
     }
   };

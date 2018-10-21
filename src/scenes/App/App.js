@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -23,7 +23,9 @@ class App extends Component {
       <div className="app-layout">
         <Header />
         <UserSidebar />
-        <Boards />
+        <Switch>
+          <Route path="/app/boards" component={Boards} />
+        </Switch>
       </div>
     );
   }

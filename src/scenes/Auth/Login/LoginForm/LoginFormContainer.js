@@ -35,7 +35,7 @@ class LoginFormContainer extends Component {
       password,
     };
 
-    const onSuccess = () => history.replace('/app');
+    const onSuccess = () => history.replace('/app/boards');
     loginAction(credentials, onSuccess);
   };
 
