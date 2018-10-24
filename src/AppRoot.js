@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import Auth from './scenes/Auth';
@@ -11,9 +11,8 @@ import './common_styles/global.css';
 const AppRoot = ({ store }) => (
   <Provider store={store}>
     <Switch>
-      <Route path="/auth" component={Auth} />
-      <Route path="/app" component={App} />
-      <Redirect from="**" to="/app" />
+      <Route path="/auth" component={routeProps => <Auth {...routeProps} />} />
+      <Route path="/" component={routeProps => <App {...routeProps} />} />
     </Switch>
   </Provider>
 );

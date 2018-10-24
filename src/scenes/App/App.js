@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Switch, Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -24,7 +24,8 @@ class App extends Component {
         <Header />
         <UserSidebar />
         <Switch>
-          <Route path="/app/boards" component={Boards} />
+          <Route path="/boards" component={Boards} />
+          <Redirect from="**" to="/boards" />
         </Switch>
       </div>
     );
@@ -41,4 +42,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(withAuth(connect(null, mapDispatchToProps)(App)));
+export default withAuth(connect(null, mapDispatchToProps)(App));

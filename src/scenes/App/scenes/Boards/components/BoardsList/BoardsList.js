@@ -11,19 +11,29 @@ import BoardModel from '../../../../../../models/Board';
 import Fade from '../../../../../components/transitions/Fade';
 
 import './BoardsList.css';
+import ContentHeader from '../../../../components/ContentHeader/ContentHeader';
+import Content from '../../../../components/Content/Content';
+import ContentLayout from '../../../../components/ContentLayout/ContentLayout';
 
 const BoardsList = ({ boards }) => (
-  <TransitionGroup className="boards-list">
-    <NewBoardButton />
-    {map(boards, board => (
-      <Fade trigger>
-        <BoardListItem
-          key={board._id}
-          board={board}
-        />
-      </Fade>
-    ))}
-  </TransitionGroup>
+  <ContentLayout>
+    <ContentHeader headerName="Boards" />
+    <Content>
+      <TransitionGroup className="boards-list">
+        <NewBoardButton />
+        {map(boards, board => (
+          <Fade
+            trigger
+            key={board._id}
+          >
+            <BoardListItem
+              board={board}
+            />
+          </Fade>
+        ))}
+      </TransitionGroup>
+    </Content>
+  </ContentLayout>
 );
 
 BoardsList.propTypes = {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
+import { withRouter } from 'react-router-dom';
 
 import BoardsList from './BoardsList';
 import { fetchBoardsIfNeeded } from '../../actions';
@@ -44,4 +45,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardsListContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BoardsListContainer));

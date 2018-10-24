@@ -3,10 +3,6 @@ import { shallow } from 'enzyme';
 import { Switch, Route } from 'react-router-dom';
 
 import Boards from './Boards';
-import ContentLayout from '../../components/ContentLayout';
-import ContentHeader from '../../components/ContentHeader';
-import Content from '../../components/Content';
-import BoardsListContainer from './components/BoardsList/BoardsListContainer';
 import NewBoardFormContainer from './components/NewBoardForm/NewBoardFormContainer';
 
 describe('<Boards />', () => {
@@ -17,26 +13,16 @@ describe('<Boards />', () => {
     );
   });
 
-  it('renders <ContentLayout /> without crashing', () => {
-    expect(wrapper.find(ContentLayout)).toHaveLength(1);
-  });
-
-  it('renders <ContentHeader /> with proper props', () => {
-    expect(wrapper.find(ContentHeader)).toHaveLength(1);
-    expect(wrapper.find(ContentHeader).props().headerName).toEqual('Boards');
-  });
-
-
-  it('renders <Content /> with <Switch />', () => {
-    expect(wrapper.find(Content).find(Switch)).toHaveLength(1);
+  it('renders <Switch />  without crashing', () => {
+    expect(wrapper.find(Switch)).toHaveLength(1);
   });
 
   it('renders <Route /> for List and Workspace', () => {
     expect(wrapper.find(Route)).toHaveLength(2);
     expect(wrapper.find(Route).at(0).props().path)
-      .toEqual('/app/boards/');
+      .toEqual('/boards/:id');
     expect(wrapper.find(Route).at(1).props().path)
-      .toEqual('/app/boards/:id');
+      .toEqual('/boards/');
   });
 
   it('renders <NewBoardFormContainer /> when newBoardFormOpened is true', () => {
