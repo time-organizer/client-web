@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import withAuth from '../Auth/withAuth';
 import Header from './components/Header';
 import UserSidebar from './components/UserSidebar';
+import MenuSidebar from './components/MenuSidebar';
 import Boards from './scenes/Boards';
 
 import { fetchUserIfNeeded } from './components/UserSidebar/actions';
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <div className="app-layout">
         <Header />
+        <MenuSidebar />
         <UserSidebar />
         <Switch>
           <Route path="/boards" component={Boards} />
