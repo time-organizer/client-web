@@ -31,8 +31,8 @@ BoardsListContainer.defaultProps = {
   boards: [],
 };
 
-function mapStateToProps({ boards: { boardsById } }) {
-  const boards = map(boardsById, board => board);
+function mapStateToProps({ boards: { flatBoardsById } }) {
+  const boards = map(flatBoardsById, board => board);
 
   return {
     boards,
