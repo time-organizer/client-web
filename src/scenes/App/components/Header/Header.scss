@@ -10,10 +10,13 @@
   z-index: $z-index-4;
 
   .header-logo {
-    align-self: center;
+    position: absolute;
+    width: 100%;
+    text-align: center;
     margin: 0 auto;
     height: 100%;
     padding: 16px;
+    z-index: -1;
 
     img {
       height: 100%;

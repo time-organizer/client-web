@@ -1,0 +1,26 @@
+.workspace-background {
+  z-index: 1;
+  position: absolute;
+  width: calc(100% + 32px);
+  height: calc(100% + 32px);
+  margin: -16px;
+  padding: 16px;
+  background-position: center;
+  background-size: cover;
+  transition: filter 1s;
+
+  &.blurred {
+    filter: blur(8px);
+  }
+}
+
+.workspace-background-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.workspace-background-img-loader {
+  display: none;
+}

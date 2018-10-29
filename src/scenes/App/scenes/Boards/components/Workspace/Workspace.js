@@ -1,11 +1,14 @@
 import React from 'react';
 import ContentHeader from '../../../../components/ContentHeader/ContentHeader';
 import ContentLayoutFull from '../../../../components/ContentLayoutFull';
+import WorkspaceBackground from './components/WorkspaceBackground';
 
 const Workspace = () => (
   <ContentLayoutFull>
-    <ContentHeader headerName="Boards" />
-    workspace
+    <WorkspaceBackground>
+      <ContentHeader headerName="Boards" />
+      workspacenjnjn
+    </WorkspaceBackground>
   </ContentLayoutFull>
 );
 
