@@ -10,7 +10,7 @@ import Fade from '../../../components/transitions/Fade';
 import './UserSidebar.css';
 
 const UserSidebar = ({
-  userSidebarOpened, onToggleUserSidebar, name,
+  userSidebarOpened, onUserLogout, onToggleUserSidebar, name,
 }) => (
   <Fragment>
     <Fade trigger={userSidebarOpened}>
@@ -29,7 +29,7 @@ const UserSidebar = ({
         <div className="user-sidebar-message">
           {`Hello, ${name}`}
         </div>
-        <Logout />
+        <Logout onUserLogout={onUserLogout} />
       </div>
     </CSSTransition>
   </Fragment>
@@ -37,6 +37,7 @@ const UserSidebar = ({
 
 UserSidebar.propTypes = {
   userSidebarOpened: PropTypes.bool,
+  onUserLogout: PropTypes.func.isRequired,
   onToggleUserSidebar: PropTypes.func.isRequired,
   name: PropTypes.string,
 };

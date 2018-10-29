@@ -2,6 +2,8 @@ import _ from 'lodash';
 
 import APIService from '../../../../services/APIService';
 
+export const USER_LOGOUT = 'USER_LOGOUT';
+
 export const FETCH_USER_REQUEST = 'FETCH_USER_REQUEST';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
@@ -99,5 +101,11 @@ export function uploadAvatar(acceptedFiled) {
       .catch((error) => {
         dispatch(uploadAvatarFailure(_.get(error, 'response.data.message', 'Upload error')));
       });
+  };
+}
+
+export function userLogout() {
+  return {
+    type: USER_LOGOUT,
   };
 }

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 
 import AuthService from '../../../../../services/AuthService';
 
 class Logout extends Component {
   logout = () => {
-    const { history } = this.props;
+    const { history, onUserLogout } = this.props;
     AuthService.logout();
+    onUserLogout();
     history.replace('/auth/login');
   };
 
@@ -22,6 +24,7 @@ class Logout extends Component {
 
 Logout.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  onUserLogout: PropTypes.func.isRequired,
 };
 
 export default withRouter(Logout);

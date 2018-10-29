@@ -5,19 +5,22 @@ import _ from 'lodash';
 
 import { toggleUserSidebar } from '../../../generalActions';
 import UserSidebar from './UserSidebar';
+import { userLogout } from './actions';
 
 const UserSidebarContainer = ({
-  userSidebarOpened, onToggleUserSidebar, name,
+  userSidebarOpened, onUserLogout, onToggleUserSidebar, name,
 }) => (
   <UserSidebar
     onToggleUserSidebar={onToggleUserSidebar}
     userSidebarOpened={userSidebarOpened}
     name={name}
+    onUserLogout={onUserLogout}
   />
 );
 
 UserSidebarContainer.propTypes = {
   onToggleUserSidebar: PropTypes.func.isRequired,
+  onUserLogout: PropTypes.func.isRequired,
   userSidebarOpened: PropTypes.bool,
   name: PropTypes.string,
 };
@@ -39,6 +42,7 @@ function mapStateToProps({ general: { userSidebarOpened }, user: { profile } }) 
 function mapDispatchToProps(dispatch) {
   return {
     onToggleUserSidebar: () => dispatch(toggleUserSidebar()),
+    onUserLogout: () => dispatch(userLogout()),
   };
 }
 
