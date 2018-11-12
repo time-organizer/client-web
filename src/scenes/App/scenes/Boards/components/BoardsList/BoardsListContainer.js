@@ -15,10 +15,10 @@ class BoardsListContainer extends Component {
   }
 
   render() {
-    const { boards } = this.props;
+    const { boards, isFetching } = this.props;
 
     return (
-      <BoardsList boards={boards} />
+      <BoardsList boards={boards} isFetching={isFetching} />
     );
   }
 }
@@ -26,16 +26,19 @@ class BoardsListContainer extends Component {
 BoardsListContainer.propTypes = {
   refreshBoards: PropTypes.func.isRequired,
   boards: PropTypes.arrayOf(BoardModel),
+  isFetching: PropTypes.bool,
 };
 BoardsListContainer.defaultProps = {
   boards: [],
+  isFetching: false,
 };
 
-function mapStateToProps({ boards: { flatBoardsById } }) {
+function mapStateToProps({ boards: { list: { flatBoardsById, isFetching } } }) {
   const boards = map(flatBoardsById, board => board);
 
   return {
     boards,
+    isFetching,
   };
 }
 

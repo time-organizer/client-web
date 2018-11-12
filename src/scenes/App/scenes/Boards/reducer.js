@@ -2,10 +2,12 @@ import * as actions from './actions';
 import arrayToCollectionById from '../../../../utilities/arrayToCollectionById';
 
 export const initialState = {
-  didInvalidate: false,
-  isFetching: false,
-  flatBoardsById: {},
-  boardsServerError: '',
+  list: {
+    isFetching: false,
+    flatBoardsById: {},
+    boardsServerError: '',
+    didInvalidate: false,
+  },
   new: {
     isFetching: false,
     newBoardServerError: '',
@@ -16,18 +18,28 @@ const boards = (state = initialState, action) => {
   switch (action.type) {
   case actions.FETCH_BOARDS_REQUEST:
     return Object.assign({}, state, {
-      isFetching: true,
+      list: {
+        ...state.list,
+        isFetching: true,
+      },
     });
 
   case actions.FETCH_BOARDS_SUCCESS:
     return Object.assign({}, state, {
-      isFetching: false,
-      flatBoardsById: arrayToCollectionById(action.boards),
+      list: {
+        ...state.list,
+        isFetching: false,
+        flatBoardsById: arrayToCollectionById(action.boards),
+      },
     });
 
   case actions.FETCH_BOARDS_FAILURE:
     return Object.assign({}, state, {
-      boardsServerError: action.error,
+      list: {
+        ...state.list,
+        boardsServerError: action.error,
+        isFetching: false,
+      },
     });
 
   case actions.ADD_BOARD_REQUEST:
@@ -40,9 +52,12 @@ const boards = (state = initialState, action) => {
 
   case actions.ADD_BOARD_SUCCESS:
     return Object.assign({}, state, {
-      flatBoardsById: {
-        ...state.flatBoardsById,
-        [action.board._id]: action.board,
+      list: {
+        ...state.list,
+        flatBoardsById: {
+          ...state.flatBoardsById,
+          [action.board._id]: action.board,
+        },
       },
       new: {
         ...state.new,

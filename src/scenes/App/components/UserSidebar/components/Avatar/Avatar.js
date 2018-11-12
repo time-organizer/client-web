@@ -4,7 +4,7 @@ import Dropzone from 'react-dropzone';
 
 import AssetPreviewer from '../../../../../components/AssetPreviewer';
 import AssetModel from '../../../../../../models/Asset';
-import Loader from '../../../../../components/Loader';
+import Loader from '../../../../../components/Loaders/Loader';
 
 class Avatar extends Component {
   onDrop = (accepted) => {

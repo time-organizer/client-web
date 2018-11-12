@@ -18,7 +18,7 @@ export const ADD_BOARD_FAUILURE = 'ADD_BOARD_FAUILURE';
 */
 
 function shouldFetchBoards(state) {
-  const { boards: { flatBoardsById, isFetching, didInvalidate } } = state;
+  const { boards: { list: { flatBoardsById, isFetching, didInvalidate } } } = state;
 
   if (isFetching) {
     return false;

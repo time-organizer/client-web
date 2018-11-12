@@ -1,9 +1,11 @@
 import React from 'react';
+import c from 'classnames';
+import PropTypes from 'prop-types';
 
 import './Loader.css';
 
-const Loader = () => (
-  <div className="loader loader--style1" title="0">
+const Loader = ({ absolute }) => (
+  <div className={c('loader loader--style1', absolute)} title="0">
     <svg
       version="1.1"
       id="loader-1"
@@ -41,7 +43,14 @@ const Loader = () => (
       </path>
     </svg>
   </div>
-
 );
+
+Loader.propTypes = {
+  absolute: PropTypes.bool,
+};
+
+Loader.defaultProps = {
+  absolute: false,
+};
 
 export default Loader;

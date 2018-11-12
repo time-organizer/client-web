@@ -1,6 +1,7 @@
 import * as actions from './generalActions';
 
 export const initialState = {
+  fullscreenLoading: false,
   userSidebarOpened: false,
   menuSidebarOpened: false,
   forms: {
