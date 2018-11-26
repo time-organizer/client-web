@@ -39,9 +39,6 @@
     "test:watch": "NODE_ENV=test react-scripts test --env=jsdom",
 //    "lint": "./node_modules/.bin/eslint src",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "heroku-postbuild": "npm run build"
   },
   "devDependencies": {
 //    "babel-eslint": "^10.0.1",
