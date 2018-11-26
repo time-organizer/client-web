@@ -40,7 +40,8 @@
     "lint": "./node_modules/.bin/eslint src",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "heroku-postbuild": "npm run build"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
