@@ -38,7 +38,7 @@
     "test": "NODE_ENV=test CI=true react-scripts test --env=jsdom",
     "test:watch": "NODE_ENV=test react-scripts test --env=jsdom",
 //    "lint": "./node_modules/.bin/eslint src",
-    "eject": "react-scripts eject",
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
 //    "babel-eslint": "^10.0.1",
