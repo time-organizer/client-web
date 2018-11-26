@@ -13,6 +13,64 @@ export const ADD_BOARD_REQUEST = 'ADD_BOARD_REQUEST';
 export const ADD_BOARD_SUCCESS = 'ADD_BOARD_SUCCESS';
 export const ADD_BOARD_FAUILURE = 'ADD_BOARD_FAUILURE';
 
+export const FETCH_BOARD_REQUEST = 'FETCH_BOARD_REQUEST';
+export const FETCH_BOARD_SUCCESS = 'FETCH_BOARD_SUCCESS';
+export const FETCH_BOARD_FAILURE = 'FETCH_BOARD_FAILURE';
+
+/*
+==================== WORKSPACE =======================
+*/
+
+function shouldFetchBoard(state) {
+  const { boards: { workspace: { isFetching, didInvalidate, board } } } = state;
+
+  if (isFetching) {
+    return false;
+  }
+
+  if (!board) {
+    return true;
+  }
+
+  return didInvalidate;
+}
+
+function fetchBoardRequest() {
+  return {
+    type: FETCH_BOARD_REQUEST,
+  };
+}
+
+function fetchBoardSuccess(board) {
+  return {
+    type: FETCH_BOARD_SUCCESS,
+    board,
+  };
+}
+
+function fetchBoardFailure(error) {
+  return {
+    type: FETCH_BOARD_FAILURE,
+    error,
+  };
+}
+
+export function fetchBoardIfNeeded(id) {
+  return (dispatch, getState) => {
+    if (shouldFetchBoard(getState())) {
+      dispatch(fetchBoardRequest());
+
+      APIService.get(`/api/boards/${id}`)
+        .then((boards) => {
+          dispatch(fetchBoardSuccess(boards.data));
+        })
+        .catch((error) => {
+          dispatch(fetchBoardFailure(_.get(error, 'response.data.message', '')));
+        });
+    }
+  };
+}
+
 /*
 ==================== BOARDS LIST =======================
 */

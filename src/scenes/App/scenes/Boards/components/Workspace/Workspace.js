@@ -1,18 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import ContentHeader from '../../../../components/ContentHeader/ContentHeader';
 import ContentLayoutFull from '../../../../components/ContentLayoutFull';
 import WorkspaceBackground from './components/WorkspaceBackground';
 
-const Workspace = () => (
+const Workspace = ({ board }) => (
   <ContentLayoutFull>
-    <WorkspaceBackground>
-      <ContentHeader headerName="Boards" />
-      workspacenjnjn
-    </WorkspaceBackground>
+    {board && (
+      <WorkspaceBackground themeId={board.theme}>
+        <ContentHeader headerName="Boards" />
+        workspacenjnjn
+      </WorkspaceBackground>
+    )}
   </ContentLayoutFull>
 );
 
-Workspace.propTypes = {};
-Workspace.defaultProps = {};
+Workspace.propTypes = {
+  board: PropTypes.shape(),
+};
+Workspace.defaultProps = {
+  board: null,
+};
 
 export default Workspace;

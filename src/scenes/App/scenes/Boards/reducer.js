@@ -5,8 +5,14 @@ export const initialState = {
   list: {
     isFetching: false,
     flatBoardsById: {},
-    boardsServerError: '',
+    serverError: '',
     didInvalidate: false,
+  },
+  workspace: {
+    isFetching: false,
+    board: null,
+    didInvalidate: false,
+    serverError: '',
   },
   new: {
     isFetching: false,
@@ -30,6 +36,7 @@ const boards = (state = initialState, action) => {
         ...state.list,
         isFetching: false,
         flatBoardsById: arrayToCollectionById(action.boards),
+        serverError: '',
       },
     });
 
@@ -37,10 +44,39 @@ const boards = (state = initialState, action) => {
     return Object.assign({}, state, {
       list: {
         ...state.list,
-        boardsServerError: action.error,
+        serverError: action.error,
         isFetching: false,
       },
     });
+
+  case actions.FETCH_BOARD_REQUEST:
+    return Object.assign({}, state, {
+      workspace: {
+        ...state.workspace,
+        isFetching: true,
+      },
+    });
+
+  case actions.FETCH_BOARD_SUCCESS:
+    return Object.assign({}, state, {
+      workspace: {
+        ...state.workspace,
+        isFetching: false,
+        didInvalidate: false,
+        board: action.board,
+        serverError: '',
+      },
+    });
+
+  case actions.FETCH_BOARD_FAILURE:
+    return Object.assign({}, state, {
+      workspace: {
+        ...state.workspace,
+        isFetching: false,
+        serverError: action.error,
+      },
+    });
+
 
   case actions.ADD_BOARD_REQUEST:
     return Object.assign({}, state, {

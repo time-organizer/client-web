@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import c from 'classnames';
+import find from 'lodash/find';
 
 import boardThemes from '../../../../utilities/boardThemes';
 
@@ -28,9 +29,9 @@ class WorkspaceBackground extends Component {
   onLoad = () => this.setState({ imageLoaded: true });
 
   render() {
-    const { children } = this.props;
+    const { children, themeId } = this.props;
     const { imageLoaded } = this.state;
-    const theme = boardThemes[6];
+    const theme = find(boardThemes, boardTheme => boardTheme.key === themeId);
     const backgroundImage = imageLoaded ? theme.bgHd : theme.bgThumb;
 
     return (
@@ -59,6 +60,7 @@ WorkspaceBackground.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
+  themeId: PropTypes.number.isRequired,
 };
 WorkspaceBackground.defaultProps = {
   children: null,
