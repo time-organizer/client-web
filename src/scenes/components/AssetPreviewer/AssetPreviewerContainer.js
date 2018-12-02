@@ -10,13 +10,11 @@ import AssetPreviewer from './AssetPreviewer';
 const AssetPreviewerContainer = ({ asset, userId, mockIcon }) => {
   const assetId = get(asset, 'assetId', '');
   const imagePath = `${process.env.REACT_APP_DATA_FLOW_URL}/assets/${userId}/${assetId}`;
-  const isVertical = get(asset, 'size.height', 1) > get(asset, 'size.width', 0);
 
   return (
     <AssetPreviewer
       asset={asset}
       imagePath={imagePath}
-      isVertical={isVertical}
       mockIcon={mockIcon}
     />
   );
