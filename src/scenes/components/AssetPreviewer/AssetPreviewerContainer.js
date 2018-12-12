@@ -7,14 +7,13 @@ import { fetchUserIfNeeded } from '../../App/components/UserSidebar/actions';
 import AssetModel from '../../../models/Asset';
 import AssetPreviewer from './AssetPreviewer';
 
-const AssetPreviewerContainer = ({ asset, userId, mockIcon }) => {
+const AssetPreviewerContainer = ({ asset, mockIcon }) => {
   const assetId = get(asset, 'assetId', '');
-  const imagePath = `${process.env.REACT_APP_DATA_FLOW_URL}/assets/${userId}/${assetId}`;
 
   return (
     <AssetPreviewer
       asset={asset}
-      imagePath={imagePath}
+      imagePath={assetId}
       mockIcon={mockIcon}
     />
   );
@@ -22,7 +21,6 @@ const AssetPreviewerContainer = ({ asset, userId, mockIcon }) => {
 
 AssetPreviewerContainer.propTypes = {
   asset: AssetModel.propTypes,
-  userId: PropTypes.string.isRequired,
   mockIcon: PropTypes.string,
 };
 
@@ -31,10 +29,8 @@ AssetPreviewerContainer.defaultProps = {
   mockIcon: 'icon-camera',
 };
 
-function mapStateToProps({ user: { profile } }) {
-  return {
-    userId: get(profile, '_id', ''),
-  };
+function mapStateToProps() {
+  return {};
 }
 
 function mapDispatchToProps(dispatch) {
