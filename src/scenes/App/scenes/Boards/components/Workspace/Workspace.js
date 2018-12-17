@@ -9,8 +9,7 @@ const Workspace = ({ board }) => (
   <ContentLayoutFull>
     {board && (
       <WorkspaceBackground themeId={board.theme}>
-        <ContentHeader headerName="Boards" />
-        workspacenjnjn
+        <ContentHeader headerName={board.title} />
       </WorkspaceBackground>
     )}
   </ContentLayoutFull>
