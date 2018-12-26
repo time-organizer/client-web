@@ -35,6 +35,7 @@ const boards = (state = initialState, action) => {
       list: {
         ...state.list,
         isFetching: false,
+        didInvalidate: false,
         flatBoardsById: arrayToCollectionById(action.boards),
         serverError: '',
       },
@@ -90,9 +91,9 @@ const boards = (state = initialState, action) => {
     return Object.assign({}, state, {
       list: {
         ...state.list,
+        didInvalidate: true,
         flatBoardsById: {
           ...state.flatBoardsById,
-          [action.board._id]: action.board,
         },
       },
       new: {

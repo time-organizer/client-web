@@ -21,7 +21,7 @@ export const FETCH_BOARD_FAILURE = 'FETCH_BOARD_FAILURE';
 ==================== WORKSPACE =======================
 */
 
-function shouldFetchBoard(state) {
+function shouldFetchBoard(state, id) {
   const { boards: { workspace: { isFetching, didInvalidate, board } } } = state;
 
   if (isFetching) {
@@ -29,6 +29,10 @@ function shouldFetchBoard(state) {
   }
 
   if (!board) {
+    return true;
+  }
+
+  if (board.id !== id) {
     return true;
   }
 
@@ -57,7 +61,7 @@ function fetchBoardFailure(error) {
 
 export function fetchBoardIfNeeded(id) {
   return (dispatch, getState) => {
-    if (shouldFetchBoard(getState())) {
+    if (shouldFetchBoard(getState(), id)) {
       dispatch(fetchBoardRequest());
 
       APIService.get(`/api/boards/${id}`)
@@ -157,6 +161,7 @@ export function addNewBoard(board) {
       .then((newBoard) => {
         dispatch(addBoardSuccess(newBoard.data));
         dispatch(toggleNewBoardForm());
+        dispatch(fetchBoardsIfNeeded());
       })
       .catch((error) => {
         dispatch(addBoardFailure(get(error, 'response.data.message', 'Something went wrong')));

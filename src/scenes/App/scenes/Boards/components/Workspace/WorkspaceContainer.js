@@ -6,7 +6,7 @@ import Workspace from './Workspace';
 import { fetchBoardIfNeeded } from '../../actions';
 
 class WorkspaceContainer extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const { refreshBoard, match: { params } } = this.props;
     refreshBoard(params.id);
   }
