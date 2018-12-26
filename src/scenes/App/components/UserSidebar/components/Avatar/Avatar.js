@@ -24,7 +24,7 @@ class Avatar extends Component {
           disabled={isUploadingAvatar}
         >
           {isUploadingAvatar
-            ? <Loader />
+            ? <Loader small />
             : <AssetPreviewer asset={avatar} mockIcon="icon-user" />
           }
         </Dropzone>

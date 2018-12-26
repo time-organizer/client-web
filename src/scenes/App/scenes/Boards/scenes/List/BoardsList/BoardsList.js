@@ -5,16 +5,16 @@ import {
   TransitionGroup,
 } from 'react-transition-group';
 
-import NewBoardButton from '../NewBoardButton';
+import NewBoardButton from '../../New/NewBoardButton';
 import BoardListItem from '../BoardListItem';
-import BoardModel from '../../../../../../models/Board';
-import Fade from '../../../../../components/transitions/Fade';
-import Loader from '../../../../../components/Loaders/Loader';
+import BoardModel from '../../../../../../../models/Board';
+import Fade from '../../../../../../components/transitions/Fade';
+import Loader from '../../../../../../components/Loaders/Loader';
 
 import './BoardsList.css';
-import ContentHeader from '../../../../components/ContentHeader/ContentHeader';
-import Content from '../../../../components/Content/Content';
-import ContentLayout from '../../../../components/ContentLayout/ContentLayout';
+import ContentHeader from '../../../../../components/ContentHeader/ContentHeader';
+import Content from '../../../../../components/Content/Content';
+import ContentLayout from '../../../../../components/ContentLayout/ContentLayout';
 
 const BoardsList = ({ boards, isFetching }) => (
   <ContentLayout>

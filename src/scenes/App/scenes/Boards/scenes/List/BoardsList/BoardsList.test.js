@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import BoardsList from './BoardsList';
-import NewBoardButton from '../NewBoardButton';
+import NewBoardButton from '../../New/NewBoardButton';
 
 describe('<BoardsList />', () => {
   it('renders without crashing', () =>{

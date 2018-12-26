@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Switch, Route } from 'react-router-dom';
 
 import Boards from './Boards';
-import NewBoardFormContainer from './components/NewBoardForm/NewBoardFormContainer';
+import NewBoardFormContainer from './scenes/New/NewBoardForm/NewBoardFormContainer';
 
 describe('<Boards />', () => {
   let wrapper;

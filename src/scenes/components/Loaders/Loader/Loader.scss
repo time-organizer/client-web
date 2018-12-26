@@ -1,10 +1,18 @@
+@import "../../../../common_styles/variables";
+
 .loader {
   text-align: center;
   margin: 0 auto;
 
-  svg {
+  svg, circle {
     fill: #4995ed;
     width: 100px;
+  }
+
+  &.small {
+    svg {
+      width: 50px;
+    }
   }
 
   &.absolute {

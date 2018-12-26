@@ -5,8 +5,8 @@ import map from 'lodash/map';
 import { withRouter } from 'react-router-dom';
 
 import BoardsList from './BoardsList';
-import { fetchBoardsIfNeeded } from '../../actions';
-import BoardModel from '../../../../../../models/Board';
+import { fetchBoardsIfNeeded } from '../../../actions';
+import BoardModel from '../../../../../../../models/Board';
 
 class BoardsListContainer extends Component {
   componentDidMount() {

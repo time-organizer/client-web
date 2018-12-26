@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NewBoardForm from './NewBoardForm';
-import { toggleNewBoardForm } from '../../../../../generalActions';
-import { addNewBoard } from '../../actions';
-import { addFormError, removeFormError } from '../../../../../../utilities/handleFormErrors';
+import { toggleNewBoardForm } from '../../../../../../generalActions';
+import { addNewBoard } from '../../../actions';
+import { addFormError, removeFormError } from '../../../../../../../utilities/handleFormErrors';
 
 class NewBoardFormContainer extends Component {
   constructor(props) {

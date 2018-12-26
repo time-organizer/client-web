@@ -10,6 +10,7 @@ const Workspace = ({ board }) => (
     {board && (
       <WorkspaceBackground themeId={board.theme}>
         <ContentHeader headerName={board.title} />
+
       </WorkspaceBackground>
     )}
   </ContentLayoutFull>

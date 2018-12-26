@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import NewBoardForm from './NewBoardForm';
-import Popup from '../../../../../components/Popup';
+import Popup from '../../../../../../components/Popup';
 
 const props = {
   title: 'testBoardTittle',

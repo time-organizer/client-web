@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
-import BoardsList from './components/BoardsList';
-import NewBoardForm from './components/NewBoardForm';
-import BoardsWorkspace from './components/Workspace';
+import BoardsList from './scenes/List/BoardsList';
+import NewBoardForm from './scenes/New/NewBoardForm';
+import BoardsWorkspace from './scenes/Workspace';
 
 const Boards = ({ newBoardFormOpened }) => (
   <Fragment>

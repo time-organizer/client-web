@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './NewBoard.css';
-import '../BoardListItem/BoardListItem.css';
+import '../../List/BoardListItem/BoardListItem.css';
 
 const NewBoardButton = ({ onToggleNewBoardForm }) => (
   <div className="board-list-item-wrapper">

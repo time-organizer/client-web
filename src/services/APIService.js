@@ -1,5 +1,6 @@
 /* eslint-env browser */
 import axios from 'axios';
+import AuthService from './AuthService';
 
 const {
   REACT_APP_DATA_FLOW_URL = 'https://localhost:3001',
@@ -13,21 +14,45 @@ const APIService = {
     headers: {
       auth_token: APIService.getToken(),
     },
-  }),
+  })
+    .then(res => res)
+    .catch((err) => {
+      const { response: { status } } = err;
+
+      if (status === 401) {
+        AuthService.logout();
+      }
+    }),
 
   post: (url, body, config) => axios.post(`${REACT_APP_DATA_FLOW_URL}${url}`, body, {
     ...config,
     headers: {
       auth_token: APIService.getToken(),
     },
-  }),
+  })
+    .then(res => res)
+    .catch((err) => {
+      const { response: { status } } = err;
+
+      if (status === 401) {
+        AuthService.logout();
+      }
+    }),
 
   put: (url, body, config) => axios.put(`${REACT_APP_DATA_FLOW_URL}${url}`, body, {
     ...config,
     headers: {
       auth_token: APIService.getToken(),
     },
-  }),
+  })
+    .then(res => res)
+    .catch((err) => {
+      const { response: { status } } = err;
+
+      if (status === 401) {
+        AuthService.logout();
+      }
+    }),
 };
 
 export default APIService;
