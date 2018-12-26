@@ -7,7 +7,7 @@
   margin: 12px 0;
   background-position: bottom;
   background-size: cover;
-  transition: border, opacity .3s;
+  transition: border, opacity, box-shadow .3s;
   box-sizing: content-box;
   background-clip: border-box;
   box-shadow: $box-shadow;
@@ -16,6 +16,7 @@
 
   &.is-selected {
     opacity: 1;
+    box-shadow: 0 0 20px -3px $accent-color;
   }
 
   .selected-status {
