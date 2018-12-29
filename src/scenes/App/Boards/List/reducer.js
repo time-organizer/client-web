@@ -4,7 +4,7 @@ import arrayToCollectionById from '../../../../utilities/arrayToCollectionById';
 
 export const initialState = {
   isFetching: false,
-  flatBoardsById: {},
+  boardsById: {},
   serverError: '',
   didInvalidate: false,
 };
@@ -22,7 +22,7 @@ const boards = (state = initialState, action) => {
       ...state,
       isFetching: false,
       didInvalidate: false,
-      flatBoardsById: arrayToCollectionById(action.boards),
+      boardsById: arrayToCollectionById(action.boards),
       serverError: '',
     });
 

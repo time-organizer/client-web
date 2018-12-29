@@ -55,7 +55,7 @@ class WorkspaceBackground extends Component {
 }
 
 WorkspaceBackground.propTypes = {
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),

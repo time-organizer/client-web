@@ -8,13 +8,13 @@ export const FETCH_BOARDS_SUCCESS = 'FETCH_BOARDS_SUCCESS';
 export const FETCH_BOARDS_FAILURE = 'FETCH_BOARDS_FAILURE';
 
 function shouldFetchBoards(state) {
-  const { boards: { list: { flatBoardsById, isFetching, didInvalidate } } } = state;
+  const { boards: { list: { boardsById, isFetching, didInvalidate } } } = state;
 
   if (isFetching) {
     return false;
   }
 
-  if (isEmpty(flatBoardsById)) {
+  if (isEmpty(boardsById)) {
     return true;
   }
 

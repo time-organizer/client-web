@@ -33,8 +33,8 @@ BoardsListContainer.defaultProps = {
   isFetching: false,
 };
 
-function mapStateToProps({ boards: { list: { flatBoardsById, isFetching } } }) {
-  const boards = map(flatBoardsById, board => board);
+function mapStateToProps({ boards: { list: { boardsById, isFetching } } }) {
+  const boards = map(boardsById, board => board);
 
   return {
     boards,
