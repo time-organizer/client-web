@@ -2,14 +2,20 @@ import { combineReducers } from 'redux';
 import AuthReducer from '../scenes/Auth/reducer';
 import GeneralReducer from '../scenes/generalReducer';
 import UserReducer from '../scenes/App/components/UserSidebar/reducer';
-import BoardsReducer from '../scenes/App/Boards/reducer';
+import BoardsWorkspaceReducer from '../scenes/App/Boards/Workspace/reducer';
+import BoardsNewReducer from '../scenes/App/Boards/New/reducer';
+import BoardsListReducer from '../scenes/App/Boards/List/reducer';
 import { USER_LOGOUT } from '../scenes/App/components/UserSidebar/actions';
 
 const appReducer = combineReducers({
   auth: AuthReducer,
   general: GeneralReducer,
   user: UserReducer,
-  boards: BoardsReducer,
+  boards: combineReducers({
+    workspace: BoardsWorkspaceReducer,
+    new: BoardsNewReducer,
+    list: BoardsListReducer,
+  }),
 });
 
 const rootReducer = (state, action) => {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Workspace from './Workspace';
-import { fetchBoardIfNeeded } from '../actions';
+import { fetchBoardIfNeeded } from './actions';
 
 class WorkspaceContainer extends Component {
   componentWillMount() {

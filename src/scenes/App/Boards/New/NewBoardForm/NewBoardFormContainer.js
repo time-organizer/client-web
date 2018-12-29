@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import NewBoardForm from './NewBoardForm';
 import { toggleNewBoardForm } from '../../../../generalActions';
-import { addNewBoard } from '../../actions';
+import { addNewBoard } from '../actions';
 import { addFormError, removeFormError } from '../../../../../utilities/handleFormErrors';
 
 class NewBoardFormContainer extends Component {
