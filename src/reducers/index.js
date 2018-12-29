@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import AuthReducer from '../scenes/Auth/reducer';
 import GeneralReducer from '../scenes/generalReducer';
 import UserReducer from '../scenes/App/components/UserSidebar/reducer';
-import BoardsReducer from '../scenes/App/scenes/Boards/reducer';
+import BoardsReducer from '../scenes/App/Boards/reducer';
 import { USER_LOGOUT } from '../scenes/App/components/UserSidebar/actions';
 
 const appReducer = combineReducers({

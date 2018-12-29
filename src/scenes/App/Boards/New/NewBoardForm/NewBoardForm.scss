@@ -1,0 +1,25 @@
+@import '../../../../../common_styles/variables';
+
+.new-board-form {
+  display: flex;
+  height: 100%;
+}
+
+.new-board-form-section {
+  flex: 1;
+  padding: 0 12px;
+
+  &:first-child {
+    margin-left: -12px;
+  }
+
+  &:last-child {
+    margin-right: -12px;
+  }
+}
+
+.new-board-form-themes {
+  //padding: 8px;
+  overflow: visible;
+  height: 100%;
+}

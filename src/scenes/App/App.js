@@ -7,7 +7,7 @@ import withAuth from '../Auth/withAuth';
 import Header from './components/Header';
 import UserSidebar from './components/UserSidebar';
 import MenuSidebar from './components/MenuSidebar';
-import Boards from './scenes/Boards';
+import Boards from './Boards';
 
 import { fetchUserIfNeeded } from './components/UserSidebar/actions';
 import './App.css';
