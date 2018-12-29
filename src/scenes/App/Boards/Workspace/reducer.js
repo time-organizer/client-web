@@ -2,9 +2,9 @@ import * as actions from './actions';
 
 export const initialState = {
   isFetching: false,
-  board: null,
   didInvalidate: false,
   serverError: '',
+  data: null,
 };
 
 const boards = (state = initialState, action) => {
@@ -20,7 +20,7 @@ const boards = (state = initialState, action) => {
       ...state,
       isFetching: false,
       didInvalidate: false,
-      board: action.board,
+      data: action.board,
       serverError: '',
     });
 

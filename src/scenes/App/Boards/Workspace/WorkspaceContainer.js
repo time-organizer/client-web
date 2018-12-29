@@ -12,25 +12,25 @@ class WorkspaceContainer extends Component {
   }
 
   render() {
-    const { workspace } = this.props;
+    const { board } = this.props;
     return (
-      <Workspace board={workspace.board} />
+      <Workspace board={board} />
     );
   }
 }
 
 WorkspaceContainer.propTypes = {
   match: PropTypes.shape({}).isRequired,
-  workspace: PropTypes.shape({}),
+  board: PropTypes.shape({}),
   refreshBoard: PropTypes.func.isRequired,
 };
 WorkspaceContainer.defaultProps = {
-  workspace: null,
+  board: null,
 };
 
-function mapStateToProps({ boards: { workspace } }) {
+function mapStateToProps({ boards: { workspace: { board } } }) {
   return {
-    workspace,
+    board,
   };
 }
 

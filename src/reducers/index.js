@@ -12,7 +12,9 @@ const appReducer = combineReducers({
   general: GeneralReducer,
   user: UserReducer,
   boards: combineReducers({
-    workspace: BoardsWorkspaceReducer,
+    workspace: combineReducers({
+      board: BoardsWorkspaceReducer,
+    }),
     new: BoardsNewReducer,
     list: BoardsListReducer,
   }),

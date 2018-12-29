@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import ContentLayoutFull from '../../components/ContentLayoutFull';
 import WorkspaceBackground from './components/WorkspaceBackground';
-import NewColumnForm from './components/NewColumnForm';
+import NewColumnForm from './components/Columns/NewColumnForm';
 
 import './Workspace.css';
 
 const Workspace = ({ board }) => (
   <ContentLayoutFull>
-    {board && (
-      <WorkspaceBackground themeId={board.theme}>
-        <ContentHeader headerName={board.title} />
+    {board.data && (
+      <WorkspaceBackground themeId={board.data.theme}>
+        <ContentHeader headerName={board.data.title} />
         <div className="columns-wrapper">
           <NewColumnForm />
         </div>
