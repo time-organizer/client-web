@@ -15,7 +15,8 @@ const NewColumnForm = ({
           name="title"
           value={title}
           onChange={handleInputChange}
-          placeholder="Add new board"
+          placeholder="Add new column"
+          icon="icon-paper-plane-o"
         />
       )
     }

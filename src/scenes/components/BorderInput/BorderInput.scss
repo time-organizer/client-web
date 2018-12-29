@@ -2,6 +2,7 @@
 
 .border-input-wrapper {
   border: none;
+  position: relative;
 
   label {
     font-weight: 300;
@@ -20,13 +21,41 @@
     font-size: 1em;
     box-sizing: border-box;
     border: none;
-    border-radius: 4px;
+    border-radius: 4px 0 0 4px;
     font-weight: lighter;
     color: $text-color;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: $box-shadow-flat;
 
     &:focus {
       box-shadow: 0 0 5px 0 $accent-color;
+    }
+
+    &.with-icon {
+      width: calc(100% - 40px);
+    }
+  }
+
+  .input-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    background: $bg-color;
+    margin: 8px 0;
+    height: 42px;
+    box-shadow: $box-shadow-flat;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 0 4px 4px 0;
+    transition: .3s;
+
+    &:hover {
+      color: $accent-color;
+    }
+
+    i {
+      margin: 0 auto;
     }
   }
 }
