@@ -25,13 +25,13 @@ class BorderInput extends Component {
     } = this.props;
 
     return (
-      <div className="border-input-wrapper">
+      <div className={`border-input-wrapper ${className}`}>
         {withLabel && (
           <label htmlFor={name}>{placeholder}</label>
         )}
         <input
           ref={this.inputRef}
-          className={c(className, { 'with-icon': icon })}
+          className={c({ 'with-icon': icon })}
           name={name}
           placeholder={withLabel ? '' : placeholder}
           type={type}

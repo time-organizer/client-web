@@ -16,7 +16,7 @@
     padding: 12px;
     width: 100%;
     outline: none;
-    margin: 8px 0 16px 0;
+    margin: 0;
     transition: box-shadow .3s;
     font-size: 1em;
     box-sizing: border-box;
@@ -41,7 +41,6 @@
     right: 0;
     width: 40px;
     background: $bg-color;
-    margin: 8px 0;
     height: 42px;
     box-shadow: $box-shadow-flat;
     cursor: pointer;

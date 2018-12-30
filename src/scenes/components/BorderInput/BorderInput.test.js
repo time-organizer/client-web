@@ -30,6 +30,6 @@ describe('<Input />', () => {
       />
     );
 
-    expect(wrapper.find('input').hasClass(className)).toBe(true);
+    expect(wrapper.find('.border-input-wrapper').hasClass(className)).toBe(true);
   });
 });

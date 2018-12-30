@@ -14,10 +14,30 @@ class NewColumnFormContainer extends Component {
     this.state = {
       title: '',
       addingColumnActive: false,
+      submitError: false,
     };
 
     this.handleInputChange = handleInputChange.bind(this);
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { addingColumnActive } = this.state;
+    if (prevState.addingColumnActive !== addingColumnActive && addingColumnActive) {
+      // eslint-disable-next-line
+      window.addEventListener('keydown', this.handleKeyPress);
+    } else if (prevState.addingColumnActive !== addingColumnActive && !addingColumnActive) {
+      // eslint-disable-next-line
+      window.removeEventListener('keydown', this.handleKeyPress);
+    }
+  }
+
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.submitNewColumn();
+    } else if (e.key === 'Escape') {
+      this.toggleAddingColumn();
+    }
+  };
 
   toggleAddingColumn = () => {
     const { addingColumnActive } = this.state;
@@ -32,6 +52,11 @@ class NewColumnFormContainer extends Component {
     const { onAddNewColumn, boardId } = this.props;
     const { title } = this.state;
 
+    if (!title.length) {
+      this.setState({ submitError: true });
+      return;
+    }
+
     const newColumn = {
       title,
       boardId,
@@ -42,7 +67,7 @@ class NewColumnFormContainer extends Component {
   };
 
   render() {
-    const { title, addingColumnActive } = this.state;
+    const { title, addingColumnActive, submitError } = this.state;
 
     return (
       <NewColumnForm
@@ -51,6 +76,7 @@ class NewColumnFormContainer extends Component {
         addingColumnActive={addingColumnActive}
         toggleAddingColumn={this.toggleAddingColumn}
         submitNewColumn={this.submitNewColumn}
+        submitError={submitError}
       />
     );
   }
