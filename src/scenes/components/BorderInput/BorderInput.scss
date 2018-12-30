@@ -27,7 +27,7 @@
     box-shadow: $box-shadow-flat;
 
     &:focus {
-      box-shadow: 0 0 5px 0 $accent-color;
+      box-shadow: $box-shadow;
     }
 
     &.with-icon {
