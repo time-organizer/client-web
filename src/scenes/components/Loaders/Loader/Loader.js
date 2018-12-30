@@ -14,11 +14,11 @@ const Loader = ({ absolute }) => (
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      viewBox="0 0 100 100"
+      viewBox="0 0 50 50"
       enableBackground="new 0 0 0 0"
       xmlSpace="preserve"
     >
-      <circle stroke="none" cx="6" cy="50" r="6">
+      <circle stroke="none" cx="6" cy="25" r="6">
         <animate
           attributeName="opacity"
           dur="1s"
@@ -27,7 +27,7 @@ const Loader = ({ absolute }) => (
           begin="0.1"
         />
       </circle>
-      <circle fill="#fff" stroke="none" cx="26" cy="50" r="6">
+      <circle fill="#fff" stroke="none" cx="25" cy="25" r="6">
         <animate
           attributeName="opacity"
           dur="1s"
@@ -36,7 +36,7 @@ const Loader = ({ absolute }) => (
           begin="0.2"
         />
       </circle>
-      <circle fill="#fff" stroke="none" cx="46" cy="50" r="6">
+      <circle fill="#fff" stroke="none" cx="44" cy="25" r="6">
         <animate
           attributeName="opacity"
           dur="1s"

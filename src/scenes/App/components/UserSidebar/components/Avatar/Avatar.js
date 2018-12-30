@@ -1,47 +1,50 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
 
 import AssetPreviewer from '../../../../../components/AssetPreviewer';
 import AssetModel from '../../../../../../models/Asset';
 import Loader from '../../../../../components/Loaders/Loader';
+import ErrorMessage from '../../../../../components/ErrorMessage';
 
-class Avatar extends Component {
-  onDrop = (accepted) => {
-    const { onUploadAvatar } = this.props;
-
-    onUploadAvatar(accepted);
-  };
-
-  render() {
-    const { avatar, isUploadingAvatar } = this.props;
-    return (
-      <div className="avatar">
+const Avatar = ({
+  avatar, isUploadingAvatar, onDrop, errors,
+}) => (
+  <div className="avatar">
+    {isUploadingAvatar
+      ? <Loader small />
+      : (
         <Dropzone
           className="avatar-circle"
-          onDrop={this.onDrop}
+          onDrop={onDrop}
           multiple={false}
           disabled={isUploadingAvatar}
         >
-          {isUploadingAvatar
-            ? <Loader small />
-            : <AssetPreviewer asset={avatar} mockIcon="icon-user" />
-          }
+          <AssetPreviewer asset={avatar} mockIcon="icon-user" />
         </Dropzone>
-      </div>
-    );
-  }
-}
+      )
+    }
+    {errors.map(error => (
+      <ErrorMessage
+        key={error}
+        message={error}
+        center
+      />
+    ))}
+  </div>
+);
 
 Avatar.propTypes = {
-  onUploadAvatar: PropTypes.func.isRequired,
   avatar: AssetModel.propTypes,
   isUploadingAvatar: PropTypes.bool,
+  onDrop: PropTypes.func.isRequired,
+  errors: PropTypes.arrayOf(PropTypes.string),
 };
 
 Avatar.defaultProps = {
   avatar: null,
   isUploadingAvatar: false,
+  errors: [],
 };
 
 export default Avatar;
