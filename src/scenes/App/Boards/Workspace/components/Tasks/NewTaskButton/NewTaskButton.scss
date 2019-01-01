@@ -1,0 +1,25 @@
+@import '../../../../../../../common_styles/variables';
+
+.new-task-button {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  background: $bg-color;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  border-radius: 4px;
+  box-shadow: $box-shadow-flat;
+  transition: color, box-shadow 0.3s;
+
+  &:hover {
+    color: $accent-color;
+    cursor: pointer;
+    box-shadow: $box-shadow;
+  }
+
+  i {
+    margin: 0 auto;
+  }
+}

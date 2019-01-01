@@ -6,12 +6,14 @@ import Input from '../../../../../../components/BorderInput';
 import Fade from '../../../../../../components/transitions/Fade';
 import ErrorMessage from '../../../../../../components/ErrorMessage';
 
+import './NewColumnForm.css';
+
 const NewColumnForm = ({
   title, handleInputChange, addingColumnActive, toggleAddingColumn, submitNewColumn, submitError,
 }) => (
   <ColumnWrapper>
     {!addingColumnActive && (
-      <div className="clickable" onClick={toggleAddingColumn}>
+      <div className="new-column-button" onClick={toggleAddingColumn}>
         <h3>Add new column</h3>
       </div>
     )}
