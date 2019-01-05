@@ -34,6 +34,7 @@ const Column = ({ column, index }) => (
 
 Column.propTypes = {
   column: PropTypes.shape({}).isRequired,
+  index: PropTypes.number.isRequired,
 };
 Column.defaultProps = {};
 
