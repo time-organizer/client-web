@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import ColumnWrapper from '../ColumnWrapper';
 import Input from '../../../../../../components/BorderInput';
 import Fade from '../../../../../../components/transitions/Fade';
 import ErrorMessage from '../../../../../../components/ErrorMessage';
@@ -11,7 +10,7 @@ import './NewColumnForm.css';
 const NewColumnForm = ({
   title, handleInputChange, addingColumnActive, toggleAddingColumn, submitNewColumn, submitError,
 }) => (
-  <ColumnWrapper>
+  <div className="column-wrapper">
     {!addingColumnActive && (
       <div className="new-column-button" onClick={toggleAddingColumn}>
         <h3>Add new column</h3>
@@ -33,7 +32,7 @@ const NewColumnForm = ({
         )}
       </Fragment>
     </Fade>
-  </ColumnWrapper>
+  </div>
 );
 
 NewColumnForm.propTypes = {
