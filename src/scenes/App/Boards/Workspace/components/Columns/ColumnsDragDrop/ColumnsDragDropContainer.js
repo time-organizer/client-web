@@ -13,11 +13,12 @@ class ColumnsDragDropContainer extends Component {
   };
 
   render() {
-    const { columns } = this.props;
+    const { columns, columnsOrder } = this.props;
 
     return (
       <ColumnsDragDrop
         columns={columns}
+        columnsOrder={columnsOrder}
         onDragEnd={this.onDragEnd}
       />
     );
@@ -26,16 +27,20 @@ class ColumnsDragDropContainer extends Component {
 
 ColumnsDragDropContainer.propTypes = {
   columns: PropTypes.arrayOf(ColumnModel),
+  columnsOrder: PropTypes.arrayOf(PropTypes.string),
 };
 ColumnsDragDropContainer.defaultProps = {
   columns: [],
+  columnsOrder: [],
 };
 
 function mapStateToProps({ boards: { workspace: { board } } }) {
   const columns = get(board, 'data.columns');
+  const columnsOrder = get(board, 'data.columnsOrder');
 
   return {
     columns,
+    columnsOrder,
   };
 }
 

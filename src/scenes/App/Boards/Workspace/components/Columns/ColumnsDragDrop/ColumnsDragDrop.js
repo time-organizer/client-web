@@ -9,7 +9,7 @@ import ColumnModel from '../../../../../../../models/Column';
 
 class ColumnsDragDrop extends Component {
   render() {
-    const { columns, onDragEnd } = this.props;
+    const { columns, columnsOrder, onDragEnd } = this.props;
 
     return (
       <DragDropContext onDragEnd={onDragEnd}>
@@ -23,11 +23,11 @@ class ColumnsDragDrop extends Component {
               {...providedDroppable.droppableProps}
               ref={providedDroppable.innerRef}
             >
-              {columns.map((column, index) => (
+              {columnsOrder.map((columnId, index) => (
                 <Column
-                  key={column._id}
+                  key={columnId}
                   index={index}
-                  column={column}
+                  column={columns[columnId]}
                 />
               ))}
               <NewColumnForm />
@@ -42,9 +42,12 @@ class ColumnsDragDrop extends Component {
 ColumnsDragDrop.propTypes = {
   columns: PropTypes.arrayOf(ColumnModel),
   onDragEnd: PropTypes.func.isRequired,
+  columnsOrder: PropTypes.arrayOf(PropTypes.string),
+
 };
 ColumnsDragDrop.defaultProps = {
   columns: [],
+  columnsOrder: [],
 };
 
 export default ColumnsDragDrop;
