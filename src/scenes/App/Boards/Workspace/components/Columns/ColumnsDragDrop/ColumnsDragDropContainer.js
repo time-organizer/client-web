@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 
-import ColumnsDragDrop from './ColumnsDragDrop';
 import ColumnModel from '../../../../../../../models/Column';
+import ColumnsDragDrop from './ColumnsDragDrop';
 
 class ColumnsDragDropContainer extends Component {
   onDragEnd = (a) => {
@@ -13,12 +13,11 @@ class ColumnsDragDropContainer extends Component {
   };
 
   render() {
-    const { columns, columnsOrder } = this.props;
+    const { columns } = this.props;
 
     return (
       <ColumnsDragDrop
         columns={columns}
-        columnsOrder={columnsOrder}
         onDragEnd={this.onDragEnd}
       />
     );
@@ -27,19 +26,18 @@ class ColumnsDragDropContainer extends Component {
 
 ColumnsDragDropContainer.propTypes = {
   columns: PropTypes.arrayOf(ColumnModel),
-  columnsOrder: PropTypes.arrayOf(PropTypes.string),
 };
 ColumnsDragDropContainer.defaultProps = {
   columns: [],
-  columnsOrder: [],
 };
 
-function mapStateToProps({ boards: { workspace: { board } } }) {
-  const columns = get(board, 'data.columns');
-  const columnsOrder = get(board, 'data.columnsOrder');
+function mapStateToProps({ boards: { workspace: { columns } } }) {
+  const entries = get(columns, 'data.entries', {});
+  const columnsOrder = get(columns, 'data.columnsOrder', []);
 
+  const orderedColumns = columnsOrder.map(columnId => entries[columnId]);
   return {
-    columns,
+    columns: orderedColumns,
     columnsOrder,
   };
 }

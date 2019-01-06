@@ -1,5 +1,5 @@
+import omit from 'lodash/omit';
 import * as actions from './actions';
-import * as columnActions from './components/Columns/actions';
 
 export const initialState = {
   isFetching: false,
@@ -22,7 +22,7 @@ const boards = (state = initialState, action) => {
       ...state,
       isFetching: false,
       didInvalidate: false,
-      data: action.board,
+      data: omit(action.board, ['columns', 'columnsOrder']),
       serverError: '',
     });
 
@@ -31,26 +31,6 @@ const boards = (state = initialState, action) => {
       ...state,
       isFetching: false,
       serverError: action.error,
-    });
-
-  case columnActions.ADD_COLUMN_REQUEST:
-    return Object.assign({}, state, {
-      ...state,
-      isFetchingColumns: true,
-    });
-
-  case columnActions.ADD_COLUMN_SUCCESS:
-    return Object.assign({}, state, {
-      ...state,
-      data: action.updatedBoard,
-      isFetchingColumns: false,
-    });
-
-  case columnActions.ADD_COLUMN_FAILURE:
-    return Object.assign({}, state, {
-      ...state,
-      serverError: action.error,
-      isFetchingColumns: false,
     });
 
   default:
