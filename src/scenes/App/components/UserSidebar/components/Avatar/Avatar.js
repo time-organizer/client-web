@@ -28,7 +28,7 @@ const Avatar = ({
       <ErrorMessage
         key={error}
         message={error}
-        center
+        className="center"
       />
     ))}
   </div>

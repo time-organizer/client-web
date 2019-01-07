@@ -24,7 +24,7 @@ const LoginForm = ({
       value={values.password}
       onChange={handleInputChange}
     />
-    <ErrorMessage message={errorMessage} />
+    <ErrorMessage message={errorMessage} className="margin-bottom-16" />
     <div className="form-button-wrapper">
       <Button onClick={onSubmit}>
         LOGIN

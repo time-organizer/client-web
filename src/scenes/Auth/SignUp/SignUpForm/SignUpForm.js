@@ -35,7 +35,7 @@ const SignUpForm = ({
     {formErrors.map(error => (
       <ErrorMessage key={error} message={error} />
     ))}
-    <ErrorMessage message={errorMessage} />
+    <ErrorMessage message={errorMessage} className="margin-bottom-16" />
     <div className="form-button-wrapper">
       <Button onClick={onSubmit}>
         SUBMIT

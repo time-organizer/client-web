@@ -22,6 +22,8 @@ const APIService = {
       if (status === 401) {
         AuthService.logout();
       }
+
+      throw err;
     }),
 
   post: (url, body, config) => axios.post(`${REACT_APP_DATA_FLOW_URL}${url}`, body, {
@@ -37,6 +39,8 @@ const APIService = {
       if (status === 401) {
         AuthService.logout();
       }
+
+      throw err;
     }),
 
   put: (url, body, config) => axios.put(`${REACT_APP_DATA_FLOW_URL}${url}`, body, {
@@ -52,6 +56,8 @@ const APIService = {
       if (status === 401) {
         AuthService.logout();
       }
+
+      throw err;
     }),
 };
 

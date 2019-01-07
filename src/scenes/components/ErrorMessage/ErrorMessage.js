@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import c from 'classnames';
 
 import './ErrorMessage.css';
 
-const ErrorMessage = ({ message, center }) => (
-  <div className={c('error-message error', { center })}>
+const ErrorMessage = ({ message, className }) => (
+  <div className={`error-message error ${className}`}>
     {message}
   </div>
 );
 
 ErrorMessage.propTypes = {
   message: PropTypes.string.isRequired,
-  center: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 ErrorMessage.defaultProps = {
-  center: false,
+  className: '',
 };
 
 export default ErrorMessage;
