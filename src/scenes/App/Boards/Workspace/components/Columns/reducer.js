@@ -1,4 +1,4 @@
-// import get from 'lodash/get';
+import get from 'lodash/get';
 import * as boardActions from '../../actions';
 import * as actions from './actions';
 
@@ -14,11 +14,31 @@ export const initialState = {
 
 const columns = (state = initialState, action) => {
   switch (action.type) {
-  // case actions.UPDATE_COLUMNS_ORDER_REQUEST:
-  //   return Object.assign({}, state, {
-  //     ...state,
-  //     columnsOrderBackup: get(state, 'state.data.columnsOrder'),
-  //   });
+  case actions.UPDATE_COLUMNS_ORDER_REQUEST:
+    return Object.assign({}, state, {
+      ...state,
+      columnsOrderBackup: get(state, 'data.columnsOrder'),
+      data: {
+        ...state.data,
+        columnsOrder: action.newOrder,
+      },
+    });
+
+  case actions.UPDATE_COLUMNS_ORDER_SUCCESS:
+    return Object.assign({}, state, {
+      ...state,
+      columnsOrderBackup: [],
+    });
+
+  case actions.UPDATE_COLUMNS_ORDER_FAILURE:
+    return Object.assign({}, state, {
+      ...state,
+      data: {
+        ...state.data,
+        columnsOrder: state.columnsOrderBackup,
+      },
+      columnsOrderBackup: [],
+    });
 
   case actions.ADD_COLUMN_REQUEST:
     return Object.assign({}, state, {

@@ -5,11 +5,25 @@ import get from 'lodash/get';
 
 import ColumnModel from '../../../../../../../models/Column';
 import ColumnsDragDrop from './ColumnsDragDrop';
+import { updateColumnOrder } from '../actions';
 
 class ColumnsDragDropContainer extends Component {
-  onDragEnd = (a) => {
-    // TODO columns reordering logic
-    console.log(a); // eslint-disable-line
+  onDragEnd = (dragEvent) => {
+    const { columnsOrder, onUpdateColumnsOrder, boardId } = this.props;
+    const { source, destination } = dragEvent;
+
+    if (!destination) {
+      return;
+    }
+
+    const newColumnsOrder = Array.from(columnsOrder);
+    const sourceIndex = source.index;
+    const destinationIndex = destination.index;
+
+    const [removed] = newColumnsOrder.splice(sourceIndex, 1);
+    newColumnsOrder.splice(destinationIndex, 0, removed);
+
+    onUpdateColumnsOrder(boardId, newColumnsOrder);
   };
 
   render() {
@@ -26,12 +40,17 @@ class ColumnsDragDropContainer extends Component {
 
 ColumnsDragDropContainer.propTypes = {
   columns: PropTypes.arrayOf(ColumnModel),
+  columnsOrder: PropTypes.arrayOf(PropTypes.string),
+  onUpdateColumnsOrder: PropTypes.func.isRequired,
+  boardId: PropTypes.string.isRequired,
 };
 ColumnsDragDropContainer.defaultProps = {
   columns: [],
+  columnsOrder: [],
 };
 
-function mapStateToProps({ boards: { workspace: { columns } } }) {
+function mapStateToProps({ boards: { workspace: { board, columns } } }) {
+  const boardId = get(board, 'data._id');
   const entries = get(columns, 'data.entries', {});
   const columnsOrder = get(columns, 'data.columnsOrder', []);
 
@@ -39,11 +58,14 @@ function mapStateToProps({ boards: { workspace: { columns } } }) {
   return {
     columns: orderedColumns,
     columnsOrder,
+    boardId,
   };
 }
 
-function mapDispatchToProps() {
-  return {};
+function mapDispatchToProps(dispatch) {
+  return {
+    onUpdateColumnsOrder: (boardId, newOrder) => dispatch(updateColumnOrder(boardId, newOrder)),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ColumnsDragDropContainer);

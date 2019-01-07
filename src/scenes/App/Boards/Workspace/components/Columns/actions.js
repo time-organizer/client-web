@@ -4,34 +4,47 @@ export const ADD_COLUMN_REQUEST = 'ADD_COLUMN_REQUEST';
 export const ADD_COLUMN_SUCCESS = 'ADD_COLUMN_SUCCESS';
 export const ADD_COLUMN_FAILURE = 'ADD_COLUMN_FAILURE';
 
-// export const UPDATE_COLUMNS_ORDER_REQUEST = 'UPDATE_COLUMNS_ORDER_REQUEST';
-// export const UPDATE_COLUMNS_ORDER_SUCCESS = 'UPDATE_COLUMNS_ORDER_SUCCESS';
-// export const UPDATE_COLUMNS_ORDER_FAILURE = 'UPDATE_COLUMNS_ORDER_FAILURE';
-//
-// function updateColumnsOrderRequest() {
-//   return {
-//     type: UPDATE_COLUMNS_ORDER_REQUEST,
-//   };
-// }
-//
-// function updateColumnsOrderSuccess() {
-//   return {
-//     type: UPDATE_COLUMNS_ORDER_SUCCESS,
-//   };
-// }
-//
-// function updateColumnsOrderFailure(error) {
-//   return {
-//     type: UPDATE_COLUMNS_ORDER_FAILURE,
-//     serverError: error,
-//   };
-// }
-//
-// function updateColumnOrder() {
-//   return (dispatch) => {
-//     dispatch(updateColumnsOrderRequest());
-//   };
-// }
+export const UPDATE_COLUMNS_ORDER_REQUEST = 'UPDATE_COLUMNS_ORDER_REQUEST';
+export const UPDATE_COLUMNS_ORDER_SUCCESS = 'UPDATE_COLUMNS_ORDER_SUCCESS';
+export const UPDATE_COLUMNS_ORDER_FAILURE = 'UPDATE_COLUMNS_ORDER_FAILURE';
+
+function updateColumnsOrderRequest(newOrder) {
+  return {
+    type: UPDATE_COLUMNS_ORDER_REQUEST,
+    newOrder,
+  };
+}
+
+function updateColumnsOrderSuccess() {
+  return {
+    type: UPDATE_COLUMNS_ORDER_SUCCESS,
+  };
+}
+
+function updateColumnsOrderFailure(error) {
+  return {
+    type: UPDATE_COLUMNS_ORDER_FAILURE,
+    serverError: error,
+  };
+}
+
+export function updateColumnOrder(boardId, newOrder) {
+  return (dispatch) => {
+    dispatch(updateColumnsOrderRequest(newOrder));
+
+    APIService.put(`/api/boards/${boardId}`, {
+      updatedObject: {
+        columnsOrder: newOrder,
+      },
+    })
+      .then((updatedBoard) => {
+        dispatch(updateColumnsOrderSuccess(updatedBoard));
+      })
+      .catch((error) => {
+        dispatch(updateColumnsOrderFailure(error));
+      });
+  };
+}
 
 function addColumnRequest() {
   return {
