@@ -17,7 +17,7 @@ import Content from '../../../components/Content/Content';
 import ContentLayout from '../../../components/ContentLayout/ContentLayout';
 
 const BoardsList = ({ boards, isFetching }) => (
-  <ContentLayout>
+  <ContentLayout scrollable>
     <ContentHeader headerName="Boards" />
     <Content>
       <TransitionGroup className="boards-list">

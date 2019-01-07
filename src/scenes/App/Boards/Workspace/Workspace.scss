@@ -1,7 +1,10 @@
 .columns-wrapper {
   width: 100%;
   height: calc(100% - 40px);
-  padding: 16px;
-  overflow: scroll;
   white-space: nowrap;
+
+  .droppable-columns-wrapper {
+    padding: 16px;
+    overflow-y: scroll;
+  }
 }

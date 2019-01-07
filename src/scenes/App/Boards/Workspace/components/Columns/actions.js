@@ -15,9 +15,10 @@ function updateColumnsOrderRequest(newOrder) {
   };
 }
 
-function updateColumnsOrderSuccess() {
+function updateColumnsOrderSuccess(updatedBoard) {
   return {
     type: UPDATE_COLUMNS_ORDER_SUCCESS,
+    board: updatedBoard,
   };
 }
 
@@ -38,7 +39,7 @@ export function updateColumnOrder(boardId, newOrder) {
       },
     })
       .then((updatedBoard) => {
-        dispatch(updateColumnsOrderSuccess(updatedBoard));
+        dispatch(updateColumnsOrderSuccess(updatedBoard.data));
       })
       .catch((error) => {
         dispatch(updateColumnsOrderFailure(error));

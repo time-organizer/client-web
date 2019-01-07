@@ -11,6 +11,10 @@
   padding: 8px;
   vertical-align: top;
   box-shadow: $box-shadow-flat;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .column {
