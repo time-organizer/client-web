@@ -37,6 +37,7 @@ export function updateColumnOrder(boardId, newOrder) {
       updatedObject: {
         columnsOrder: newOrder,
       },
+      confirmOnly: true,
     })
       .then((updatedBoard) => {
         dispatch(updateColumnsOrderSuccess(updatedBoard.data));
