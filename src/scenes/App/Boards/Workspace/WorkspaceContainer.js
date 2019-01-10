@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 
 import Workspace from './Workspace';
-import { fetchBoardIfNeeded } from './actions';
+import { clearWorkspace, fetchBoardIfNeeded } from './actions';
 
 class WorkspaceContainer extends Component {
   componentWillMount() {
+    const { match: { params }, board, onClearWorkspace } = this.props;
+    if (board && (get(board, 'data._id') !== params.id)) {
+      onClearWorkspace();
+    }
+  }
+
+  componentDidMount() {
     const { refreshBoard, match: { params } } = this.props;
+
     refreshBoard(params.id);
   }
 
@@ -23,6 +32,7 @@ WorkspaceContainer.propTypes = {
   match: PropTypes.shape({}).isRequired,
   board: PropTypes.shape({}),
   refreshBoard: PropTypes.func.isRequired,
+  onClearWorkspace: PropTypes.func.isRequired,
 };
 WorkspaceContainer.defaultProps = {
   board: null,
@@ -37,6 +47,7 @@ function mapStateToProps({ boards: { workspace: { board } } }) {
 function mapDispatchToProps(dispatch) {
   return {
     refreshBoard: id => dispatch(fetchBoardIfNeeded(id)),
+    onClearWorkspace: () => dispatch(clearWorkspace()),
   };
 }
 

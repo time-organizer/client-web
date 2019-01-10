@@ -5,18 +5,20 @@ export const FETCH_BOARD_REQUEST = 'FETCH_BOARD_REQUEST';
 export const FETCH_BOARD_SUCCESS = 'FETCH_BOARD_SUCCESS';
 export const FETCH_BOARD_FAILURE = 'FETCH_BOARD_FAILURE';
 
+export const CLEAR_WORKSPACE = 'CLEAR_WORKSPACE';
+
 function shouldFetchBoard(state, id) {
-  const { boards: { list: { isFetching, didInvalidate, board } } } = state;
+  const { boards: { workspace: { board: { data, didInvalidate, isFetching } } } } = state;
 
   if (isFetching) {
     return false;
   }
 
-  if (!board) {
+  if (!data) {
     return true;
   }
 
-  if (board.id !== id) {
+  if (get(data, '_id') !== id) {
     return true;
   }
 
@@ -56,5 +58,11 @@ export function fetchBoardIfNeeded(id) {
           dispatch(fetchBoardFailure(get(error, 'response.data.message', '')));
         });
     }
+  };
+}
+
+export function clearWorkspace() {
+  return {
+    type: CLEAR_WORKSPACE,
   };
 }

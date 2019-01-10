@@ -42,11 +42,12 @@ ColumnsDragDropContainer.propTypes = {
   columns: PropTypes.arrayOf(ColumnModel),
   columnsOrder: PropTypes.arrayOf(PropTypes.string),
   onUpdateColumnsOrder: PropTypes.func.isRequired,
-  boardId: PropTypes.string.isRequired,
+  boardId: PropTypes.string,
 };
 ColumnsDragDropContainer.defaultProps = {
   columns: [],
   columnsOrder: [],
+  boardId: '',
 };
 
 function mapStateToProps({ boards: { workspace: { board, columns } } }) {

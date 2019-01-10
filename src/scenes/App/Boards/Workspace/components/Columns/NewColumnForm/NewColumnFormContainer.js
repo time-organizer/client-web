@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 
 import handleInputChange from '../../../../../../../utilities/handleInputChange';
 
@@ -84,12 +85,14 @@ class NewColumnFormContainer extends Component {
 
 NewColumnFormContainer.propTypes = {
   onAddNewColumn: PropTypes.func.isRequired,
-  boardId: PropTypes.string.isRequired,
+  boardId: PropTypes.string,
 };
-NewColumnFormContainer.defaultProps = {};
+NewColumnFormContainer.defaultProps = {
+  boardId: '',
+};
 
 function mapStateToProps({ boards: { workspace: { board } } }) {
-  const boardId = board.data._id;
+  const boardId = get(board, 'data._id');
 
   return {
     boardId,

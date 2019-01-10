@@ -33,6 +33,12 @@ const boards = (state = initialState, action) => {
       serverError: action.error,
     });
 
+  case actions.CLEAR_WORKSPACE:
+    return Object.assign({}, state, {
+      ...state,
+      data: null,
+    });
+
   default:
     return state;
   }
