@@ -26,7 +26,7 @@ const Column = ({ column, index }) => (
             {column.title}
           </div>
         </div>
-        <NewTaskButton />
+        <NewTaskButton columnId={column._id} />
       </div>
     )}
   </Draggable>
