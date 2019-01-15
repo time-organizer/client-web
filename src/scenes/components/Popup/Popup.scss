@@ -3,7 +3,6 @@
 
 $popup-margin: 24px;
 $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-50% - #{$popup-margin}));
-$popup-footer-height: 60px; // defined also in PopupFooter.scss
 
 .popup-overlay {
   position: absolute;

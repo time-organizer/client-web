@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 
-import NewTaskButton from '../../Tasks/NewTaskButton';
+import NewTask from '../../Tasks/NewTask';
 
 import './Column.css';
 
@@ -26,7 +26,7 @@ const Column = ({ column, index }) => (
             {column.title}
           </div>
         </div>
-        <NewTaskButton columnId={column._id} />
+        <NewTask columnId={column._id} />
       </div>
     )}
   </Draggable>
