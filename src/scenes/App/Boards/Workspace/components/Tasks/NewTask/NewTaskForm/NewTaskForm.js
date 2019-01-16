@@ -18,6 +18,7 @@ const NewTaskForm = ({ onClose, onChange, values }) => (
     )}
   >
     <BorderInput
+      placeholder="Title"
       onChange={onChange}
       name="title"
       value={values.title}

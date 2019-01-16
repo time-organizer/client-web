@@ -72,6 +72,11 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
     transform: none;
   }
 
+  .popup-title {
+    padding: 24px 24px 0 24px;
+    font-weight: 700;
+  }
+
   .popup-content {
     padding: 24px;
     height: calc(100% - 40px);
@@ -80,7 +85,7 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
   &.with-footer {
     .popup-content {
       padding: 24px 24px 0 24px;
-      height: calc(100% - 40px - #{$popup-footer-height});
+      height: calc(100% - 50px - #{$popup-footer-height});
     }
   }
 

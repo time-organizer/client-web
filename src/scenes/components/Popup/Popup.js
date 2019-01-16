@@ -5,7 +5,6 @@ import c from 'classnames';
 
 import Portal from '../Portal';
 import CloseButton from '../CloseButton';
-import PopupTitle from './components/PopupTitle';
 import Fade from '../transitions/Fade';
 
 import './Popup.css';
@@ -60,7 +59,9 @@ class Popup extends Component {
           )}
           >
             {title && (
-              <PopupTitle title={title} />
+              <div className="popup-title">
+                <h1>{title}</h1>
+              </div>
             )}
             {withCloseButton && (
               <CloseButton onClose={this.closePopup} edgeOffset={20} />
