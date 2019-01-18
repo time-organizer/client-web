@@ -50,8 +50,15 @@ const columns = (state = initialState, action) => {
     return Object.assign({}, state, {
       ...state,
       data: {
-        entries: action.updatedBoard.columns,
-        columnsOrder: action.updatedBoard.columnsOrder,
+        ...state.data,
+        entries: {
+          ...state.data.entries,
+          [action.updatedColumn._id]: action.updatedColumn,
+        },
+        columnsOrder: [
+          ...state.data.columnsOrder,
+          action.updatedColumn._id,
+        ],
       },
       isFetching: false,
     });

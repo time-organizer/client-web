@@ -54,10 +54,10 @@ function addColumnRequest() {
   };
 }
 
-function addColumnSuccess(updatedBoard) {
+function addColumnSuccess(updatedColumn) {
   return {
     type: ADD_COLUMN_SUCCESS,
-    updatedBoard,
+    updatedColumn,
   };
 }
 
@@ -73,7 +73,7 @@ export function addNewColumn(column) {
     dispatch(addColumnRequest());
 
     return APIService.post('/api/columns', column)
-      .then(updatedBoard => dispatch(addColumnSuccess(updatedBoard.data)))
+      .then(updatedColumn => dispatch(addColumnSuccess(updatedColumn.data)))
       .catch((error) => {
         dispatch(addColumnFailure(error));
       });
