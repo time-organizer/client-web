@@ -6,6 +6,7 @@ import BoardsWorkspaceReducer from '../scenes/App/Boards/Workspace/reducer';
 import BoardsNewReducer from '../scenes/App/Boards/New/reducer';
 import BoardsListReducer from '../scenes/App/Boards/List/reducer';
 import ColumnsWorkspaceReducer from '../scenes/App/Boards/Workspace/components/Columns/reducer';
+import TasksWorkspaceReducer from '../scenes/App/Boards/Workspace/components/Tasks/reducer';
 import { USER_LOGOUT } from '../scenes/App/components/UserSidebar/actions';
 
 const appReducer = combineReducers({
@@ -16,6 +17,7 @@ const appReducer = combineReducers({
     workspace: combineReducers({
       board: BoardsWorkspaceReducer,
       columns: ColumnsWorkspaceReducer,
+      tasks: TasksWorkspaceReducer,
     }),
     new: BoardsNewReducer,
     list: BoardsListReducer,

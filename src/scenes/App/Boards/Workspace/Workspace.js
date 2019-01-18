@@ -8,11 +8,11 @@ import ColumnsDragDrop from './components/Columns/ColumnsDragDrop';
 
 import './Workspace.css';
 
-const Workspace = ({ board }) => (
+const Workspace = ({ boardData }) => (
   <ContentLayoutFull>
-    {board.data && (
-      <WorkspaceBackground themeId={board.data.theme}>
-        <ContentHeader headerName={board.data.title} />
+    {boardData && (
+      <WorkspaceBackground themeId={boardData.theme}>
+        <ContentHeader headerName={boardData.title} />
         <div className="columns-wrapper">
           <ColumnsDragDrop />
         </div>
@@ -22,10 +22,10 @@ const Workspace = ({ board }) => (
 );
 
 Workspace.propTypes = {
-  board: PropTypes.shape(),
+  boardData: PropTypes.shape(),
 };
 Workspace.defaultProps = {
-  board: null,
+  boardData: null,
 };
 
 export default Workspace;

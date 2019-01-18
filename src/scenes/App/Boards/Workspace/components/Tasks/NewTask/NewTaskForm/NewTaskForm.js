@@ -5,7 +5,9 @@ import Popup from '../../../../../../../components/Popup/Popup';
 import BorderInput from '../../../../../../../components/BorderInput';
 import PopupFooter from '../../../../../../../components/Popup/components/PopupFooter';
 
-const NewTaskForm = ({ onClose, onChange, values }) => (
+const NewTaskForm = ({
+  onClose, onSubmit, onChange, values,
+}) => (
   <Popup
     onClose={onClose}
     popupType="small"
@@ -13,7 +15,7 @@ const NewTaskForm = ({ onClose, onChange, values }) => (
     footer={(
       <PopupFooter
         cancel={onClose}
-        accept={() => {}}
+        accept={onSubmit}
       />
     )}
   >
@@ -29,6 +31,7 @@ const NewTaskForm = ({ onClose, onChange, values }) => (
 NewTaskForm.propTypes = {
   onClose: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   values: PropTypes.shape({
     title: PropTypes.string.isRequired,
   }).isRequired,

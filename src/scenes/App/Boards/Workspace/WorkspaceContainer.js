@@ -8,8 +8,8 @@ import { clearWorkspace, fetchBoardIfNeeded } from './actions';
 
 class WorkspaceContainer extends Component {
   componentWillMount() {
-    const { match: { params }, board, onClearWorkspace } = this.props;
-    if (board && (get(board, 'data._id') !== params.id)) {
+    const { match: { params }, boardData, onClearWorkspace } = this.props;
+    if (boardData && (get(boardData, '_id') !== params.id)) {
       onClearWorkspace();
     }
   }
@@ -21,26 +21,29 @@ class WorkspaceContainer extends Component {
   }
 
   render() {
-    const { board } = this.props;
+    const { boardData } = this.props;
     return (
-      <Workspace board={board} />
+      <Workspace boardData={boardData} />
     );
   }
 }
 
 WorkspaceContainer.propTypes = {
   match: PropTypes.shape({}).isRequired,
-  board: PropTypes.shape({}),
+  boardData: PropTypes.shape({}), // TODO add board model
   refreshBoard: PropTypes.func.isRequired,
   onClearWorkspace: PropTypes.func.isRequired,
 };
 WorkspaceContainer.defaultProps = {
-  board: null,
+  boardData: null,
 };
 
 function mapStateToProps({ boards: { workspace: { board } } }) {
+  const boardData = board.data;
+
   return {
     board,
+    boardData,
   };
 }
 
