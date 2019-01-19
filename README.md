@@ -12,7 +12,7 @@ https://trello.com/b/Gp9LNn5u/time-organizer
 Application should be used to easily manage processes. When finished, it should have following functionalities:
 - Creating new trello-like board ✓
 - Creating columns ✓
-- changing columns order ✓
+- Changing columns order ✓
 - Creating tasks ✓ 
 - Changing tasks order 
 - Creating labels for tasks
