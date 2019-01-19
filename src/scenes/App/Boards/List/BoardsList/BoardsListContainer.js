@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import BoardsList from './BoardsList';
 import { fetchBoardsIfNeeded } from '../actions';
-import BoardModel from '../../../../../models/Board';
+import { BoardModel } from '../../../../../models/Board';
 
 class BoardsListContainer extends Component {
   componentDidMount() {

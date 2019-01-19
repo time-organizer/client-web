@@ -83,7 +83,7 @@ const columns = (state = initialState, action) => {
     });
 
   case taskActions.ADD_TASK_SUCCESS: {
-    const { columnId, _id: { taskId } } = action.createdTask;
+    const { columnId, _id: taskId } = action.createdTask;
 
     return Object.assign({}, state, {
       ...state,

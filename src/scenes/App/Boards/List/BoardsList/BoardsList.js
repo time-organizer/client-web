@@ -7,7 +7,7 @@ import {
 
 import NewBoardButton from '../../New/NewBoardButton';
 import BoardListItem from '../BoardListItem';
-import BoardModel from '../../../../../models/Board';
+import { BoardModel } from '../../../../../models/Board';
 import Fade from '../../../../components/transitions/Fade';
 import Loader from '../../../../components/Loaders/Loader';
 

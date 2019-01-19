@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import { Link } from 'react-router-dom';
 
 import boardThemes from '../../utilities/boardThemes';
-import BoardModel from '../../../../../models/Board';
+import { BoardModel } from '../../../../../models/Board';
 
 import './BoardListItem.css';
 

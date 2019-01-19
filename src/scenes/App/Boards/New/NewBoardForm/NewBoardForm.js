@@ -29,6 +29,7 @@ const NewBoardForm = ({
           withLabel
           placeholder="Title"
           value={title}
+          focus
         />
         {formErrors.map(formError => (
           <ErrorMessage key={formError} message={formError} />

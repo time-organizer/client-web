@@ -24,6 +24,7 @@ const NewTaskForm = ({
       onChange={onChange}
       name="title"
       value={values.title}
+      focus
     />
   </Popup>
 );

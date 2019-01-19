@@ -1,14 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Task.css';
 
-const Task = () => (
+const Task = ({ task }) => (
   <div className="task">
-    <p>To jest test</p>
+    <p>{task.title}</p>
   </div>
 );
 
-Task.propTypes = {};
+Task.propTypes = {
+  task: PropTypes.shape().isRequired,
+};
 Task.defaultProps = {};
 
 export default Task;

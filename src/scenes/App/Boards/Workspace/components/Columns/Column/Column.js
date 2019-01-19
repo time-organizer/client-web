@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 
 import NewTask from '../../Tasks/NewTask';
+import Task from '../../Tasks/Task';
 
 import './Column.css';
 
@@ -25,6 +26,9 @@ const Column = ({ column, index }) => (
           >
             {column.title}
           </div>
+          {column.tasksOrder.map(taskId => (
+            <Task key={taskId} taskId={taskId} />
+          ))}
         </div>
         <NewTask columnId={column._id} />
       </div>
