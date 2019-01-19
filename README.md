@@ -1,5 +1,6 @@
 # Time organizer - web client
-Application for production process management with a customisable statistics dashboard.
+Application for production process management with a customisable statistics dashboard.<br/>
+https://trello.com/b/Gp9LNn5u/time-organizer
  
 ### Application built with
 - React
@@ -14,7 +15,6 @@ Application should be used to easily manage processes. When finished, it should 
 - changing columns order ✓
 - Creating tasks ✓ 
 - Changing tasks order 
-- Ability to move multiple tasks at once
 - Creating labels for tasks
 - Ability to invite other users to the board
 - Ability to assign other people to tasks
