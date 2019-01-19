@@ -7,7 +7,6 @@ export const initialState = {
   tasksOrderBackup: {},
   data: {
     entries: {},
-    tasksOrder: [],
   },
 };
 
@@ -19,15 +18,20 @@ const columns = (state = initialState, action) => {
       isFetching: true,
     });
 
-  case actions.ADD_TASK_SUCCESS:
+  case actions.ADD_TASK_SUCCESS: {
+    const { _id: taskId } = action.createdTask;
+
     return Object.assign({}, state, {
       ...state,
       data: {
-        entries: action.updatedBoard.tasks,
-        tasksOrder: action.updatedBoard.tasksOrder,
+        entries: {
+          ...state.data.entries,
+          [taskId]: action.createdTask,
+        },
       },
       isFetching: false,
     });
+  }
 
   case actions.ADD_TASK_FAILURE:
     return Object.assign({}, state, {
@@ -41,7 +45,6 @@ const columns = (state = initialState, action) => {
       ...state,
       data: {
         entries: action.board.tasks,
-        tasksOrder: action.board.tasksOrder,
       },
       serverError: '',
     });

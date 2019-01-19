@@ -22,7 +22,7 @@ const boards = (state = initialState, action) => {
       ...state,
       isFetching: false,
       didInvalidate: false,
-      data: omit(action.board, ['columns', 'columnsOrder']),
+      data: omit(action.board, ['columns', 'columnsOrder', 'tasks']),
       serverError: '',
     });
 

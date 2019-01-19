@@ -10,10 +10,10 @@ function addTaskRequest() {
   };
 }
 
-function addTaskSuccess(updatedBoard) {
+function addTaskSuccess(createdTask) {
   return {
     type: ADD_TASK_SUCCESS,
-    updatedBoard,
+    createdTask,
   };
 }
 

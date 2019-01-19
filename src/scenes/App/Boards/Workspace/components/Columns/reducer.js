@@ -1,5 +1,6 @@
 import get from 'lodash/get';
 import * as boardActions from '../../actions';
+import * as taskActions from '../Tasks/actions';
 import * as actions from './actions';
 
 export const initialState = {
@@ -74,11 +75,33 @@ const columns = (state = initialState, action) => {
     return Object.assign({}, state, {
       ...state,
       data: {
+        ...state.data,
         entries: action.board.columns,
         columnsOrder: action.board.columnsOrder,
       },
       serverError: '',
     });
+
+  case taskActions.ADD_TASK_SUCCESS: {
+    const { columnId, _id: { taskId } } = action.createdTask;
+
+    return Object.assign({}, state, {
+      ...state,
+      data: {
+        ...state.data,
+        entries: {
+          ...state.data.entries,
+          [columnId]: {
+            ...state.data.entries[columnId],
+            tasksOrder: [
+              ...state.data.entries[columnId].tasksOrder,
+              taskId,
+            ],
+          },
+        },
+      },
+    });
+  }
 
   default:
     return state;
