@@ -9,12 +9,28 @@ import ColumnsDragDrop from '../Columns/ColumnsDragDrop';
 
 class DragAndDropContainer extends Component {
   onDragEnd = (dragEvent) => {
-    const { columnsOrder, onUpdateColumnsOrder, boardId } = this.props;
     const { source, destination, type } = dragEvent;
 
     if (!destination || type !== 'COLUMN') {
       return;
     }
+
+    if (destination.droppableId === source.droppableId && destination.index === source.index) {
+      return;
+    }
+
+    if (type === 'COLUMN') {
+      this.handleColumnsDnD(dragEvent);
+    }
+
+    if (type === 'TASK') {
+      this.handleTasksDnD(dragEvent);
+    }
+  };
+
+  handleColumnsDnD = (dragEvent) => {
+    const { columnsOrder, onUpdateColumnsOrder, boardId } = this.props;
+    const { source, destination } = dragEvent;
 
     const newColumnsOrder = Array.from(columnsOrder);
     const sourceIndex = source.index;
@@ -24,6 +40,10 @@ class DragAndDropContainer extends Component {
     newColumnsOrder.splice(destinationIndex, 0, removed);
 
     onUpdateColumnsOrder(boardId, newColumnsOrder);
+  };
+
+  handleTasksDnD = () => {
+
   };
 
   render() {
