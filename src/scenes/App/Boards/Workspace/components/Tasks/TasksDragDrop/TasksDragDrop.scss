@@ -1,0 +1,9 @@
+.droppable-tasks-wrapper {
+  height: calc(100% - 70px);
+  overflow: hidden;
+  overflow-y: scroll;
+
+  &.dragging-over {
+
+  }
+}

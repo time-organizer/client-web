@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import Column from '../Column';
+import c from 'classnames';
 
-import './ColumnsDragDrop.css';
+import Column from '../Column';
 import NewColumnForm from '../NewColumnForm/NewColumnFormContainer';
 import ColumnModel from '../../../../../../../models/Column';
+
+import './ColumnsDragDrop.css';
 
 class ColumnsDragDrop extends Component {
   render() {
@@ -16,10 +18,14 @@ class ColumnsDragDrop extends Component {
         <Droppable
           droppableId="droppable-columns"
           direction="horizontal"
+          type="COLUMN"
         >
-          {providedDroppable => (
+          {(providedDroppable, snapshot) => (
             <div
-              className="droppable-columns-wrapper"
+              className={c('droppable-columns-wrapper',
+                { 'dragging-over': snapshot.isDraggingOver })
+              }
+
               {...providedDroppable.droppableProps}
               ref={providedDroppable.innerRef}
             >
@@ -30,6 +36,7 @@ class ColumnsDragDrop extends Component {
                   column={column}
                 />
               ))}
+              {providedDroppable.placeholder}
               <NewColumnForm />
             </div>
           )}

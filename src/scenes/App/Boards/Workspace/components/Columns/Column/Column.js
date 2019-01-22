@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 
 import NewTask from '../../Tasks/NewTask';
-import Task from '../../Tasks/Task';
+import TasksDragDrop from '../../Tasks/TasksDragDrop';
 
 import './Column.css';
 
 const Column = ({ column, index }) => (
   <Draggable
-    key={column._id}
     draggableId={column._id}
     index={index}
   >
@@ -26,9 +25,7 @@ const Column = ({ column, index }) => (
           >
             {column.title}
           </div>
-          {column.tasksOrder.map(taskId => (
-            <Task key={taskId} taskId={taskId} />
-          ))}
+          <TasksDragDrop columnId={column._id} tasksOrder={column.tasksOrder} />
         </div>
         <NewTask columnId={column._id} />
       </div>

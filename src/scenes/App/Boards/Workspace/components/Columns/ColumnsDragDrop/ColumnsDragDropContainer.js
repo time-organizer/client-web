@@ -10,9 +10,9 @@ import { updateColumnOrder } from '../actions';
 class ColumnsDragDropContainer extends Component {
   onDragEnd = (dragEvent) => {
     const { columnsOrder, onUpdateColumnsOrder, boardId } = this.props;
-    const { source, destination } = dragEvent;
+    const { source, destination, type } = dragEvent;
 
-    if (!destination) {
+    if (!destination || type !== 'COLUMN') {
       return;
     }
 

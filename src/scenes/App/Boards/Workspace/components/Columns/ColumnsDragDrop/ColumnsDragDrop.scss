@@ -1,3 +1,7 @@
 .droppable-columns-wrapper {
   height: 100%;
+
+  &.dragging-over {
+    background: red;
+  }
 }
