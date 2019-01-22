@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import ContentLayoutFull from '../../components/ContentLayoutFull';
 import WorkspaceBackground from './components/WorkspaceBackground';
-import ColumnsDragDrop from './components/Columns/ColumnsDragDrop';
+import DragAndDrop from './components/DragAndDrop';
 
 import './Workspace.css';
 
@@ -13,8 +13,8 @@ const Workspace = ({ boardData }) => (
     {boardData && (
       <WorkspaceBackground themeId={boardData.theme}>
         <ContentHeader headerName={boardData.title} />
-        <div className="columns-wrapper">
-          <ColumnsDragDrop />
+        <div className="workspace-columns-wrapper">
+          <DragAndDrop />
         </div>
       </WorkspaceBackground>
     )}

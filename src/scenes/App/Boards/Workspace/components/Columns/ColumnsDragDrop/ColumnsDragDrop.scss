@@ -1,7 +1,5 @@
 .droppable-columns-wrapper {
   height: 100%;
-
-  &.dragging-over {
-    background: red;
-  }
+  padding: 16px;
+  overflow-y: scroll;
 }

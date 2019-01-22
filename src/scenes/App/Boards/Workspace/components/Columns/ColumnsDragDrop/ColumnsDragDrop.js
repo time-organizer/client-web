@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import c from 'classnames';
+import { Droppable } from 'react-beautiful-dnd';
 
 import Column from '../Column';
 import NewColumnForm from '../NewColumnForm/NewColumnFormContainer';
@@ -11,37 +10,32 @@ import './ColumnsDragDrop.css';
 
 class ColumnsDragDrop extends Component {
   render() {
-    const { columns, onDragEnd } = this.props;
+    const { columns } = this.props;
 
     return (
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable
-          droppableId="droppable-columns"
-          direction="horizontal"
-          type="COLUMN"
-        >
-          {(providedDroppable, snapshot) => (
-            <div
-              className={c('droppable-columns-wrapper',
-                { 'dragging-over': snapshot.isDraggingOver })
-              }
-
-              {...providedDroppable.droppableProps}
-              ref={providedDroppable.innerRef}
-            >
-              {columns.map((column, index) => (
-                <Column
-                  key={column._id}
-                  index={index}
-                  column={column}
-                />
-              ))}
-              {providedDroppable.placeholder}
-              <NewColumnForm />
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+      <Droppable
+        droppableId="droppable-columns"
+        direction="horizontal"
+        type="COLUMN"
+      >
+        {providedDroppable => (
+          <div
+            className="droppable-columns-wrapper"
+            {...providedDroppable.droppableProps}
+            ref={providedDroppable.innerRef}
+          >
+            {columns.map((column, index) => (
+              <Column
+                key={column._id}
+                index={index}
+                column={column}
+              />
+            ))}
+            {providedDroppable.placeholder}
+            <NewColumnForm />
+          </div>
+        )}
+      </Droppable>
     );
   }
 }
