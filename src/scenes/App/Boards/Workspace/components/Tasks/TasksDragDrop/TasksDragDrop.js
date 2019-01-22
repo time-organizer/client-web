@@ -4,6 +4,7 @@ import { Droppable } from 'react-beautiful-dnd';
 import c from 'classnames';
 
 import Task from '../Task';
+import TaskModel from '../../../../../../../models/Task';
 
 import './TasksDragDrop.css';
 
@@ -33,7 +34,7 @@ const TasksDragDrop = ({ tasks, columnId }) => (
 );
 
 TasksDragDrop.propTypes = {
-  tasks: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  tasks: PropTypes.arrayOf(TaskModel).isRequired,
   columnId: PropTypes.string.isRequired,
 };
 TasksDragDrop.defaultProps = {};

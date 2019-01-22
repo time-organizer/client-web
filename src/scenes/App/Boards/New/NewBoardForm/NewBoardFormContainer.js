@@ -21,6 +21,7 @@ class NewBoardFormContainer extends Component {
     this.removeFormError = removeFormError.bind(this);
     this.possibleFormErrors = {
       noTitle: 'Please provide a title',
+      noTheme: 'Please choose theme',
     };
   }
 
@@ -43,7 +44,7 @@ class NewBoardFormContainer extends Component {
       return;
     }
 
-    this.setState({ chosenTheme: boardTheme });
+    this.setState({ chosenTheme: boardTheme }, this.isFormInvalid);
   };
 
   submitNewBoard = () => {
@@ -63,14 +64,20 @@ class NewBoardFormContainer extends Component {
   };
 
   isFormInvalid = () => {
-    const { title } = this.state;
+    const { title, chosenTheme } = this.state;
 
     if (title.trim().length === 0) {
       this.addFormError(this.possibleFormErrors.noTitle);
       return true;
     }
-
     this.removeFormError(this.possibleFormErrors.noTitle);
+
+    if (!chosenTheme) {
+      this.addFormError(this.possibleFormErrors.noTheme);
+      return true;
+    }
+    this.removeFormError(this.possibleFormErrors.noTheme);
+
     return false;
   };
 

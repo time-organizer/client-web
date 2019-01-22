@@ -28,7 +28,7 @@ const NewColumnForm = ({
           focus
         />
         {submitError && !title.length && (
-          <ErrorMessage message="Provide a title" />
+          <ErrorMessage className="margin-8" message="Provide a title" />
         )}
       </Fragment>
     </Fade>
