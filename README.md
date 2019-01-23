@@ -14,7 +14,7 @@ Application should be used to easily manage processes. When finished, it should 
 - Creating columns ✓
 - Changing columns order ✓
 - Creating tasks ✓ 
-- Changing tasks order 
+- Changing tasks order ✓ 
 - Creating labels for tasks
 - Ability to invite other users to the board
 - Ability to assign other people to tasks
