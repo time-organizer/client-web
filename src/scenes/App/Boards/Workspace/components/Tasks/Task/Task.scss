@@ -12,6 +12,7 @@
   box-shadow: $box-shadow-flat;
   transition: box-shadow .3s;
   outline: none;
+  user-select: none;
 
   &.is-dragged {
     box-shadow: $box-shadow;

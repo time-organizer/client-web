@@ -42,7 +42,6 @@ class ColumnsDragDrop extends Component {
 
 ColumnsDragDrop.propTypes = {
   columns: PropTypes.arrayOf(ColumnModel),
-  onDragEnd: PropTypes.func.isRequired,
 };
 
 ColumnsDragDrop.defaultProps = {
