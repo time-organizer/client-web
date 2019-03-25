@@ -4,6 +4,10 @@
   width: 100%;
   margin-top: 64px;
 
+  .avatar-circle.hidden {
+    display: none;
+  }
+
   .avatar-uploader {
     border: none;
   }

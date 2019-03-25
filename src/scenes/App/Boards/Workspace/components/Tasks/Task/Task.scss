@@ -1,18 +1,24 @@
 @import '../../../../../../../common_styles/_variables.scss';
 
+$task-margin: 8px;
+
 .task {
-  width: 100%;
+  width: calc(100% - #{2 * $task-margin});
   background: $bg-color;
   display: flex;
   align-items: center;
   min-height: 30px;
   border-radius: 4px;
-  margin-top: 8px;
   padding: 8px;
+  margin: $task-margin $task-margin 0;
   box-shadow: $box-shadow-flat;
   transition: box-shadow .3s;
   outline: none;
   user-select: none;
+
+  &:first-child {
+    margin-top: 0;
+  }
 
   &.is-dragged {
     box-shadow: $box-shadow;

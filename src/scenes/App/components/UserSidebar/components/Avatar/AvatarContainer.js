@@ -6,7 +6,6 @@ import get from 'lodash/get';
 import { uploadAvatar } from '../../actions';
 import AssetModel from '../../../../../../models/Asset';
 import Avatar from './Avatar';
-import './Avatar.css';
 
 class AvatarContainer extends Component {
   state = {

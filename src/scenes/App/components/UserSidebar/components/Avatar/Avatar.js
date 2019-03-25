@@ -1,29 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
+import c from 'classnames';
 
 import AssetPreviewer from '../../../../../components/AssetPreviewer';
 import AssetModel from '../../../../../../models/Asset';
 import Loader from '../../../../../components/Loaders/Loader';
 import ErrorMessage from '../../../../../components/ErrorMessage';
 
+import './Avatar.css';
+
 const Avatar = ({
   avatar, isUploadingAvatar, onDrop, errors,
 }) => (
   <div className="avatar">
-    {isUploadingAvatar
-      ? <Loader small />
-      : (
-        <Dropzone
-          className="avatar-circle"
-          onDrop={onDrop}
-          multiple={false}
-          disabled={isUploadingAvatar}
-        >
-          <AssetPreviewer asset={avatar} mockIcon="icon-user" />
-        </Dropzone>
-      )
-    }
+    {isUploadingAvatar && <Loader small />}
+    <Dropzone
+      className={c('avatar-circle', { hidden: isUploadingAvatar })}
+      onDrop={onDrop}
+      multiple={false}
+    >
+      <AssetPreviewer asset={avatar} mockIcon="icon-user" />
+    </Dropzone>
     {errors.map(error => (
       <ErrorMessage
         key={error}
