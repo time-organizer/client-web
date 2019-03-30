@@ -16,10 +16,6 @@ $task-margin: 8px;
   outline: none;
   user-select: none;
 
-  &:first-child {
-    margin-top: 0;
-  }
-
   &.is-dragged {
     box-shadow: $box-shadow;
   }
