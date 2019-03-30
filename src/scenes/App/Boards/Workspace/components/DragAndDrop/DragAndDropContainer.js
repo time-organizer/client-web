@@ -8,6 +8,12 @@ import { updateColumn, updateColumnOrder } from '../Columns/actions';
 import ColumnsDragDrop from '../Columns/ColumnsDragDrop';
 
 class DragAndDropContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    window['__react-beautiful-dnd-disable-dev-warnings'] = true; // eslint-disable-line
+  }
+
   onDragEnd = (dragEvent) => {
     const { source, destination, type } = dragEvent;
 

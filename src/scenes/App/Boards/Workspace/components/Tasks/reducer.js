@@ -4,7 +4,6 @@ import * as actions from './actions';
 export const initialState = {
   isFetching: false,
   serverError: '',
-  tasksOrderBackup: {},
   data: {
     entries: {},
   },

@@ -48,7 +48,7 @@ export function updateColumn(columnId, newData) {
         dispatch(updateColumnSuccess(updatedColumn.data));
       })
       .catch((error) => {
-        dispatch(updateColumnFailure(error));
+        dispatch(updateColumnFailure(columnId, error));
       });
   };
 }

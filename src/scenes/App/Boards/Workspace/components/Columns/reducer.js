@@ -8,6 +8,7 @@ export const initialState = {
   isFetching: false,
   serverError: '',
   columnsOrderBackup: [],
+  columnsUpdateBackup: {},
   data: {
     entries: {},
     columnsOrder: [],
@@ -101,7 +102,7 @@ const columns = (state = initialState, action) => {
     const oldColumnState = state.data.entries[columnId];
 
     return Object.assign({}, state, {
-      columnBackup: {
+      columnsUpdateBackup: {
         ...state.columnBackup,
         [action.columnId]: oldColumnState,
       },
@@ -120,16 +121,16 @@ const columns = (state = initialState, action) => {
 
   case actions.UPDATE_COLUMN_SUCCESS:
     return Object.assign({}, state, {
-      columnBackup: pickBy(state.columnBackup,
+      columnsUpdateBackup: pickBy(state.columnBackup,
         columnBackupEntry => columnBackupEntry._id !== action.updatedColumn._id),
     });
 
   case actions.UPDATE_COLUMN_FAILURE: {
     const { columnId } = action;
-    const columnBackup = state.columnBackup[columnId];
+    const columnBackup = state.columnsUpdateBackup[columnId];
 
     return Object.assign({}, state, {
-      columnBackup: pickBy(state.columnBackup,
+      columnsUpdateBackup: pickBy(state.columnBackup,
         columnBackupEntry => columnBackupEntry._id !== action.columnId),
       data: {
         ...state.data,

@@ -52,7 +52,6 @@ const reduxStateStructure = {
       tasks: {
         isFetching: false,
         serverError: '',
-        tasksOrderBackup: {},
         data: {
           entries: {
             exampleTaskId: {
