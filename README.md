@@ -1,6 +1,9 @@
 # Time organizer - web client
 Application for production process management with a customisable statistics dashboard.<br/>
 https://trello.com/b/Gp9LNn5u/time-organizer
+
+### Demo
+https://time-organizer.herokuapp.com/
  
 ### Application built with
 - React
