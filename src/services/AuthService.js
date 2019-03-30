@@ -1,5 +1,6 @@
 /* eslint-env browser */
 import decode from 'jwt-decode';
+import history from '../history';
 
 const AuthService = {
   isTokenExpired: token => decode(token).exp < (Date.now() / 1000),
@@ -18,6 +19,7 @@ const AuthService = {
 
   logout() {
     localStorage.removeItem('auth_token');
+    history.push('/auth');
   },
 };
 

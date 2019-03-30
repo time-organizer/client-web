@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import './common_styles/global.css';
@@ -15,6 +15,7 @@ const AppRoot = ({ store }) => (
       <Loader fullScreen text="Loading" />}
     >
       <Switch>
+        <Redirect exact from="/auth" to="/auth/login" />
         <Route path="/auth" component={routeProps => <Auth {...routeProps} />} />
         <Route path="/" component={routeProps => <App {...routeProps} />} />
       </Switch>
