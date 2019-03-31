@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import { connect } from 'react-redux';
 
 import { DragDropContext } from 'react-beautiful-dnd';
-import { updateColumn, updateColumnOrder } from '../Columns/actions';
+import { updateColumn, updateColumnOrder, reorderTasks } from '../Columns/actions';
 import ColumnsDragDrop from '../Columns/ColumnsDragDrop';
 
 class DragAndDropContainer extends Component {
@@ -49,9 +49,9 @@ class DragAndDropContainer extends Component {
   };
 
   handleTasksDnD = (dragEvent) => {
-    const { columnsEntries, onUpdateColumn } = this.props;
-    const { source, destination } = dragEvent;
-    const { droppableId: columnSourceId, index: indexSource } = source;
+    const { columnsEntries, onReorderTasks } = this.props;
+    const { source, destination, draggableId } = dragEvent;
+    const { droppableId: columnSourceId } = source;
     const { droppableId: columnDestinationId, index: indexDestination } = destination;
 
     if (!columnsEntries[columnSourceId] || !columnsEntries[columnDestinationId]) {
@@ -67,22 +67,14 @@ class DragAndDropContainer extends Component {
       return;
     }
 
-    if (columnSourceId === columnDestinationId) {
-      const newTasksOrder = Array.from(tasksOrderSource);
+    const reorder = {
+      taskId: draggableId,
+      columnSourceId,
+      columnDestinationId,
+      newIndex: indexDestination,
+    };
 
-      const [removed] = newTasksOrder.splice(indexSource, 1);
-      newTasksOrder.splice(indexDestination, 0, removed);
-      onUpdateColumn(columnSourceId, { tasksOrder: newTasksOrder });
-      return;
-    }
-
-    const newTasksOrderSource = Array.from(tasksOrderSource);
-    const newTasksOrderDestination = Array.from(tasksOrderDestination);
-
-    const [removed] = newTasksOrderSource.splice(indexSource, 1);
-    newTasksOrderDestination.splice(indexDestination, 0, removed);
-    onUpdateColumn(columnSourceId, { tasksOrder: newTasksOrderSource });
-    onUpdateColumn(columnDestinationId, { tasksOrder: newTasksOrderDestination });
+    onReorderTasks(reorder);
   };
 
   render() {
@@ -99,7 +91,7 @@ DragAndDropContainer.propTypes = {
   onUpdateColumnsOrder: PropTypes.func.isRequired,
   boardId: PropTypes.string,
   columnsEntries: PropTypes.shape(),
-  onUpdateColumn: PropTypes.func.isRequired,
+  onReorderTasks: PropTypes.func.isRequired,
 };
 DragAndDropContainer.defaultProps = {
   columnsOrder: [],
@@ -122,7 +114,7 @@ function mapStateToProps({ boards: { workspace: { board, columns } } }) {
 function mapDispatchToProps(dispatch) {
   return {
     onUpdateColumnsOrder: (boardId, newOrder) => dispatch(updateColumnOrder(boardId, newOrder)),
-    onUpdateColumn: (columnId, newData) => dispatch(updateColumn(columnId, newData)),
+    onReorderTasks: reorder => dispatch(reorderTasks(reorder)),
   };
 }
 

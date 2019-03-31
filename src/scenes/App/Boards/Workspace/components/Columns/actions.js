@@ -12,6 +12,10 @@ export const UPDATE_COLUMN_REQUEST = 'UPDATE_COLUMN_REQUEST';
 export const UPDATE_COLUMN_SUCCESS = 'UPDATE_COLUMN_SUCCESS';
 export const UPDATE_COLUMN_FAILURE = 'UPDATE_COLUMN_FAILURE';
 
+export const REORDER_TASKS_REQUEST = 'REORDER_TASKS_REQUEST';
+export const REORDER_TASKS_SUCCESS = 'REORDER_TASKS_SUCCESS';
+export const REORDER_TASKS_FAILURE = 'REORDER_TASKS_FAILURE';
+
 function updateColumnRequest(columnId, newData) {
   return {
     type: UPDATE_COLUMN_REQUEST,
@@ -120,6 +124,42 @@ export function addNewColumn(column) {
       .then(updatedColumn => dispatch(addColumnSuccess(updatedColumn.data)))
       .catch((error) => {
         dispatch(addColumnFailure(error));
+      });
+  };
+}
+
+function reorderTasksRequest(reorder) {
+  return {
+    type: REORDER_TASKS_REQUEST,
+    reorder,
+  };
+}
+
+function reorderTasksSuccess(reorder) {
+  return {
+    type: REORDER_TASKS_SUCCESS,
+    reorder,
+  };
+}
+
+function reorderTasksFailure(reorder) {
+  return {
+    type: REORDER_TASKS_FAILURE,
+    reorder,
+  };
+}
+
+export function reorderTasks(reorder) {
+  return (dispatch) => {
+    dispatch(reorderTasksRequest(reorder));
+
+    APIService
+      .post('/api/reorder', { reorder })
+      .then(() => {
+        dispatch(reorderTasksSuccess(reorder));
+      })
+      .catch(() => {
+        dispatch(reorderTasksFailure(reorder));
       });
   };
 }

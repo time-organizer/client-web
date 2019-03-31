@@ -15,6 +15,27 @@ export const initialState = {
   },
 };
 
+function updatedSourceColumn(column, taskId) {
+  const tasksOrder = Array.from(column.tasksOrder);
+  tasksOrder.splice(tasksOrder.indexOf(taskId), 1);
+
+  return {
+    ...column,
+    tasksOrder,
+  };
+}
+
+function updatedDestinationColumn(column, taskId, newIndex) {
+  const tasksOrder = Array.from(column.tasksOrder);
+
+  tasksOrder.splice(newIndex, 0, taskId);
+
+  return {
+    ...column,
+    tasksOrder,
+  };
+}
+
 const columns = (state = initialState, action) => {
   switch (action.type) {
   case actions.UPDATE_COLUMNS_ORDER_REQUEST:
@@ -140,6 +161,75 @@ const columns = (state = initialState, action) => {
             ...state.data.entries[columnId],
             ...columnBackup,
           },
+        },
+      },
+    });
+  }
+
+  case actions.REORDER_TASKS_REQUEST: {
+    const { reorder } = action;
+    const {
+      columnDestinationId, columnSourceId, taskId, newIndex,
+    } = reorder;
+
+    const sourceColumn = state.data.entries[columnSourceId];
+    const destinationColumn = state.data.entries[columnDestinationId];
+
+    const oldColumnsStates = {
+      [columnSourceId]: sourceColumn,
+      [columnDestinationId]: destinationColumn,
+    };
+
+    return Object.assign({}, state, {
+      columnsUpdateBackup: {
+        ...state.columnsUpdateBackup,
+        ...oldColumnsStates,
+      },
+      data: {
+        ...state.data,
+        entries: {
+          ...state.data.entries,
+          [columnSourceId]: {
+            ...sourceColumn,
+            ...updatedSourceColumn(sourceColumn, taskId),
+          },
+          [columnDestinationId]: {
+            ...destinationColumn,
+            ...updatedDestinationColumn(columnSourceId === columnDestinationId
+              ? updatedSourceColumn(sourceColumn, taskId)
+              : destinationColumn, taskId, newIndex),
+          },
+        },
+      },
+    });
+  }
+
+  case actions.REORDER_TASKS_SUCCESS: {
+    return Object.assign({}, state, {
+      columnsUpdateBackup: pickBy(state.columnsUpdateBackup,
+        columnBackupEntry => columnBackupEntry._id !== action.reorder.columnSourceId
+          && columnBackupEntry._id !== action.reorder.columnDestinationId),
+    });
+  }
+
+  case actions.REORDER_TASKS_FAILURE: {
+    const { reorder } = action;
+    const {
+      columnDestinationId, columnSourceId,
+    } = reorder;
+
+    const sourceColumn = state.columnsUpdateBackup[columnSourceId];
+    const destinationColumn = state.columnsUpdateBackup[columnDestinationId];
+
+    return Object.assign({}, state, {
+      columnsUpdateBackup: pickBy(state.columnBackup,
+        columnBackupEntry => columnBackupEntry._id !== action.columnId),
+      data: {
+        ...state.data,
+        entries: {
+          ...state.data.entries,
+          [columnSourceId]: sourceColumn,
+          [columnDestinationId]: destinationColumn,
         },
       },
     });
