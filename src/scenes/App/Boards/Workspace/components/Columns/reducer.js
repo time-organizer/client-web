@@ -3,6 +3,7 @@ import pickBy from 'lodash/pickBy';
 import * as boardActions from '../../actions';
 import * as taskActions from '../Tasks/actions';
 import * as actions from './actions';
+import updatedColumns from './utilities/updateColumnsState';
 
 export const initialState = {
   isFetching: false,
@@ -14,27 +15,6 @@ export const initialState = {
     columnsOrder: [],
   },
 };
-
-function updatedSourceColumn(column, taskId) {
-  const tasksOrder = Array.from(column.tasksOrder);
-  tasksOrder.splice(tasksOrder.indexOf(taskId), 1);
-
-  return {
-    ...column,
-    tasksOrder,
-  };
-}
-
-function updatedDestinationColumn(column, taskId, newIndex) {
-  const tasksOrder = Array.from(column.tasksOrder);
-
-  tasksOrder.splice(newIndex, 0, taskId);
-
-  return {
-    ...column,
-    tasksOrder,
-  };
-}
 
 const columns = (state = initialState, action) => {
   switch (action.type) {
@@ -168,9 +148,7 @@ const columns = (state = initialState, action) => {
 
   case actions.REORDER_TASKS_REQUEST: {
     const { reorder } = action;
-    const {
-      columnDestinationId, columnSourceId, taskId, newIndex,
-    } = reorder;
+    const { columnDestinationId, columnSourceId } = reorder;
 
     const sourceColumn = state.data.entries[columnSourceId];
     const destinationColumn = state.data.entries[columnDestinationId];
@@ -189,16 +167,7 @@ const columns = (state = initialState, action) => {
         ...state.data,
         entries: {
           ...state.data.entries,
-          [columnSourceId]: {
-            ...sourceColumn,
-            ...updatedSourceColumn(sourceColumn, taskId),
-          },
-          [columnDestinationId]: {
-            ...destinationColumn,
-            ...updatedDestinationColumn(columnSourceId === columnDestinationId
-              ? updatedSourceColumn(sourceColumn, taskId)
-              : destinationColumn, taskId, newIndex),
-          },
+          ...updatedColumns(oldColumnsStates, reorder),
         },
       },
     });

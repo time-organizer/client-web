@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import { connect } from 'react-redux';
 
 import { DragDropContext } from 'react-beautiful-dnd';
-import { updateColumn, updateColumnOrder, reorderTasks } from '../Columns/actions';
+import { updateColumnOrder, reorderTasks } from '../Columns/actions';
 import ColumnsDragDrop from '../Columns/ColumnsDragDrop';
 
 class DragAndDropContainer extends Component {
