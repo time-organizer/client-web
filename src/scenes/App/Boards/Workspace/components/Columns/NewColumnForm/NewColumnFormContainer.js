@@ -7,6 +7,7 @@ import handleInputChange from '../../../../../../../utilities/handleInputChange'
 
 import NewColumnForm from './NewColumnForm';
 import { addNewColumn } from '../actions';
+import { columnTypes, defaultColumnType } from '../../../../utilities/columnTypes';
 
 class NewColumnFormContainer extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class NewColumnFormContainer extends Component {
       title: '',
       addingColumnActive: false,
       submitError: false,
+      type: defaultColumnType,
     };
 
     this.handleInputChange = handleInputChange.bind(this);
@@ -40,6 +42,10 @@ class NewColumnFormContainer extends Component {
     }
   };
 
+  handleSelectChange = (value, name) => {
+    this.setState({ [name]: value });
+  };
+
   toggleAddingColumn = () => {
     const { addingColumnActive } = this.state;
 
@@ -51,7 +57,7 @@ class NewColumnFormContainer extends Component {
 
   submitNewColumn = () => {
     const { onAddNewColumn, boardId } = this.props;
-    const { title } = this.state;
+    const { title, type } = this.state;
 
     if (!title.length) {
       this.setState({ submitError: true });
@@ -61,6 +67,7 @@ class NewColumnFormContainer extends Component {
     const newColumn = {
       title,
       boardId,
+      type: get(type, 'value', columnTypes.BACKLOG),
     };
 
     onAddNewColumn(newColumn)
@@ -68,7 +75,9 @@ class NewColumnFormContainer extends Component {
   };
 
   render() {
-    const { title, addingColumnActive, submitError } = this.state;
+    const {
+      title, addingColumnActive, submitError, type,
+    } = this.state;
 
     return (
       <NewColumnForm
@@ -78,6 +87,8 @@ class NewColumnFormContainer extends Component {
         toggleAddingColumn={this.toggleAddingColumn}
         submitNewColumn={this.submitNewColumn}
         submitError={submitError}
+        type={type}
+        handleSelectChange={this.handleSelectChange}
       />
     );
   }

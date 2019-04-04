@@ -3,12 +3,7 @@
 .border-input-wrapper {
   border: none;
   position: relative;
-
-  label {
-    font-weight: 300;
-    display: inline-block;
-    margin-bottom: 8px;
-  }
+  margin-bottom: 16px;
 
   input {
     background: $bg-color;
@@ -18,11 +13,11 @@
     outline: none;
     margin: 0;
     transition: box-shadow .3s;
-    font-size: 1em;
+    font-size: 1rem;
     box-sizing: border-box;
     border: none;
-    border-radius: 4px 0 0 4px;
-    font-weight: lighter;
+    border-radius: 4px;
+    font-weight: 300;
     color: $text-color;
     box-shadow: $box-shadow-flat;
 
@@ -32,6 +27,7 @@
 
     &.with-icon {
       width: calc(100% - 40px);
+      border-radius: 4px 0 0 4px;
     }
   }
 

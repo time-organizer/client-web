@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import c from 'classnames';
 
+import Label from '../Label';
+
 import './BorderInput.css';
 
 class BorderInput extends Component {
@@ -27,7 +29,7 @@ class BorderInput extends Component {
     return (
       <div className={`border-input-wrapper ${className}`}>
         {withLabel && (
-          <label htmlFor={name}>{placeholder}</label>
+          <Label value={placeholder} />
         )}
         <input
           ref={this.inputRef}
