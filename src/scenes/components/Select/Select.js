@@ -1,6 +1,9 @@
+/* eslint-disable no-nested-ternary  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+
+import colors from '../../../utilities/colors';
 
 import './Select.css';
 
@@ -12,6 +15,18 @@ const styles = {
     padding: '4px',
     fontSize: '1rem',
   }),
+  option: (libStyles, {
+    isDisabled, isFocused, isSelected,
+  }) => {
+    const hoverColor = 'rgba(76,164,255,0.12)';
+
+    return {
+      ...libStyles,
+      backgroundColor:
+        isDisabled ? null : isSelected ? colors.accentColor : isFocused ? hoverColor : null,
+      cursor: isDisabled ? 'not-allowed' : 'pointer',
+    };
+  },
   placeholder: libStyles => ({
     ...libStyles,
     color: '#dbdbdb',

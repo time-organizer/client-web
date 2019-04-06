@@ -8,7 +8,7 @@ const columnTypes = {
 
 const defaultColumnType = {
   value: columnTypes.BACKLOG,
-  label: 'Backlogsad asd asd as das dasd asd as dsadasdasdas dasdds adasdas',
+  label: 'Backlog',
 };
 
 const columnTypesSelectOptions = [
