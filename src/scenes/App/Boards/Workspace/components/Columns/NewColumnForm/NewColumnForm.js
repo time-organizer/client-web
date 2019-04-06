@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Input from '../../../../../../components/BorderInput';
 import Fade from '../../../../../../components/transitions/Fade';
-import ErrorMessage from '../../../../../../components/ErrorMessage';
-import Select from '../../../../../../components/Select';
-import Label from '../../../../../../components/Label';
 import Button from '../../../../../../components/Button';
-import { columnTypesSelectOptions } from '../../../../utilities/columnTypes';
+import ColumnForms from '../ColumnForms';
 
 import './NewColumnForm.css';
 import { buttonTypes } from '../../../../../../components/Button/Button';
@@ -30,23 +26,13 @@ const NewColumnForm = ({
     )}
     <Fade trigger={addingColumnActive}>
       <div className="column-content-wrapper">
-        <Input
-          withLabel
-          name="title"
-          value={title}
-          onChange={handleInputChange}
-          placeholder="Title"
-          focus
+        <ColumnForms
+          handleSelectChange={handleSelectChange}
+          handleInputChange={handleInputChange}
+          submitError={submitError}
+          title={title}
+          type={type}
         />
-        <Label value="Type" />
-        <Select
-          value={type}
-          onChange={value => handleSelectChange(value, 'type')}
-          options={columnTypesSelectOptions}
-        />
-        {submitError && !title.length && (
-          <ErrorMessage className="margin-8" message="Provide a title" />
-        )}
         <Button onClick={submitNewColumn} buttonType={buttonTypes.SUBMIT}>Submit</Button>
       </div>
     </Fade>

@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import find from 'lodash/find';
 
 import colors from '../../../utilities/colors';
 
@@ -45,7 +46,7 @@ const Selectizer = ({
   <div className="select">
     <Select
       styles={styles}
-      value={value}
+      value={find(options, option => option.value === value)}
       onChange={onChange}
       options={options}
     />

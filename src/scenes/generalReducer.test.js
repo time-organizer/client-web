@@ -20,5 +20,15 @@ describe('general reducer', () => {
     expect(initialState.forms.newBoardFormOpened).toEqual(false);
     const result = generalReducer(initialState, action);
     expect(result.forms.newBoardFormOpened).toEqual(true);
-  })
+  });
+
+  it(`returns proper values for ${actions.SWITCH_OFF_COLUMN_EDITOR} action`, () => {
+    const action = {
+      type: actions.SWITCH_ON_COLUMN_EDITOR,
+      columnId: 'testID',
+    };
+    expect(initialState.editors.columnId).toEqual(null);
+    const result = generalReducer(initialState, action);
+    expect(result.editors.columnId).toEqual(action.columnId);
+  });
 });

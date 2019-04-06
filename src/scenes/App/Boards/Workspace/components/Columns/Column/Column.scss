@@ -18,6 +18,12 @@
   &:last-child {
     margin-right: 0;
   }
+
+  .column-edit-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 
 .column {

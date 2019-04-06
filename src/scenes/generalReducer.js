@@ -7,6 +7,9 @@ export const initialState = {
   forms: {
     newBoardFormOpened: false,
   },
+  editors: {
+    columnId: null,
+  },
 };
 
 const general = (state = initialState, action) => {
@@ -28,6 +31,23 @@ const general = (state = initialState, action) => {
         newBoardFormOpened: !state.forms.newBoardFormOpened,
       },
     });
+
+  case actions.SWITCH_ON_COLUMN_EDITOR: {
+    return Object.assign({}, state, {
+      editors: {
+        ...state.editors,
+        columnId: action.columnId,
+      },
+    });
+  }
+
+  case actions.SWITCH_OFF_COLUMN_EDITOR: {
+    return Object.assign({}, state, {
+      editors: {
+        columnId: null,
+      },
+    });
+  }
 
   default:
     return state;

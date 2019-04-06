@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 
 import handleInputChange from '../../../../../../../utilities/handleInputChange';
+import handleSelectChange from '../../../../../../../utilities/handleSelectChange';
 
 import NewColumnForm from './NewColumnForm';
 import { addNewColumn } from '../actions';
@@ -21,6 +22,7 @@ class NewColumnFormContainer extends Component {
     };
 
     this.handleInputChange = handleInputChange.bind(this);
+    this.handleSelectChange = handleSelectChange.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -40,10 +42,6 @@ class NewColumnFormContainer extends Component {
     } else if (e.key === 'Escape') {
       this.toggleAddingColumn();
     }
-  };
-
-  handleSelectChange = (value, name) => {
-    this.setState({ [name]: value });
   };
 
   toggleAddingColumn = () => {

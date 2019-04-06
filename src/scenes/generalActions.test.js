@@ -17,4 +17,22 @@ describe('general action creators', () => {
     expect(actions.toggleNewBoardForm())
       .toEqual(expected);
   });
+
+  it('returns proper action for switchOnColumnEditor', () => {
+    const columnId = 'testID';
+    const expected = {
+      type: actions.SWITCH_ON_COLUMN_EDITOR,
+      columnId,
+    };
+
+    expect(actions.switchOnColumnEditor(columnId)).toEqual(expected);
+  });
+
+  it('returns proper action for switchOffColumnEditor', () => {
+    const expected = {
+      type: actions.SWITCH_OFF_COLUMN_EDITOR,
+    };
+
+    expect(actions.switchOffColumnEditor()).toEqual(expected)
+  })
 });
