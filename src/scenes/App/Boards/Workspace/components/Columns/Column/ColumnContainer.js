@@ -39,7 +39,7 @@ class ColumnContainer extends Component {
 
     const updatedData = {
       title,
-      type: get(type, 'value', columnTypes.BACKLOG),
+      type,
     };
 
     onColumnUpdate(_id, updatedData);

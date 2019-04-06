@@ -8,7 +8,7 @@ import handleSelectChange from '../../../../../../../utilities/handleSelectChang
 
 import NewColumnForm from './NewColumnForm';
 import { addNewColumn } from '../actions';
-import { columnTypes, defaultColumnType } from '../../../../utilities/columnTypes';
+import { defaultColumnType } from '../../../../utilities/columnTypes';
 
 class NewColumnFormContainer extends Component {
   constructor(props) {
@@ -65,7 +65,7 @@ class NewColumnFormContainer extends Component {
     const newColumn = {
       title,
       boardId,
-      type: get(type, 'value', columnTypes.BACKLOG),
+      type,
     };
 
     onAddNewColumn(newColumn)
@@ -76,7 +76,7 @@ class NewColumnFormContainer extends Component {
     const {
       title, addingColumnActive, submitError, type,
     } = this.state;
-
+console.log(type)
     return (
       <NewColumnForm
         title={title}
