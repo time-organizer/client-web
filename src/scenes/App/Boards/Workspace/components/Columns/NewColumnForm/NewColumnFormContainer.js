@@ -18,7 +18,7 @@ class NewColumnFormContainer extends Component {
       title: '',
       addingColumnActive: false,
       submitError: false,
-      type: defaultColumnType,
+      type: defaultColumnType.value,
     };
 
     this.handleInputChange = handleInputChange.bind(this);

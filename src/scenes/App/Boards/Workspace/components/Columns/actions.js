@@ -43,7 +43,7 @@ export function updateColumn(columnId, newData) {
   return (dispatch) => {
     dispatch(updateColumnRequest(columnId, newData));
 
-    APIService.put(`/api/columns/${columnId}`, {
+    return APIService.put(`/api/columns/${columnId}`, {
       updatedObject: {
         ...newData,
       },

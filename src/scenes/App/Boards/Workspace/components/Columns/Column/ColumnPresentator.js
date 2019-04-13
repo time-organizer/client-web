@@ -18,7 +18,7 @@ const ColumnPresentator = ({ column, providedDraggable, onSwitchOnColumnEditor }
         {column.title}
       </div>
       <div className="column-edit-button" onClick={onSwitchOnColumnEditor}>
-        <Icon name={iconNames.user} />
+        <Icon name={iconNames.edit} />
       </div>
       <TasksDragDrop columnId={column._id} tasksOrder={column.tasksOrder} />
     </div>

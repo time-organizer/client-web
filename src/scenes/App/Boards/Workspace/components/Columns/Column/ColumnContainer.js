@@ -27,7 +27,7 @@ class ColumnContainer extends Component {
   }
 
   submitEditColumn = () => {
-    const { onColumnUpdate, column } = this.props;
+    const { onColumnUpdate, column, onSwitchOffColumneEditor } = this.props;
     const { title, type } = this.state;
     const { _id } = column;
 
@@ -41,7 +41,9 @@ class ColumnContainer extends Component {
       type,
     };
 
-    onColumnUpdate(_id, updatedData);
+    onColumnUpdate(_id, updatedData)
+      .then(onSwitchOffColumneEditor)
+      .catch(() => {});
   };
 
   render() {

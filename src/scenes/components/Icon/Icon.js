@@ -34,10 +34,8 @@ class Icon extends Component {
   }
 
   render() {
-    const { size } = this.props;
-
     return (
-      <i className={`icon size-${size}`}>
+      <i className="icon">
         {this.getIcon()}
       </i>
     );
@@ -46,11 +44,9 @@ class Icon extends Component {
 
 Icon.propTypes = {
   name: PropTypes.oneOf(map(iconNames, iconName => iconName)),
-  size: PropTypes.oneOf([2, 3, 4, 5]),
 };
 Icon.defaultProps = {
   name: '',
-  size: 1,
 };
 
 export default Icon;

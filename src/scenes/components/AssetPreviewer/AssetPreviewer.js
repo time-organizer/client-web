@@ -20,11 +20,12 @@ const AssetPreviewer = ({
 AssetPreviewer.propTypes = {
   asset: AssetModel.propTypes,
   imagePath: PropTypes.string.isRequired,
-  mockIcon: PropTypes.string.isRequired,
+  mockIcon: PropTypes.string,
 };
 
 AssetPreviewer.defaultProps = {
   asset: null,
+  mockIcon: '',
 };
 
 export default AssetPreviewer;
