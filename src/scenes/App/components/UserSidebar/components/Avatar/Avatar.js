@@ -7,6 +7,7 @@ import AssetPreviewer from '../../../../../components/AssetPreviewer';
 import AssetModel from '../../../../../../models/Asset';
 import Loader from '../../../../../components/Loaders/Loader';
 import ErrorMessage from '../../../../../components/ErrorMessage';
+import { iconNames } from '../../../../../components/Icon';
 
 import './Avatar.css';
 
@@ -20,7 +21,7 @@ const Avatar = ({
       onDrop={onDrop}
       multiple={false}
     >
-      <AssetPreviewer asset={avatar} mockIcon="icon-user" />
+      <AssetPreviewer asset={avatar} mockIcon={iconNames.user} />
     </Dropzone>
     {errors.map(error => (
       <ErrorMessage

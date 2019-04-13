@@ -29,8 +29,14 @@
       margin: 0 auto;
       position: relative;
 
-      img {
+      .icon {
         width: 100%;
+        fill: $accent-color;
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
 

@@ -5,13 +5,13 @@ import Login from './Login';
 import SignUp from './SignUp';
 
 import './Auth.css';
-import logo from '../../images/logo.svg';
+import Icon from '../components/Icon';
 
 const Auth = () => (
   <div className="auth-wrapper">
     <div className="auth-forms-section">
       <div className="auth-logo">
-        <img src={logo} alt="time organizer logo" />
+        <Icon name="logo" />
       </div>
       <div className="auth-forms">
         <Switch>

@@ -2,7 +2,9 @@ import React from 'react';
 import c from 'classnames';
 import PropTypes from 'prop-types';
 
+
 import './Loader.css';
+import Icon, { iconNames } from '../../Icon';
 
 const Loader = ({ absolute, fullScreen, text }) => (
   <div
@@ -13,7 +15,7 @@ const Loader = ({ absolute, fullScreen, text }) => (
   >
     <div className="loader-content">
       <div className="loader-icon-wrapper">
-        <i className="icon-logo" />
+        <Icon name={iconNames.logo} />
       </div>
       <h3>{text}</h3>
     </div>

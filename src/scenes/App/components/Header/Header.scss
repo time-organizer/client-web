@@ -8,6 +8,7 @@
   box-shadow: $box-shadow;
   display: flex;
   z-index: $z-index-4;
+  align-items: center;
 
   .header-logo {
     position: absolute;
@@ -18,8 +19,10 @@
     padding: 16px;
     z-index: -1;
 
-    img {
-      height: 100%;
+    .icon {
+      fill: $accent-color;
+      width: 40px;
+      height: 40px;
     }
   }
 

@@ -26,7 +26,7 @@ AssetPreviewerContainer.propTypes = {
 
 AssetPreviewerContainer.defaultProps = {
   asset: null,
-  mockIcon: 'icon-camera',
+  mockIcon: '',
 };
 
 function mapStateToProps() {

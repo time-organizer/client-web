@@ -11,8 +11,8 @@ const App = lazy(() => import('./scenes/App'));
 
 const AppRoot = ({ store }) => (
   <Provider store={store}>
-    <Suspense fallback={
-      <Loader fullScreen text="Loading" />}
+    <Suspense
+      fallback={<Loader fullScreen text="Loading" />}
     >
       <Switch>
         <Redirect exact from="/auth" to="/auth/login" />

@@ -4,14 +4,11 @@
   text-align: center;
   margin: 0 auto;
 
-  svg, circle {
-    fill: #4995ed;
-    width: 25px;
-  }
+  .icon {
+    fill: $accent-color;
 
-  &.small {
     svg {
-      width: 50px;
+      transform: scale(3);
     }
   }
 
@@ -37,10 +34,6 @@
       left: 50%;
       transform: translateX(-50%);
     }
-
-    .loader-icon-wrapper {
-      font-size: 4rem;
-    }
   }
 
   .loader-content {
@@ -52,7 +45,6 @@
   }
 
   .loader-icon-wrapper {
-    font-size: 2rem;
     animation: rotating linear infinite 2000ms;
     color: $accent-color;
   }

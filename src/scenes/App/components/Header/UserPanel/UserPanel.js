@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import AssetPreviewer from '../../../../components/AssetPreviewer';
 import AssetModel from '../../../../../models/Asset';
 
+import Icon, { iconNames } from '../../../../components/Icon';
+
 import './UserPanel.css';
 
 const UserPanel = ({ onToggleUserSidebar, name, avatar }) => (
@@ -14,7 +16,7 @@ const UserPanel = ({ onToggleUserSidebar, name, avatar }) => (
       <div className="user-panel-avatar-wrapper" onClick={onToggleUserSidebar}>
         {avatar
           ? <AssetPreviewer asset={avatar} />
-          : <i className="icon-user" />
+          : <Icon name={iconNames.user} />
         }
       </div>
     </div>

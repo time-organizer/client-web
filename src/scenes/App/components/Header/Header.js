@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../../images/logo.svg';
+import Icon from '../../../components/Icon';
 import UserPanel from './UserPanel';
 import MenuButton from './MenuButton';
 
@@ -9,7 +9,7 @@ const Header = () => (
   <header className="header">
     <MenuButton />
     <div className="header-logo">
-      <img src={logo} alt="time organizer logo" />
+      <Icon name="logo" />
     </div>
     <UserPanel />
   </header>

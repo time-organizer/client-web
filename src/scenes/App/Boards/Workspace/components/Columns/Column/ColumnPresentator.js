@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import NewTask from '../../Tasks/NewTask';
 import TasksDragDrop from '../../Tasks/TasksDragDrop';
 import ColumnModel from '../../../../../../../models/Column';
+import Icon, { iconNames } from '../../../../../../components/Icon';
 
 import './Column.css';
 
@@ -17,7 +18,7 @@ const ColumnPresentator = ({ column, providedDraggable, onSwitchOnColumnEditor }
         {column.title}
       </div>
       <div className="column-edit-button" onClick={onSwitchOnColumnEditor}>
-        <i className="icon-logo" />
+        <Icon name={iconNames.user} />
       </div>
       <TasksDragDrop columnId={column._id} tasksOrder={column.tasksOrder} />
     </div>

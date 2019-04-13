@@ -76,7 +76,7 @@ class NewColumnFormContainer extends Component {
     const {
       title, addingColumnActive, submitError, type,
     } = this.state;
-console.log(type)
+
     return (
       <NewColumnForm
         title={title}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import AssetModel from '../../../models/Asset';
 
 import './AssetPreviewer.css';
+import Icon from '../Icon';
 
 const AssetPreviewer = ({
   asset, imagePath, mockIcon,
@@ -11,7 +12,7 @@ const AssetPreviewer = ({
   <div className="asset-previewer">
     {asset
       ? <img src={imagePath} alt="" />
-      : <i className={mockIcon} />
+      : <Icon name={mockIcon} />
     }
   </div>
 );
@@ -19,12 +20,11 @@ const AssetPreviewer = ({
 AssetPreviewer.propTypes = {
   asset: AssetModel.propTypes,
   imagePath: PropTypes.string.isRequired,
-  mockIcon: PropTypes.string,
+  mockIcon: PropTypes.string.isRequired,
 };
 
 AssetPreviewer.defaultProps = {
   asset: null,
-  mockIcon: 'icon-camera',
 };
 
 export default AssetPreviewer;

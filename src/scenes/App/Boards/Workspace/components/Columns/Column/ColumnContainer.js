@@ -7,7 +7,6 @@ import { Draggable } from 'react-beautiful-dnd';
 import { switchOffColumnEditor, switchOnColumnEditor } from '../../../../../../generalActions';
 import ColumnPresentator from './ColumnPresentator';
 import handleInputChange from '../../../../../../../utilities/handleInputChange';
-import { columnTypes } from '../../../../utilities/columnTypes';
 import { updateColumn } from '../actions';
 import ColumnEditor from './ColumnEditor';
 import handleSelectChange from '../../../../../../../utilities/handleSelectChange';
