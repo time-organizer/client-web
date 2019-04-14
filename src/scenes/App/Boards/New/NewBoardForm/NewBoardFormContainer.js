@@ -6,6 +6,7 @@ import NewBoardForm from './NewBoardForm';
 import { toggleNewBoardForm } from '../../../../generalActions';
 import { addNewBoard } from '../actions';
 import { addFormError, removeFormError } from '../../../../../utilities/handleFormErrors';
+import boardThemes from '../../utilities/boardThemes';
 
 class NewBoardFormContainer extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class NewBoardFormContainer extends Component {
 
     this.state = {
       title: '',
-      chosenTheme: null,
+      chosenTheme: boardThemes[0].key,
       formErrors: [],
     };
 
@@ -38,13 +39,7 @@ class NewBoardFormContainer extends Component {
   };
 
   changeBoardTheme = (boardTheme) => {
-    const { chosenTheme } = this.state;
-    if (boardTheme === chosenTheme) {
-      this.setState({ chosenTheme: null });
-      return;
-    }
-
-    this.setState({ chosenTheme: boardTheme }, this.isFormInvalid);
+    this.setState({ chosenTheme: boardTheme });
   };
 
   submitNewBoard = () => {
@@ -64,19 +59,13 @@ class NewBoardFormContainer extends Component {
   };
 
   isFormInvalid = () => {
-    const { title, chosenTheme } = this.state;
+    const { title } = this.state;
 
     if (title.trim().length === 0) {
       this.addFormError(this.possibleFormErrors.noTitle);
       return true;
     }
     this.removeFormError(this.possibleFormErrors.noTitle);
-
-    if (!chosenTheme) {
-      this.addFormError(this.possibleFormErrors.noTheme);
-      return true;
-    }
-    this.removeFormError(this.possibleFormErrors.noTheme);
 
     return false;
   };

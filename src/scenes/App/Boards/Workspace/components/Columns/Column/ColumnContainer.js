@@ -27,7 +27,7 @@ class ColumnContainer extends Component {
   }
 
   submitEditColumn = () => {
-    const { onColumnUpdate, column, onSwitchOffColumneEditor } = this.props;
+    const { onColumnUpdate, column, onSwitchOffColumnEditor } = this.props;
     const { title, type } = this.state;
     const { _id } = column;
 
@@ -42,13 +42,13 @@ class ColumnContainer extends Component {
     };
 
     onColumnUpdate(_id, updatedData)
-      .then(onSwitchOffColumneEditor)
+      .then(onSwitchOffColumnEditor)
       .catch(() => {});
   };
 
   render() {
     const {
-      column, index, columnIdEditMode, onSwitchOnColumnEditor,
+      column, index, columnIdEditMode, onSwitchOnColumnEditor, onSwitchOffColumnEditor,
     } = this.props;
     const columnId = get(column, '_id');
     const { title, type, submitError } = this.state;
@@ -67,6 +67,7 @@ class ColumnContainer extends Component {
             {columnIdEditMode === columnId
               ? (
                 <ColumnEditor
+                  onSwitchOffColumnEditor={onSwitchOffColumnEditor}
                   handleInputChange={this.handleInputChange}
                   handleSelectChange={this.handleSelectChange}
                   submitEditColumn={this.submitEditColumn}
@@ -92,7 +93,7 @@ class ColumnContainer extends Component {
 }
 
 ColumnContainer.propTypes = {
-  onSwitchOffColumneEditor: PropTypes.func.isRequired,
+  onSwitchOffColumnEditor: PropTypes.func.isRequired,
   onSwitchOnColumnEditor: PropTypes.func.isRequired,
   onColumnUpdate: PropTypes.func.isRequired,
   column: PropTypes.shape({}).isRequired,
@@ -113,7 +114,7 @@ function mapStateToProps({ general: { editors: { columnId } } }) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onSwitchOnColumnEditor: () => dispatch(switchOnColumnEditor(get(ownProps, 'column._id'))),
-    onSwitchOffColumneEditor: () => dispatch(switchOffColumnEditor()),
+    onSwitchOffColumnEditor: () => dispatch(switchOffColumnEditor()),
     onColumnUpdate: (columnId, newData) => dispatch(updateColumn(columnId, newData)),
   };
 }

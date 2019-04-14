@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Popup from '../../../../components/Popup';
-import BorderInput from '../../../../components/BorderInput';
-import PopupFooter from '../../../../components/Popup/components/PopupFooter';
-import ErrorMessage from '../../../../components/ErrorMessage';
+import {
+  Popup, BorderInput, ErrorMessage, PopupFooter,
+} from '../../../../common_components';
 import boardThemes from '../../utilities/boardThemes';
 import BoardThemeBlock from './components/BoardThemeBlock';
 

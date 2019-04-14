@@ -4,8 +4,8 @@ import { CSSTransition } from 'react-transition-group';
 
 import Logout from './components/Logout';
 import Avatar from './components/Avatar';
-import CloseButton from '../../../components/CloseButton';
-import Fade from '../../../components/transitions/Fade';
+import { CloseButton } from '../../../common_components';
+import Fade from '../../../common_components/transitions/Fade';
 
 import './UserSidebar.css';
 

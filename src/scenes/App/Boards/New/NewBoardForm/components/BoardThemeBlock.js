@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import c from 'classnames';
 
-import Fade from '../../../../../components/transitions/Fade';
+import Fade from '../../../../../common_components/transitions/Fade';
 import './BoardThemeBlock.css';
 
 const BoardThemeBlock = ({ boardTheme, changeBoardTheme, isSelected }) => (

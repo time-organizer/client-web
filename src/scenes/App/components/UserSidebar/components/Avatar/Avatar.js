@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
 import c from 'classnames';
 
-import AssetPreviewer from '../../../../../components/AssetPreviewer';
+import {
+  AssetPreviewer,
+  Loader,
+  ErrorMessage,
+  iconNames,
+} from '../../../../../common_components';
 import AssetModel from '../../../../../../models/Asset';
-import Loader from '../../../../../components/Loaders/Loader';
-import ErrorMessage from '../../../../../components/ErrorMessage';
-import { iconNames } from '../../../../../components/Icon';
 
 import './Avatar.css';
 

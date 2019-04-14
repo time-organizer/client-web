@@ -5,7 +5,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 
 import './Auth.css';
-import Icon from '../components/Icon';
+import { Icon } from '../common_components';
 
 const Auth = () => (
   <div className="auth-wrapper">

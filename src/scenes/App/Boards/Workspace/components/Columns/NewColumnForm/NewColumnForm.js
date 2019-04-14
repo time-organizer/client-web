@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Fade from '../../../../../../components/transitions/Fade';
-import Button from '../../../../../../components/Button';
+import Fade from '../../../../../../common_components/transitions/Fade';
+import { Button, buttonTypes } from '../../../../../../common_components';
 import ColumnForms from '../ColumnForms';
 
 import './NewColumnForm.css';
-import { buttonTypes } from '../../../../../../components/Button/Button';
 
 const NewColumnForm = ({
   title,

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AssetPreviewer from '../../../../components/AssetPreviewer';
 import AssetModel from '../../../../../models/Asset';
 
-import Icon, { iconNames } from '../../../../components/Icon';
+import { Icon, iconNames, AssetPreviewer } from '../../../../common_components';
 
 import './UserPanel.css';
 

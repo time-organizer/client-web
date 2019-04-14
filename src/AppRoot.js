@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import './common_styles/global.css';
-import Loader from './scenes/components/Loaders/Loader';
+import { Loader } from './scenes/common_components';
 
 const Auth = lazy(() => import('./scenes/Auth'));
 const App = lazy(() => import('./scenes/App'));

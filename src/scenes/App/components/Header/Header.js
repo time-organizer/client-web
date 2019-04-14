@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../../components/Icon';
+import { Icon } from '../../../common_components';
 import UserPanel from './UserPanel';
 import MenuButton from './MenuButton';
 

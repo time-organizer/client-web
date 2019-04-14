@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import NewTask from '../../Tasks/NewTask';
 import TasksDragDrop from '../../Tasks/TasksDragDrop';
 import ColumnModel from '../../../../../../../models/Column';
-import Icon, { iconNames } from '../../../../../../components/Icon';
+import { Icon, iconNames } from '../../../../../../common_components';
 
 import './Column.css';
 

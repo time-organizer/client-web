@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import Input from '../../../../../components/BorderInput/BorderInput';
-import Label from '../../../../../components/Label';
-import Select from '../../../../../components/Select/Select';
-import ErrorMessage from '../../../../../components/ErrorMessage';
+import {
+  BorderInput,
+  Label,
+  Select,
+  ErrorMessage,
+} from '../../../../../common_components';
 import { columnTypesSelectOptions } from '../../../utilities/columnTypes';
 
 const ColumnForms = ({
@@ -15,7 +17,7 @@ const ColumnForms = ({
   type,
 }) => (
   <Fragment>
-    <Input
+    <BorderInput
       withLabel
       name="title"
       value={title}

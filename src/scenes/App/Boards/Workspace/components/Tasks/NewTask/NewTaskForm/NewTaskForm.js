@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Popup from '../../../../../../../components/Popup/Popup';
-import BorderInput from '../../../../../../../components/BorderInput';
-import PopupFooter from '../../../../../../../components/Popup/components/PopupFooter';
+import { PopupFooter, BorderInput, Popup } from '../../../../../../../common_components';
 
 const NewTaskForm = ({
   onClose, onSubmit, onChange, values,

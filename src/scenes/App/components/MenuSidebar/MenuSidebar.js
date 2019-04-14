@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 
-import CloseButton from '../../../components/CloseButton';
-import Fade from '../../../components/transitions/Fade';
+import { CloseButton } from '../../../common_components';
+import Fade from '../../../common_components/transitions/Fade';
 
 import './MenuSidebar.css';
 

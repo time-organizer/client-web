@@ -8,8 +8,8 @@ import {
 import NewBoardButton from '../../New/NewBoardButton';
 import BoardListItem from '../BoardListItem';
 import { BoardModel } from '../../../../../models/Board';
-import Fade from '../../../../components/transitions/Fade';
-import Loader from '../../../../components/Loaders/Loader';
+import Fade from '../../../../common_components/transitions/Fade';
+import { Loader } from '../../../../common_components';
 
 import './BoardsList.css';
 import ContentHeader from '../../../components/ContentHeader/ContentHeader';

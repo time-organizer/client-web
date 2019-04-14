@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { CSSTransition } from 'react-transition-group';
 
 import Popup from './Popup';
-import Portal from '../../components/Portal';
+import { Portal } from '../../common_components';
 
 describe('<Popup />', () => {
   let wrapper;

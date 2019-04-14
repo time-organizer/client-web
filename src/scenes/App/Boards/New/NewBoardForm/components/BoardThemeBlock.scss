@@ -10,13 +10,13 @@
   transition: border, opacity, box-shadow .3s;
   box-sizing: content-box;
   background-clip: border-box;
-  box-shadow: $box-shadow;
+  box-shadow: $box-shadow-flat;
   position: relative;
   opacity: 0.4;
 
   &.is-selected {
     opacity: 1;
-    box-shadow: 0 0 20px -3px $accent-color;
+    box-shadow: 0 0 10px 0 $accent-color;
   }
 
   .selected-status {
