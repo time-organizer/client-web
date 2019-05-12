@@ -1,7 +1,9 @@
+@import "../../../../common_styles/variables";
+
 .content-header {
   width: 100%;
-  padding: 16px 16px 0 16px;
+  padding: 16px;
   font-weight: 700;
-  text-shadow: 0 0 3px white;
   text-transform: uppercase;
+  background: white;
 }

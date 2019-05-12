@@ -17,7 +17,7 @@ const NewColumnForm = ({
   handleSelectChange,
   type,
 }) => (
-  <div className="column-wrapper">
+  <div className="column-wrapper new">
     {!addingColumnActive && (
       <div className="new-column-button" onClick={toggleAddingColumn}>
         <h3>Add new column</h3>
