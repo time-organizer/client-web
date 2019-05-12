@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import c from 'classnames';
@@ -9,22 +9,23 @@ import c from 'classnames';
 import './Task.css';
 
 const Task = ({
-  task, index, boardId, history,
+  task, index, boardId,
 }) => (
   <Draggable
     draggableId={task._id}
     index={index}
   >
     {(providedDraggable, snapshot) => (
-      <div
-        onClick={() => history.push(`/boards/${boardId}/${task._id}`)}
-        className={c('task', { 'is-dragged': snapshot.isDragging })}
-        ref={providedDraggable.innerRef}
-        {...providedDraggable.draggableProps}
-        {...providedDraggable.dragHandleProps}
-      >
-        <p>{task.title}</p>
-      </div>
+      <Link to={`/boards/${boardId}/${task._id}`}>
+        <div
+          className={c('task', { 'is-dragged': snapshot.isDragging })}
+          ref={providedDraggable.innerRef}
+          {...providedDraggable.draggableProps}
+          {...providedDraggable.dragHandleProps}
+        >
+          <p>{task.title}</p>
+        </div>
+      </Link>
     )}
   </Draggable>
 );

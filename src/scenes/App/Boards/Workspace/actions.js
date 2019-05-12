@@ -5,8 +5,6 @@ export const FETCH_BOARD_REQUEST = 'FETCH_BOARD_REQUEST';
 export const FETCH_BOARD_SUCCESS = 'FETCH_BOARD_SUCCESS';
 export const FETCH_BOARD_FAILURE = 'FETCH_BOARD_FAILURE';
 
-export const CLEAR_WORKSPACE = 'CLEAR_WORKSPACE';
-
 function shouldFetchBoard(state, id) {
   const { boards: { workspace: { board: { data, didInvalidate, isFetching } } } } = state;
 
@@ -61,8 +59,3 @@ export function fetchBoardIfNeeded(id) {
   };
 }
 
-export function clearWorkspace() {
-  return {
-    type: CLEAR_WORKSPACE,
-  };
-}

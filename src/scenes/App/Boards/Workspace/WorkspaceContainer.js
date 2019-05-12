@@ -4,17 +4,10 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 
 import Workspace from './Workspace';
-import { clearWorkspace, fetchBoardIfNeeded } from './actions';
+import { fetchBoardIfNeeded } from './actions';
 import { BoardModel } from '../../../../models/Board';
 
 class WorkspaceContainer extends Component {
-  componentWillMount() {
-    const { match: { params }, boardData, onClearWorkspace } = this.props;
-    if (boardData && (get(boardData, '_id') !== params.id)) {
-      onClearWorkspace();
-    }
-  }
-
   componentDidMount() {
     const { refreshBoard, match: { params } } = this.props;
 
@@ -22,8 +15,10 @@ class WorkspaceContainer extends Component {
   }
 
   render() {
-    const { boardData } = this.props;
-    return boardData && (
+    const { match: { params }, boardData } = this.props;
+    const properBoardLoaded = get(boardData, '_id') === params.id;
+
+    return boardData && properBoardLoaded && (
       <Workspace board={boardData} />
     );
   }
@@ -33,7 +28,6 @@ WorkspaceContainer.propTypes = {
   match: PropTypes.shape({}).isRequired,
   boardData: BoardModel,
   refreshBoard: PropTypes.func.isRequired,
-  onClearWorkspace: PropTypes.func.isRequired,
 };
 WorkspaceContainer.defaultProps = {
   boardData: null,
@@ -51,7 +45,6 @@ function mapStateToProps({ boards: { workspace: { board } } }) {
 function mapDispatchToProps(dispatch) {
   return {
     refreshBoard: id => dispatch(fetchBoardIfNeeded(id)),
-    onClearWorkspace: () => dispatch(clearWorkspace()),
   };
 }
 
