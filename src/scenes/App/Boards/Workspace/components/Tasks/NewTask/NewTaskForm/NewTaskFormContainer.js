@@ -19,7 +19,9 @@ class NewTaskFormContainer extends Component {
   }
 
   submitNewTask = () => {
-    const { onAddNewTask, columnId, boardId } = this.props;
+    const {
+      onAddNewTask, columnId, boardId, onClose,
+    } = this.props;
     const { title } = this.state;
 
     const newTask = {
@@ -28,7 +30,8 @@ class NewTaskFormContainer extends Component {
       boardId,
     };
 
-    onAddNewTask(newTask);
+    onAddNewTask(newTask)
+      .then(onClose);
   };
 
   render() {

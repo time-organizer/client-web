@@ -8,7 +8,7 @@ import TaskModel from '../../../../../../../models/Task';
 
 import './TasksDragDrop.css';
 
-const TasksDragDrop = ({ tasks, columnId }) => (
+const TasksDragDrop = ({ tasks, columnId, boardId }) => (
   <Droppable
     droppableId={columnId}
     type="TASK"
@@ -26,6 +26,7 @@ const TasksDragDrop = ({ tasks, columnId }) => (
             key={task._id}
             task={task}
             index={index}
+            boardId={boardId}
           />
         ))}
       </div>
@@ -36,6 +37,7 @@ const TasksDragDrop = ({ tasks, columnId }) => (
 TasksDragDrop.propTypes = {
   tasks: PropTypes.arrayOf(TaskModel).isRequired,
   columnId: PropTypes.string.isRequired,
+  boardId: PropTypes.string.isRequired,
 };
 TasksDragDrop.defaultProps = {};
 

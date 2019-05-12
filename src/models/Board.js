@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 const BoardModel = PropTypes.shape({
   _id: PropTypes.string.isRequired,
-  columnsOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
   createdAt: PropTypes.string.isRequired,
   ownerId: PropTypes.string.isRequired,
   participants: PropTypes.arrayOf(PropTypes.shape({})),

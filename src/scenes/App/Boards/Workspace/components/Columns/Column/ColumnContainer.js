@@ -5,7 +5,7 @@ import get from 'lodash/get';
 import { Draggable } from 'react-beautiful-dnd';
 
 import { switchOffColumnEditor, switchOnColumnEditor } from '../../../../../../generalActions';
-import ColumnPresentator from './ColumnPresentator';
+import ColumnPresentation from './ColumnPresentation';
 import handleInputChange from '../../../../../../../utilities/handleInputChange';
 import { updateColumn } from '../actions';
 import ColumnEditor from './ColumnEditor';
@@ -77,7 +77,7 @@ class ColumnContainer extends Component {
                 />
               )
               : (
-                <ColumnPresentator
+                <ColumnPresentation
                   column={column}
                   index={index}
                   providedDraggable={providedDraggable}

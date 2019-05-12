@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 
-import ColumnPresentator from '../Column';
+import ColumnPresentation from '../Column';
 import NewColumnForm from '../NewColumnForm/NewColumnFormContainer';
 import ColumnModel from '../../../../../../../models/Column';
 
@@ -25,7 +25,7 @@ class ColumnsDragDrop extends Component {
             ref={providedDroppable.innerRef}
           >
             {columns.map((column, index) => (
-              <ColumnPresentator
+              <ColumnPresentation
                 key={column._id}
                 index={index}
                 column={column}

@@ -8,7 +8,7 @@ import { Icon, iconNames } from '../../../../../../common_components';
 
 import './Column.css';
 
-const ColumnPresentator = ({ column, providedDraggable, onSwitchOnColumnEditor }) => (
+const ColumnPresentation = ({ column, providedDraggable, onSwitchOnColumnEditor }) => (
   <Fragment>
     <div className="column">
       <div
@@ -26,11 +26,11 @@ const ColumnPresentator = ({ column, providedDraggable, onSwitchOnColumnEditor }
   </Fragment>
 );
 
-ColumnPresentator.propTypes = {
+ColumnPresentation.propTypes = {
   column: ColumnModel.isRequired,
   providedDraggable: PropTypes.shape().isRequired,
   onSwitchOnColumnEditor: PropTypes.func.isRequired,
 };
-ColumnPresentator.defaultProps = {};
+ColumnPresentation.defaultProps = {};
 
-export default ColumnPresentator;
+export default ColumnPresentation;
