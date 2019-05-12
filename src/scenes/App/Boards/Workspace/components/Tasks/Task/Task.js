@@ -17,7 +17,7 @@ const Task = ({
   >
     {(providedDraggable, snapshot) => (
       <div
-        onClick={() => history.replace(`/boards/${boardId}/${task._id}`)}
+        onClick={() => history.push(`/boards/${boardId}/${task._id}`)}
         className={c('task', { 'is-dragged': snapshot.isDragging })}
         ref={providedDraggable.innerRef}
         {...providedDraggable.draggableProps}

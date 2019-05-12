@@ -5,6 +5,7 @@ import get from 'lodash/get';
 
 import Workspace from './Workspace';
 import { clearWorkspace, fetchBoardIfNeeded } from './actions';
+import { BoardModel } from '../../../../models/Board';
 
 class WorkspaceContainer extends Component {
   componentWillMount() {
@@ -22,15 +23,15 @@ class WorkspaceContainer extends Component {
 
   render() {
     const { boardData } = this.props;
-    return (
-      <Workspace boardData={boardData} />
+    return boardData && (
+      <Workspace board={boardData} />
     );
   }
 }
 
 WorkspaceContainer.propTypes = {
   match: PropTypes.shape({}).isRequired,
-  boardData: PropTypes.shape({}), // TODO add board model
+  boardData: BoardModel,
   refreshBoard: PropTypes.func.isRequired,
   onClearWorkspace: PropTypes.func.isRequired,
 };

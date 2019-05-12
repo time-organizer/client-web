@@ -1,11 +1,11 @@
 import React from 'react';
-
+import get from 'lodash/get';
 import { BoardModel } from '../../../../models/Board';
 
 import './ContentSidebar.css';
 
 const ContentSidebar = ({ board }) => {
-  const { title } = board;
+  const title = get(board, 'title');
 
   return (
     <div className="content-sidebar">

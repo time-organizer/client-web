@@ -26,6 +26,13 @@ class Popup extends Component {
 
   componentDidMount() {
     this.setState({ animationTriggered: true });
+    // eslint-disable-next-line
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    // eslint-disable-next-line
+    window.removeEventListener('keydown', this.handleKeyPress);
   }
 
   closePopup = () => {
@@ -33,6 +40,12 @@ class Popup extends Component {
     this.setState({ animationTriggered: false });
 
     setTimeout(onClose, 300);
+  };
+
+  handleKeyPress = (e) => {
+    if (e.key === 'Escape') {
+      this.closePopup();
+    }
   };
 
   render() {

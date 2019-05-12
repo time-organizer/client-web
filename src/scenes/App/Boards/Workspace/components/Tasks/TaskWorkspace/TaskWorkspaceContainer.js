@@ -6,6 +6,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import TaskWorkspace from './TaskWorkspace';
+import TaskModel from '../../../../../../../models/Task';
 
 class TaskWorkspaceContainer extends Component {
   closeTaskWorkspace = () => {
@@ -14,25 +15,43 @@ class TaskWorkspaceContainer extends Component {
   };
 
   render() {
+    const { task } = this.props;
+
     return (
-      <TaskWorkspace closeTaskWorkspace={this.closeTaskWorkspace} />
+      <TaskWorkspace
+        closeTaskWorkspace={this.closeTaskWorkspace}
+        task={task}
+      />
     );
   }
 }
 
 TaskWorkspaceContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  task: TaskModel,
   boardId: PropTypes.string,
 };
 TaskWorkspaceContainer.defaultProps = {
   boardId: '',
+  task: {},
 };
 
-function mapStateToProps({ boards: { workspace: { board: { data: boardData } } } }) {
+function mapStateToProps({
+  boards: {
+    workspace: {
+      board: { data: boardData },
+      tasks: { data: { entries: tasksEntries } },
+    },
+  },
+}, ownProps) {
+  const { match: { params: { taskId } } } = ownProps;
+
+  const task = get(tasksEntries, taskId);
   const boardId = get(boardData, '_id');
 
   return {
     boardId,
+    task,
   };
 }
 
