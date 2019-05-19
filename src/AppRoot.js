@@ -17,7 +17,7 @@ const AppRoot = ({ store }) => (
       <Switch>
         <Redirect exact from="/auth" to="/auth/login" />
         <Route path="/auth" component={routeProps => <Auth {...routeProps} />} />
-        <Route path="/" component={routeProps => <App {...routeProps} />} />
+        <Route path="/" render={routeProps => <App {...routeProps} />} />
       </Switch>
     </Suspense>
   </Provider>

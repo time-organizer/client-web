@@ -15,7 +15,7 @@ const withAuth = (WrappedComponent) => {
 
     render() {
       return (
-        <WrappedComponent />
+        <WrappedComponent {...this.props} />
       );
     }
   }
