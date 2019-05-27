@@ -11,6 +11,7 @@ import Popup from './Popup';
 import PopupFooter from './Popup/components/PopupFooter';
 import Portal from './Portal';
 import Select from './Select';
+import TextArea from './TextArea';
 
 export {
   AssetPreviewer,
@@ -28,4 +29,5 @@ export {
   PopupFooter,
   Portal,
   Select,
+  TextArea,
 };

@@ -1,0 +1,12 @@
+@import '../../../common_styles/_variables.scss';
+
+textarea {
+  width: calc(100% - 16px);
+  height: 64px;
+  border: none;
+  box-shadow: $box-shadow-flat inset;
+  font-size: 0.8rem;
+  padding: 8px;
+  color: $text-color;
+  border-radius: 4px;
+}

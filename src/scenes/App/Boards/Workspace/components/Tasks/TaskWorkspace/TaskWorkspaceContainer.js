@@ -17,7 +17,7 @@ class TaskWorkspaceContainer extends Component {
   render() {
     const { task } = this.props;
 
-    return (
+    return !!task && (
       <TaskWorkspace
         closeTaskWorkspace={this.closeTaskWorkspace}
         task={task}
@@ -33,7 +33,7 @@ TaskWorkspaceContainer.propTypes = {
 };
 TaskWorkspaceContainer.defaultProps = {
   boardId: '',
-  task: {},
+  task: null,
 };
 
 function mapStateToProps({
