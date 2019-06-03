@@ -8,6 +8,7 @@ import CloseButton from '../CloseButton';
 import Fade from '../transitions/Fade';
 
 import './Popup.css';
+import Header3 from '../Texts/Header3';
 
 export const popupTypes = {
   small: 'small',
@@ -73,7 +74,7 @@ class Popup extends Component {
           >
             {title && (
               <div className="popup-title">
-                <h1>{title}</h1>
+                <Header3>{title}</Header3>
               </div>
             )}
             {withCloseButton && (

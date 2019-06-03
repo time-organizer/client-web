@@ -8,6 +8,7 @@ html, body, #root {
   color: $text-color;
   font-family: 'Lato', sans-serif;
   transition: .3s;
+  font-weight: 300;
 }
 
 a {
@@ -18,25 +19,31 @@ a {
 p {
   font-size: 0.9em;
   white-space: normal;
+  line-height: 1.4;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
 
   &.with-margin {
-    margin: 8px 0 8px 0;
+    margin: 16px 0 8px 0;
   }
 
   &.accent-color {
     color: $accent-color;
   }
-}
-
-h2 {
-  font-size: 1.5em;
 
   &.italic {
     font-style: italic;
   }
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.2em;
 }
 
 .label {
@@ -53,4 +60,8 @@ h2 {
 
 ::placeholder {
   color: #dbdbdb;
+}
+
+.text-bold {
+  font-weight: bold;
 }

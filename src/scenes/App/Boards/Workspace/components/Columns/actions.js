@@ -135,10 +135,11 @@ function reorderTasksRequest(reorder) {
   };
 }
 
-function reorderTasksSuccess(reorder) {
+function reorderTasksSuccess(reorder, updatedTask) {
   return {
     type: REORDER_TASKS_SUCCESS,
     reorder,
+    updatedTask,
   };
 }
 
@@ -155,8 +156,8 @@ export function reorderTasks(reorder) {
 
     APIService
       .post('/api/reorder', { reorder })
-      .then(() => {
-        dispatch(reorderTasksSuccess(reorder));
+      .then((updatedTask) => {
+        dispatch(reorderTasksSuccess(reorder, updatedTask.data.updatedTask));
       })
       .catch(() => {
         dispatch(reorderTasksFailure(reorder));

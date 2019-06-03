@@ -20,7 +20,7 @@ const NewColumnForm = ({
   <div className="column-wrapper new">
     {!addingColumnActive && (
       <div className="new-column-button" onClick={toggleAddingColumn}>
-        <h3>Add new column</h3>
+        <h4>Add new column</h4>
       </div>
     )}
     <Fade trigger={addingColumnActive}>

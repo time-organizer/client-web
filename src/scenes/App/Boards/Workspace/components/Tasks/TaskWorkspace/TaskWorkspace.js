@@ -9,7 +9,11 @@ import TaskDescription from './components/TaskDescription/TaskDescription';
 import TaskHistory from './components/TaskHistory';
 import TaskSettings from './components/TaskSettings/TaskSettings';
 
-const TaskWorkspace = ({ closeTaskWorkspace, task }) => (
+const TaskWorkspace = ({
+  closeTaskWorkspace,
+  task,
+  columnNames,
+}) => (
   <Popup
     onClose={closeTaskWorkspace}
     title={task.title}
@@ -17,7 +21,10 @@ const TaskWorkspace = ({ closeTaskWorkspace, task }) => (
     <div className="task-workspace">
       <div className="task-content">
         <TaskDescription task={task} />
-        <TaskHistory task={task} />
+        <TaskHistory
+          task={task}
+          columnNames={columnNames}
+        />
       </div>
       <div className="task-settings">
         <TaskSettings task={task} />
@@ -29,9 +36,11 @@ const TaskWorkspace = ({ closeTaskWorkspace, task }) => (
 TaskWorkspace.propTypes = {
   closeTaskWorkspace: PropTypes.func.isRequired,
   task: TaskModel,
+  columnNames: PropTypes.shape(),
 };
 TaskWorkspace.defaultProps = {
   task: null,
+  columnNames: {},
 };
 
 export default TaskWorkspace;

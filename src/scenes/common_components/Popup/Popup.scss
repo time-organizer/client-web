@@ -74,7 +74,13 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
 
   .popup-title {
     padding: 24px 24px 0 24px;
-    font-weight: 700;
+    width: calc(100% - 24px);
+
+    h3 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 
   .popup-content {

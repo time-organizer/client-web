@@ -1,5 +1,6 @@
 import * as boardActions from '../../actions';
 import * as actions from './actions';
+import * as columnActions from '../Columns/actions';
 
 export const initialState = {
   isFetching: false,
@@ -47,6 +48,18 @@ const columns = (state = initialState, action) => {
       },
       serverError: '',
     });
+
+  case columnActions.REORDER_TASKS_SUCCESS: {
+    return Object.assign({}, state, {
+      ...state,
+      data: {
+        entries: {
+          ...state.data.entries,
+          [action.updatedTask._id]: action.updatedTask,
+        },
+      },
+    });
+  }
 
   default:
     return state;
