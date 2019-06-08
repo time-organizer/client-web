@@ -1,31 +1,30 @@
-import omit from 'lodash/omit';
 import * as actions from './actions';
 
 export const initialState = {
   isFetching: false,
   didInvalidate: false,
   serverError: '',
-  data: null,
+  labelsById: {},
 };
 
-const boards = (state = initialState, action) => {
+const labels = (state = initialState, action) => {
   switch (action.type) {
-  case actions.FETCH_BOARD_REQUEST:
+  case actions.FETCH_LABELS_REQUEST:
     return Object.assign({}, state, {
       ...state,
       isFetching: true,
     });
 
-  case actions.FETCH_BOARD_SUCCESS:
+  case actions.FETCH_LABELS_SUCCESS:
     return Object.assign({}, state, {
       ...state,
       isFetching: false,
       didInvalidate: false,
-      data: omit(action.board, ['columns', 'columnsOrder', 'tasks']),
+      labelsById: {},
       serverError: '',
     });
 
-  case actions.FETCH_BOARD_FAILURE:
+  case actions.FETCH_LABELS_FAILURE:
     return Object.assign({}, state, {
       ...state,
       isFetching: false,
@@ -37,4 +36,4 @@ const boards = (state = initialState, action) => {
   }
 };
 
-export default boards;
+export default labels;

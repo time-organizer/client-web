@@ -10,14 +10,11 @@ import './Workspace.css';
 import { BoardModel } from '../../../../models/Board';
 import NewLabel from './components/Labels/NewLabel';
 
-const Workspace = ({ board, toggleNewLabelForm, newLabelFormOpened }) => (
+const Workspace = ({ board, newLabelFormOpened }) => (
   <ContentLayoutFull>
     <WorkspaceBackground themeId={board.theme}>
       <div className="workspace-columns-wrapper">
-        <Sidebar
-          board={board}
-          toggleNewLabelForm={toggleNewLabelForm}
-        />
+        <Sidebar board={board} />
         <DragAndDrop />
       </div>
     </WorkspaceBackground>
@@ -27,7 +24,6 @@ const Workspace = ({ board, toggleNewLabelForm, newLabelFormOpened }) => (
 
 Workspace.propTypes = {
   board: BoardModel,
-  toggleNewLabelForm: PropTypes.func.isRequired,
   newLabelFormOpened: PropTypes.bool.isRequired,
 };
 Workspace.defaultProps = {
