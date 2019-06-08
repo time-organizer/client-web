@@ -6,6 +6,7 @@ export const initialState = {
   menuSidebarOpened: false,
   forms: {
     newBoardFormOpened: false,
+    newLabelFormOpened: false,
   },
   editors: {
     columnId: null,
@@ -45,6 +46,15 @@ const general = (state = initialState, action) => {
     return Object.assign({}, state, {
       editors: {
         columnId: null,
+      },
+    });
+  }
+
+  case actions.TOGGLE_NEW_LABEL_FORM: {
+    return Object.assign({}, state, {
+      forms: {
+        ...state.forms,
+        newLabelFormOpened: !state.forms.newLabelFormOpened,
       },
     });
   }

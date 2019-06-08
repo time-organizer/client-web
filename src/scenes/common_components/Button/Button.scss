@@ -29,6 +29,14 @@
     }
   }
 
+  &.underlined {
+    width: auto;
+    border: none;
+    font-size: initial;
+    text-decoration: underline;
+    padding: 0;
+  }
+
   &:focus {
     outline: none;
   }

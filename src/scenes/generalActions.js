@@ -23,3 +23,8 @@ export const SWITCH_OFF_COLUMN_EDITOR = 'SWITCH_OFF_COLUMN_EDITOR';
 export const switchOffColumnEditor = () => ({
   type: SWITCH_OFF_COLUMN_EDITOR,
 });
+
+export const TOGGLE_NEW_LABEL_FORM = 'TOGGLE_NEW_LABEL_FORM';
+export const toggleNewLabelForm = () => ({
+  type: TOGGLE_NEW_LABEL_FORM,
+});

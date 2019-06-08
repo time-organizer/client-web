@@ -26,7 +26,6 @@ const reduxStateStructure = {
     workspace: {
       board: {
         isFetching: false,
-        isFetchingColumns: false,
         didInvalidate: false,
         serverError: '',
         data: {},

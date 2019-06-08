@@ -1,0 +1,8 @@
+@import '../../../../../../common_styles/variables';
+
+.sidebar {
+  box-shadow: $box-shadow;
+  background: $bg-color;
+  width: 250px;
+  padding: 16px;
+}

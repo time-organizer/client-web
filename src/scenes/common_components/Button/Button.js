@@ -7,6 +7,7 @@ const buttonTypes = {
   CANCEL: 'cancel',
   SUBMIT: 'submit',
   NEUTRAL: 'neutral',
+  UNDERLINED: 'underlined',
 };
 
 const Button = ({
@@ -32,6 +33,7 @@ Button.propTypes = {
     buttonTypes.CANCEL,
     buttonTypes.SUBMIT,
     buttonTypes.NEUTRAL,
+    buttonTypes.UNDERLINED,
   ]),
 };
 
