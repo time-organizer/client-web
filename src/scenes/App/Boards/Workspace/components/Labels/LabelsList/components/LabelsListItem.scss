@@ -1,0 +1,34 @@
+@import '../../../../../../../../common_styles/variables';
+
+.labels-list-item {
+  display: flex;
+  padding: 4px;
+  align-items: center;
+  box-shadow: $box-shadow-small;
+  margin: 8px 0;
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:hover {
+    background: $bg-color-2;
+  }
+
+  &:first-of-type {
+    margin-top: 16px;
+  }
+
+  .labels-list-item-title {
+    margin-right: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .color-square {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    border-radius: 2px;
+    margin-left: auto;
+  }
+}

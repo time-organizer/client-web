@@ -92,7 +92,10 @@ export function addNewLabel(newLabel) {
     dispatch(addNewLabelRequest());
 
     return APIService.post(`/api/labels/${boardId}`, newLabel)
-      .then(res => dispatch(addNewLabelSuccess(res.data)))
+      .then((res) => {
+        dispatch(addNewLabelSuccess(res.data));
+        dispatch(fetchLabelsIfNeeded(boardId));
+      })
       .catch((error) => {
         dispatch(addNewLabelFailure(error));
         throw error;

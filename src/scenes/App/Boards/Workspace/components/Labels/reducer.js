@@ -1,4 +1,5 @@
 import * as actions from './actions';
+import arrayToCollectionById from '../../../../../../utilities/arrayToCollectionById';
 
 export const initialState = {
   isFetching: false,
@@ -20,7 +21,7 @@ const labels = (state = initialState, action) => {
       ...state,
       isFetching: false,
       didInvalidate: false,
-      labelsById: {},
+      labelsById: arrayToCollectionById(action.labels),
       serverError: '',
     });
 
@@ -29,6 +30,11 @@ const labels = (state = initialState, action) => {
       ...state,
       isFetching: false,
       serverError: action.error,
+    });
+
+  case actions.ADD_NEW_LABEL_SUCCESS:
+    return Object.assign({}, state, {
+      didInvalidate: true,
     });
 
   default:

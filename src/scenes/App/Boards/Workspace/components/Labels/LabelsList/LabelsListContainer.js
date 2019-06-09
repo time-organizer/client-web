@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import map from 'lodash/map';
 import { connect } from 'react-redux';
 
 import LabelsList from './LabelsList';
 import { toggleNewLabelForm } from '../../../../../../generalActions';
 import { fetchLabelsIfNeeded } from '../actions';
+import LabelModel from '../../../../../../../models/Label';
 
 class LabelsListContainer extends Component {
   componentDidMount() {
@@ -14,11 +16,12 @@ class LabelsListContainer extends Component {
   }
 
   render() {
-    const { withNewButton, onToggleNewLabelForm } = this.props;
+    const { withNewButton, onToggleNewLabelForm, labels } = this.props;
     return (
       <LabelsList
         withNewButton={withNewButton}
         toggleNewLabelForm={onToggleNewLabelForm}
+        labels={labels}
       />
     );
   }
@@ -29,14 +32,18 @@ LabelsListContainer.propTypes = {
   onToggleNewLabelForm: PropTypes.func.isRequired,
   onFetchLabelsIfNeeded: PropTypes.func.isRequired,
   boardId: PropTypes.string.isRequired,
+  labels: PropTypes.arrayOf(LabelModel).isRequired,
 };
 LabelsListContainer.defaultProps = {
   withNewButton: false,
 };
 
-function mapStateToProps({ boards: { workspace: { board } } }) {
+function mapStateToProps({ boards: { workspace: { board, labels: { labelsById } } } }) {
+  const labels = map(labelsById, label => label);
+
   return {
     boardId: board.data._id,
+    labels,
   };
 }
 
