@@ -1,0 +1,59 @@
+@import '../../../common_styles/mixins';
+
+.col {
+  @media (min-width: 640px) {
+    padding: 0 16px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &.w50,
+    &.w33,
+    &.w25 {
+      &:only-child {
+        padding-right: 16px;
+      }
+    }
+
+    &.w100 {
+      width: 100%;
+    }
+
+    &.w50 {
+      width: 50%;
+    }
+
+    &.w33 {
+      width: calc(100% / 3);
+    }
+
+    &.w25 {
+      width: 25%;
+    }
+  }
+
+  @include phone {
+    padding: 0;
+
+    &.mobile-w100 {
+      width: 100%;
+    }
+
+    &.mobile-w50 {
+      width: 50%;
+    }
+
+    &.mobile-w33 {
+      width: calc(100% / 3);
+    }
+
+    &.mobile-w25 {
+      width: 25%;
+    }
+  }
+}

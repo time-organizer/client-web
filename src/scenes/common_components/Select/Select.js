@@ -3,39 +3,69 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import find from 'lodash/find';
+import chroma from 'chroma-js';
 
 import colors from '../../../utilities/colors';
 
 import './Select.css';
 
-const styles = {
-  control: libStyles => ({
-    ...libStyles,
-    boxShadow: '0px 0px 10px -3px rgba(0, 0, 0, 0.2)',
-    border: 'none',
-    padding: '4px',
-    fontSize: '1rem',
-  }),
-  option: (libStyles, {
-    isDisabled, isFocused, isSelected,
-  }) => {
-    const hoverColor = 'rgba(76,164,255,0.12)';
+const shape = (color = '#ccc') => ({
+  alignItems: 'center',
+  display: 'flex',
 
-    return {
-      ...libStyles,
-      backgroundColor:
-        isDisabled ? null : isSelected ? colors.accentColor : isFocused ? hoverColor : null,
-      cursor: isDisabled ? 'not-allowed' : 'pointer',
-    };
+  ':before': {
+    backgroundColor: color,
+    borderRadius: 4,
+    content: '" "',
+    display: 'block',
+    marginRight: 8,
+    height: 16,
+    width: '100%',
   },
-  placeholder: libStyles => ({
-    ...libStyles,
-    color: '#dbdbdb',
-  }),
-  singleValue: libStyles => ({
-    ...libStyles,
-    color: '#7b7b7b',
-  }),
+});
+
+const getStyles = (options, value) => {
+  const valueObject = find(options, option => option.value === value) || {};
+  const { shapeColor, withShape } = valueObject;
+  const inputShape = withShape ? shape(shapeColor) : {};
+
+  return {
+    control: libStyles => ({
+      ...libStyles,
+      boxShadow: '0px 0px 10px -3px rgba(0, 0, 0, 0.2)',
+      border: 'none',
+      padding: '4px',
+      fontSize: '1rem',
+    }),
+    option: (libStyles, {
+      data, isDisabled, isFocused, isSelected,
+    }) => {
+      const hoverColor = chroma(colors.accentColor).alpha(0.2).css();
+      const { withShape: currentWithShape, shapeColor: currentShapeColor } = data;
+      const currentShape = currentWithShape ? shape(currentShapeColor) : {};
+
+      return {
+        ...libStyles,
+        backgroundColor:
+          isDisabled ? null : isSelected ? colors.accentColor : isFocused ? hoverColor : null,
+        cursor: isDisabled ? 'not-allowed' : 'pointer',
+        ...currentShape,
+      };
+    },
+    placeholder: libStyles => ({
+      ...libStyles,
+      color: '#dbdbdb',
+    }),
+    singleValue: libStyles => ({
+      ...libStyles,
+      color: '#7b7b7b',
+    }),
+    input: libStyles => ({
+      ...libStyles,
+      width: '100%',
+      ...inputShape,
+    }),
+  };
 };
 
 const Selectizer = ({
@@ -45,7 +75,7 @@ const Selectizer = ({
 }) => (
   <div className="select">
     <Select
-      styles={styles}
+      styles={getStyles(options, value)}
       value={find(options, option => option.value === value)}
       onChange={onChange}
       options={options}

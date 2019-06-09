@@ -1,3 +1,8 @@
+.tasks-history-wrapper {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
 .task-history-list-item {
   margin-bottom: 8px;
 }

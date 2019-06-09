@@ -109,6 +109,7 @@ $popup-translation: translateX(calc(-50% - #{$popup-margin})) translateY(calc(-5
   .popup-content {
     padding: 24px;
     height: calc(100% - 40px);
+    overflow-y: auto;
   }
 
   &.with-footer {

@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ContentHeader from './ContentHeader';
-import Header4 from '../../../common_components/Texts/Header4';
 
 const props = {
   headerName: 'testHeaderName',

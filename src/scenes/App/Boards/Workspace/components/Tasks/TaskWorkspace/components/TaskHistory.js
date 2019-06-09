@@ -12,17 +12,19 @@ const TaskHistory = ({ task, columnNames }) => (
     <Header3 withMargin>
       History
     </Header3>
-    {task.history.map((historyEntry, index) => (
+    <div className="tasks-history-wrapper">
+      {task.history.map((historyEntry, index) => (
+        <TaskHistoryListItem
+          key={index} // eslint-disable-line
+          updatedAt={historyEntry.updatedAt}
+          columnName={columnNames[historyEntry.columnId]}
+        />
+      ))}
       <TaskHistoryListItem
-        key={index} // eslint-disable-line
-        updatedAt={historyEntry.updatedAt}
-        columnName={columnNames[historyEntry.columnId]}
+        type="add"
+        updatedAt={task.createdAt}
       />
-    ))}
-    <TaskHistoryListItem
-      type="add"
-      updatedAt={task.createdAt}
-    />
+    </div>
   </Fragment>
 );
 
