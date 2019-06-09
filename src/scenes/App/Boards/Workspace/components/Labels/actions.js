@@ -59,3 +59,43 @@ export function fetchLabelsIfNeeded(boardId) {
     }
   };
 }
+
+export const ADD_NEW_LABEL_REQUEST = 'ADD_NEW_LABEL_REQUEST';
+export const ADD_NEW_LABEL_SUCCESS = 'ADD_NEW_LABEL_SUCCESS';
+export const ADD_NEW_LABEL_FAILURE = 'ADD_NEW_LABEL_FAILURE';
+
+function addNewLabelRequest() {
+  return {
+    type: ADD_NEW_LABEL_REQUEST,
+  };
+}
+
+function addNewLabelSuccess(newLabel) {
+  return {
+    type: ADD_NEW_LABEL_SUCCESS,
+    newLabel,
+  };
+}
+
+function addNewLabelFailure(error) {
+  return {
+    type: ADD_NEW_LABEL_FAILURE,
+    error,
+  };
+}
+
+export function addNewLabel(newLabel) {
+  return (dispatch, getState) => {
+    const { boards: { workspace: { board } } } = getState();
+    const boardId = get(board, 'data._id');
+
+    dispatch(addNewLabelRequest());
+
+    return APIService.post(`/api/labels/${boardId}`, newLabel)
+      .then(res => dispatch(addNewLabelSuccess(res.data)))
+      .catch((error) => {
+        dispatch(addNewLabelFailure(error));
+        throw error;
+      });
+  };
+}

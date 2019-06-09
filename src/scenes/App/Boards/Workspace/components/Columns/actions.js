@@ -121,7 +121,7 @@ export function addNewColumn(column) {
     dispatch(addColumnRequest());
 
     return APIService.post('/api/columns', column)
-      .then(updatedColumn => dispatch(addColumnSuccess(updatedColumn.data)))
+      .then(newcolumn => dispatch(addColumnSuccess(newcolumn.data)))
       .catch((error) => {
         dispatch(addColumnFailure(error));
       });

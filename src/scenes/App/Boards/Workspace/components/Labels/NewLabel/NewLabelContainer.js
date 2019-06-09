@@ -7,6 +7,7 @@ import { toggleNewLabelForm } from '../../../../../../generalActions';
 import handleInputChange from '../../../../../../../utilities/handleInputChange';
 import handleSelectChange from '../../../../../../../utilities/handleSelectChange';
 import { defaultLabelColor } from '../../../../utilities/labelColors';
+import { addNewLabel } from '../actions';
 
 class NewLabelContainer extends Component {
   constructor(props) {
@@ -17,16 +18,46 @@ class NewLabelContainer extends Component {
       submitError: false,
       color: defaultLabelColor.value,
       startingDate: '',
-      endingDate: '',
+      dueDate: '',
+      conflict: false,
     };
     this.handleInputChange = handleInputChange.bind(this);
     this.handleSelectChange = handleSelectChange.bind(this);
   }
 
+  submitNewLabel = () => {
+    const { onToggleNewLabelForm, onAddNewLabel } = this.props;
+    const {
+      title, color, startingDate, dueDate,
+    } = this.state;
+
+    if (!title.length || !color.length) {
+      this.setState({ submitError: true });
+      return;
+    }
+
+    const newLabel = {
+      title,
+      color,
+      startingDate,
+      dueDate,
+    };
+
+    onAddNewLabel(newLabel)
+      .then(onToggleNewLabelForm)
+      .catch(this.handleConflict);
+  };
+
+  handleConflict = (error) => {
+    if (error.response.status === 409) {
+      this.setState({ conflict: true });
+    }
+  };
+
   render() {
     const { onToggleNewLabelForm } = this.props;
     const {
-      title, submitError, color, startingDate, endingDate,
+      title, submitError, color, startingDate, dueDate, conflict,
     } = this.state;
 
     return (
@@ -34,11 +65,13 @@ class NewLabelContainer extends Component {
         toggleNewLabelForm={onToggleNewLabelForm}
         handleInputChange={this.handleInputChange}
         handleSelectChange={this.handleSelectChange}
+        submitNewLabel={this.submitNewLabel}
         title={title}
         submitError={submitError}
         color={color}
         startingDate={startingDate}
-        endingDate={endingDate}
+        dueDate={dueDate}
+        conflict={conflict}
       />
     );
   }
@@ -46,6 +79,7 @@ class NewLabelContainer extends Component {
 
 NewLabelContainer.propTypes = {
   onToggleNewLabelForm: PropTypes.func.isRequired,
+  onAddNewLabel: PropTypes.func.isRequired,
 };
 NewLabelContainer.defaultProps = {};
 
@@ -56,6 +90,7 @@ function mapStateToProps() {
 function mapDispatchToProps(dispatch) {
   return {
     onToggleNewLabelForm: () => dispatch(toggleNewLabelForm()),
+    onAddNewLabel: newLabel => dispatch(addNewLabel(newLabel)),
   };
 }
 

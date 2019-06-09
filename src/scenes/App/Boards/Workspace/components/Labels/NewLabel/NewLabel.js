@@ -6,6 +6,7 @@ import LabelForms from '../LabelForms';
 import { defaultLabelColor } from '../../../../utilities/labelColors';
 
 const NewLabel = ({
+  submitNewLabel,
   toggleNewLabelForm,
   handleInputChange,
   handleSelectChange,
@@ -13,7 +14,8 @@ const NewLabel = ({
   submitError,
   color,
   startingDate,
-  endingDate,
+  dueDate,
+  conflict,
 }) => (
   <Popup
     popupLayer={popupLayers.higher}
@@ -21,13 +23,15 @@ const NewLabel = ({
     title="Add new label"
   >
     <LabelForms
+      submitNewLabel={submitNewLabel}
       handleInputChange={handleInputChange}
       handleSelectChange={handleSelectChange}
       title={title}
       submitError={submitError}
       color={color}
       startingDate={startingDate}
-      endingDate={endingDate}
+      dueDate={dueDate}
+      conflict={conflict}
     />
   </Popup>
 );
@@ -40,14 +44,16 @@ NewLabel.propTypes = {
   submitError: PropTypes.bool,
   color: PropTypes.string,
   startingDate: PropTypes.string,
-  endingDate: PropTypes.string,
+  dueDate: PropTypes.string,
+  submitNewLabel: PropTypes.func.isRequired,
+  conflict: PropTypes.bool.isRequired,
 };
 NewLabel.defaultProps = {
   title: '',
   submitError: false,
   color: defaultLabelColor,
   startingDate: '',
-  endingDate: '',
+  dueDate: '',
 };
 
 export default NewLabel;
