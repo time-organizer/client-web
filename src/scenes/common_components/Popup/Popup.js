@@ -17,6 +17,12 @@ export const popupTypes = {
   fullscreen: 'fullscreen',
 };
 
+export const popupLayers = {
+  default: 'layer-default',
+  higher: 'layer-higher',
+  highest: 'layer-highest',
+};
+
 class Popup extends Component {
   constructor(props) {
     super(props);
@@ -51,14 +57,14 @@ class Popup extends Component {
 
   render() {
     const {
-      children, popupType, withCloseButton, title, footer,
+      children, popupType, withCloseButton, title, footer, popupLayer,
     } = this.props;
     const { animationTriggered } = this.state;
 
     return (
       <Portal>
         <Fade trigger={animationTriggered}>
-          <div className={`popup-overlay ${popupType}`} onClick={this.closePopup} />
+          <div className={`popup-overlay ${popupType} ${popupLayer}`} onClick={this.closePopup} />
         </Fade>
         <CSSTransition
           in={animationTriggered}
@@ -67,7 +73,7 @@ class Popup extends Component {
           timeout={300}
         >
           <div className={c(
-            `popup ${popupType}`, {
+            `popup ${popupType} ${popupLayer}`, {
               'with-footer': !!footer,
             },
           )}
@@ -103,6 +109,11 @@ Popup.propTypes = {
     popupTypes.normal,
     popupTypes.fullscreen,
   ]),
+  popupLayer: PropTypes.oneOf([
+    popupLayers.default,
+    popupLayers.higher,
+    popupLayers.highest,
+  ]),
   withCloseButton: PropTypes.bool,
   title: PropTypes.string,
   footer: PropTypes.node,
@@ -113,6 +124,7 @@ Popup.defaultProps = {
   withCloseButton: true,
   title: '',
   footer: null,
+  popupLayer: popupLayers.default,
 };
 
 export default Popup;

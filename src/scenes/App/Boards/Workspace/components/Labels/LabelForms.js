@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-const ColumnForms = () => (
-  <div>
+const LabelForms = () => (
+  <Fragment>
     Form
-  </div>
+  </Fragment>
 );
 
-ColumnForms.propTypes = {};
-ColumnForms.defaultProps = {};
+LabelForms.propTypes = {};
+LabelForms.defaultProps = {};
 
-export default ColumnForms;
+export default LabelForms;

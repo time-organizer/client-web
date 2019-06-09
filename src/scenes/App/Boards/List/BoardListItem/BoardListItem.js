@@ -7,6 +7,7 @@ import boardThemes from '../../utilities/boardThemes';
 import { BoardModel } from '../../../../../models/Board';
 
 import './BoardListItem.css';
+import Header4 from '../../../../common_components/Texts/Header4';
 
 const BoardListItem = ({ board }) => {
   const boardTheme = find(boardThemes, theme => theme.key === board.theme);
@@ -22,7 +23,7 @@ const BoardListItem = ({ board }) => {
           style={listItemBg}
         >
           <div className="board-list-item-title">
-            <h3>{title}</h3>
+            <Header4>{title}</Header4>
           </div>
         </div>
       </Link>

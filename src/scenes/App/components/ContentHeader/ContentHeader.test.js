@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ContentHeader from './ContentHeader';
+import Header4 from '../../../common_components/Texts/Header4';
 
 const props = {
   headerName: 'testHeaderName',
@@ -14,11 +15,4 @@ describe('<ContentHeader />', () => {
     );
     expect(wrapper.find('.content-header')).toHaveLength(1);
   });
-
-  it('renders headerName prop', () => {
-    const wrapper = shallow(
-      <ContentHeader headerName={props.headerName} />
-    );
-    expect(wrapper.find('h1').text()).toEqual(props.headerName);
-  })
 });
