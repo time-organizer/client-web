@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import c from 'classnames';
 
 import './Button.css';
 
@@ -11,12 +12,12 @@ const buttonTypes = {
 };
 
 const Button = ({
-  children, onClick, className, buttonType,
+  children, onClick, className, buttonType, fullWidth,
 }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`to-button ${buttonType} ${className}`}
+    className={c(`to-button ${buttonType} ${className}`, { 'full-width': fullWidth })}
   >
     {children}
   </button>
@@ -35,11 +36,13 @@ Button.propTypes = {
     buttonTypes.NEUTRAL,
     buttonTypes.UNDERLINED,
   ]),
+  fullWidth: PropTypes.bool,
 };
 
 Button.defaultProps = {
   className: '',
   buttonType: buttonTypes.NEUTRAL,
+  fullWidth: false,
 };
 
 export default Button;

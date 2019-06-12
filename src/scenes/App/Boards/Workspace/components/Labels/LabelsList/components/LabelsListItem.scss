@@ -4,10 +4,10 @@
   display: flex;
   padding: 4px;
   align-items: center;
-  box-shadow: $box-shadow-small;
-  margin: 8px 0;
+  margin: 4px 0;
   cursor: pointer;
   border-radius: 4px;
+  transition: background .3s;
 
   &:hover {
     background: $bg-color-2;

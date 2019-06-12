@@ -12,7 +12,8 @@ const LabelsList = ({ toggleNewLabelForm, withNewButton, labels }) => (
     {!!withNewButton && (
       <Button
         onClick={toggleNewLabelForm}
-        buttonType={buttonTypes.UNDERLINED}
+        buttonType={buttonTypes.SUBMIT}
+        fullWidth
       >
         Add new label
       </Button>

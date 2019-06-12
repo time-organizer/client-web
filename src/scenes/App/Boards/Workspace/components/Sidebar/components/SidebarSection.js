@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header3 from '../../../../../../common_components/Texts/Header3';
 
 const SidebarSection = ({ title, children }) => (
-  <div className="content-sidebar-section">
+  <div className="sidebar-section">
     <Header3 withMargin>
       {title}
     </Header3>

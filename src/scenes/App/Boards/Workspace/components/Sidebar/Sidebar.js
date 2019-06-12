@@ -14,9 +14,11 @@ const Sidebar = ({ board }) => {
   return (
     <div className="sidebar">
       <Header2>{title}</Header2>
-      <SidebarSection title="Labels">
-        <LabelsList withNewButton />
-      </SidebarSection>
+      <div className="sidebar-scroll">
+        <SidebarSection title="Labels">
+          <LabelsList withNewButton />
+        </SidebarSection>
+      </div>
     </div>
   );
 };
