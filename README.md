@@ -18,9 +18,8 @@ Application should be used to easily manage processes. When finished, it should 
 - Changing columns order ✓
 - Creating tasks ✓ 
 - Changing tasks order ✓ 
-- Creating labels for tasks
+- Creating labels for tasks ✓
 - Ability to invite other users to the board
 - Ability to assign other people to tasks
-- Creating new ToDo list integrated with the board
 - Displaying data on a custimisable dashboard with multiple widgets
 
