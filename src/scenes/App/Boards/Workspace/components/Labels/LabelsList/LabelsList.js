@@ -19,7 +19,10 @@ const LabelsList = ({ toggleNewLabelForm, withNewButton, labels }) => (
       </Button>
     )}
     {labels.map(label => (
-      <LabelsListItem label={label} />
+      <LabelsListItem
+        key={label._id}
+        label={label}
+      />
     ))}
   </div>
 );

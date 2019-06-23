@@ -22,6 +22,7 @@ $sidebarWidth: 300px;
   height: 100%;
   box-shadow: $box-shadow;
   z-index: $z-index-5;
+  padding-top: 54px;
 
   .menu-sidebar-message {
     margin-top: 40px;
@@ -46,6 +47,20 @@ $sidebarWidth: 300px;
 
   @include phone {
     width: 100%;
+  }
+}
+
+.sidebar-button {
+  padding: 8px 24px;
+  display: flex;
+  transition: .3s;
+
+  &:hover {
+    background: $bg-color-2;
+  }
+
+  .sidebar-button-icon {
+    margin-right: 8px;
   }
 }
 
