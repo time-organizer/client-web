@@ -43,6 +43,51 @@ function fetchBoardFailure(error) {
   };
 }
 
+export const UPDATE_BOARD_REQUEST = 'UPDATE_BOARD_REQUEST';
+export const UPDATE_BOARD_SUCCESS = 'UPDATE_BOARD_SUCCESS';
+export const UPDATE_BOARD_FAILURE = 'UPDATE_BOARD_FAILURE';
+
+function updateBoardRequest(boardId) {
+  return {
+    type: UPDATE_BOARD_REQUEST,
+    boardId,
+  };
+}
+
+function updateBoardSuccess(boardId, updatedBoard) {
+  return {
+    type: UPDATE_BOARD_SUCCESS,
+    boardId,
+    updatedBoard,
+  };
+}
+
+function updateBoardFailure(boardId, error) {
+  return {
+    type: UPDATE_BOARD_FAILURE,
+    boardId,
+    error,
+  };
+}
+
+export function updateBoard(boardId, newData) {
+  return (dispatch) => {
+    dispatch(updateBoardRequest(boardId));
+
+    return APIService.put(`/api/boards/${boardId}`, {
+      updatedObject: {
+        ...newData,
+      },
+    })
+      .then((updatedBoard) => {
+        dispatch(updateBoardSuccess(boardId, updatedBoard.data));
+      })
+      .catch((error) => {
+        dispatch(updateBoardFailure(boardId, error));
+      });
+  };
+}
+
 export function fetchBoardIfNeeded(id) {
   return (dispatch, getState) => {
     if (shouldFetchBoard(getState(), id)) {
