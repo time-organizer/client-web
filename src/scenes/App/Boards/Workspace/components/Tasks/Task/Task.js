@@ -7,6 +7,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import c from 'classnames';
 
 import './Task.css';
+import TaskLabels from './components/TaskLabels';
 
 const Task = ({
   task, index, boardId,
@@ -24,6 +25,7 @@ const Task = ({
           {...providedDraggable.dragHandleProps}
         >
           <p>{task.title}</p>
+          <TaskLabels task={task} />
         </div>
       </Link>
     )}
