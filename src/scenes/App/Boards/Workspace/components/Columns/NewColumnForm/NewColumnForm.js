@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Fade from '../../../../../../common_components/transitions/Fade';
 import { Button, buttonTypes } from '../../../../../../common_components';
 import ColumnForms from '../ColumnForms';
 
@@ -23,7 +22,7 @@ const NewColumnForm = ({
         <h4>Add new column</h4>
       </div>
     )}
-    <Fade trigger={addingColumnActive}>
+    {addingColumnActive && (
       <div className="column-content-wrapper">
         <ColumnForms
           handleSelectChange={handleSelectChange}
@@ -34,7 +33,7 @@ const NewColumnForm = ({
         />
         <Button onClick={submitNewColumn} buttonType={buttonTypes.SUBMIT}>Submit</Button>
       </div>
-    </Fade>
+    )}
   </div>
 );
 
