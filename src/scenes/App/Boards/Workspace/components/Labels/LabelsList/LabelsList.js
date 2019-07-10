@@ -7,7 +7,9 @@ import LabelModel from '../../../../../../../models/Label';
 
 import './LabelsList.css';
 
-const LabelsList = ({ toggleNewLabelForm, withNewButton, labels }) => (
+const LabelsList = ({
+  toggleNewLabelForm, withNewButton, labels, onLabelClick,
+}) => (
   <div className="labels-list">
     {!!withNewButton && (
       <Button
@@ -22,6 +24,7 @@ const LabelsList = ({ toggleNewLabelForm, withNewButton, labels }) => (
       <LabelsListItem
         key={label._id}
         label={label}
+        onLabelClick={onLabelClick}
       />
     ))}
   </div>
@@ -31,6 +34,7 @@ LabelsList.propTypes = {
   toggleNewLabelForm: PropTypes.func.isRequired,
   withNewButton: PropTypes.bool,
   labels: PropTypes.arrayOf(LabelModel),
+  onLabelClick: PropTypes.func.isRequired,
 };
 LabelsList.defaultProps = {
   withNewButton: false,

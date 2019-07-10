@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
+import findIndex from 'lodash/findIndex';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { withRouter } from 'react-router-dom';
@@ -14,6 +15,19 @@ class TaskWorkspaceContainer extends Component {
     history.replace(`/boards/${boardId}`);
   };
 
+  toggleLabel = (clickedLabelId) => {
+    const { task } = this.props;
+    const taskLabelsIds = get(task, 'labels', []);
+
+    const labelIndex = findIndex(taskLabelsIds, labelId => labelId === clickedLabelId);
+    if (labelIndex > -1) {
+      // console.log(taskLabelsIds.filter(labelId => labelId === clickedLabelId));
+    } else {
+      // console.log(clickedLabelId)
+      // console.log([...taskLabelsIds, clickedLabelId]);
+    }
+  };
+
   render() {
     const { task, columnNames } = this.props;
 
@@ -22,6 +36,7 @@ class TaskWorkspaceContainer extends Component {
         closeTaskWorkspace={this.closeTaskWorkspace}
         task={task}
         columnNames={columnNames}
+        toggleLabel={this.toggleLabel}
       />
     );
   }

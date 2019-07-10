@@ -13,6 +13,7 @@ const TaskWorkspace = ({
   closeTaskWorkspace,
   task,
   columnNames,
+  toggleLabel,
 }) => (
   <Popup
     onClose={closeTaskWorkspace}
@@ -27,7 +28,10 @@ const TaskWorkspace = ({
         />
       </div>
       <div className="task-settings">
-        <TaskSettings task={task} />
+        <TaskSettings
+          task={task}
+          toggleLabel={toggleLabel}
+        />
       </div>
     </div>
   </Popup>
@@ -37,6 +41,7 @@ TaskWorkspace.propTypes = {
   closeTaskWorkspace: PropTypes.func.isRequired,
   task: TaskModel,
   columnNames: PropTypes.shape(),
+  toggleLabel: PropTypes.func.isRequired,
 };
 TaskWorkspace.defaultProps = {
   task: null,
