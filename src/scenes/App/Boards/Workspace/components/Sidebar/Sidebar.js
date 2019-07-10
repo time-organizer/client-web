@@ -16,7 +16,10 @@ const Sidebar = ({ board }) => {
       <Header2>{title}</Header2>
       <div className="sidebar-scroll">
         <SidebarSection title="Labels">
-          <LabelsList withNewButton />
+          <LabelsList
+            withNewButton
+            isLabelActive={() => false}
+          />
         </SidebarSection>
       </div>
     </div>

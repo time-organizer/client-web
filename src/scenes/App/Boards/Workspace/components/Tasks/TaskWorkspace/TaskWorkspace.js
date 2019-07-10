@@ -14,6 +14,7 @@ const TaskWorkspace = ({
   task,
   columnNames,
   toggleLabel,
+  isLabelActive,
 }) => (
   <Popup
     onClose={closeTaskWorkspace}
@@ -31,6 +32,7 @@ const TaskWorkspace = ({
         <TaskSettings
           task={task}
           toggleLabel={toggleLabel}
+          isLabelActive={isLabelActive}
         />
       </div>
     </div>
@@ -42,6 +44,7 @@ TaskWorkspace.propTypes = {
   task: TaskModel,
   columnNames: PropTypes.shape(),
   toggleLabel: PropTypes.func.isRequired,
+  isLabelActive: PropTypes.func.isRequired,
 };
 TaskWorkspace.defaultProps = {
   task: null,

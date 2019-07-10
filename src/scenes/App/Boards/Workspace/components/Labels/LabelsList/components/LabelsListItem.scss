@@ -7,7 +7,12 @@
   margin: 4px 0;
   cursor: pointer;
   border-radius: 4px;
-  transition: background .3s;
+  transition: .3s;
+
+  &.active {
+    color: $accent-color;
+    font-weight: 400;
+  }
 
   &:hover {
     background: $bg-color-2;

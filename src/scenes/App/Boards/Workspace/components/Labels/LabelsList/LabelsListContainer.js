@@ -17,7 +17,7 @@ class LabelsListContainer extends Component {
 
   render() {
     const {
-      withNewButton, onToggleNewLabelForm, labels, onLabelClick,
+      withNewButton, onToggleNewLabelForm, labels, onLabelClick, isLabelActive,
     } = this.props;
     return (
       <LabelsList
@@ -25,6 +25,7 @@ class LabelsListContainer extends Component {
         toggleNewLabelForm={onToggleNewLabelForm}
         labels={labels}
         onLabelClick={onLabelClick}
+        isLabelActive={isLabelActive}
       />
     );
   }
@@ -37,6 +38,7 @@ LabelsListContainer.propTypes = {
   boardId: PropTypes.string.isRequired,
   labels: PropTypes.arrayOf(LabelModel).isRequired,
   onLabelClick: PropTypes.func.isRequired,
+  isLabelActive: PropTypes.func.isRequired,
 };
 LabelsListContainer.defaultProps = {
   withNewButton: false,

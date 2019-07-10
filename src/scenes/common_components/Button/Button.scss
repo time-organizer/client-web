@@ -29,7 +29,7 @@
     border: none;
 
     &:hover {
-      box-shadow: 0 3px 15px -3px $accent-color;
+      box-shadow: $box-shadow-clickable;
     }
   }
 

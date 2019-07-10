@@ -24,6 +24,7 @@ const columns = (state = initialState, action) => {
     return Object.assign({}, state, {
       ...state,
       data: {
+        ...state.data,
         entries: {
           ...state.data.entries,
           [taskId]: action.createdTask,
@@ -38,6 +39,53 @@ const columns = (state = initialState, action) => {
       ...state,
       serverError: action.error,
       isFetching: false,
+    });
+
+  case actions.UPDATE_TASK_REQUEST:
+    return Object.assign({}, state, {
+      ...state,
+      data: {
+        ...state.data,
+        entries: {
+          ...state.data.entries,
+          [action.taskId]: {
+            ...state.data.entries[action.taskId],
+            isFetching: true,
+            error: null,
+          },
+        },
+      },
+    });
+  case actions.UPDATE_TASK_SUCCESS:
+    return Object.assign({}, state, {
+      ...state,
+      data: {
+        ...state.data,
+        entries: {
+          ...state.data.entries,
+          [action.taskId]: {
+            ...action.updatedTask,
+            isFetching: false,
+            error: null,
+          },
+        },
+      },
+    });
+
+  case actions.UPDATE_TASK_FAILURE:
+    return Object.assign({}, state, {
+      ...state,
+      data: {
+        ...state.data,
+        entries: {
+          ...state.data.entries,
+          [action.taskId]: {
+            ...state.data.entries[action.taskId],
+            isFetching: false,
+            error: action.error,
+          },
+        },
+      },
     });
 
   case boardActions.FETCH_BOARD_SUCCESS:

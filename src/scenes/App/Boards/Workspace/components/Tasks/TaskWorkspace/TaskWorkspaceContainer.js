@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import TaskWorkspace from './TaskWorkspace';
 import TaskModel from '../../../../../../../models/Task';
+import { updateTask } from '../actions';
 
 class TaskWorkspaceContainer extends Component {
   closeTaskWorkspace = () => {
@@ -16,16 +17,26 @@ class TaskWorkspaceContainer extends Component {
   };
 
   toggleLabel = (clickedLabelId) => {
+    const { task, onUpdateTask } = this.props;
+    const taskLabelsIds = get(task, 'labels', []);
+    const taskId = get(task, '_id');
+
+    const labelIndex = findIndex(taskLabelsIds, labelId => labelId === clickedLabelId);
+
+    if (labelIndex > -1) {
+      const newLabelsIds = { labels: taskLabelsIds.filter(labelId => labelId !== clickedLabelId) };
+      onUpdateTask(taskId, newLabelsIds);
+    } else {
+      const newLabelsIds = { labels: [...taskLabelsIds, clickedLabelId] };
+      onUpdateTask(taskId, newLabelsIds);
+    }
+  };
+
+  isLabelActive = (labelId) => {
     const { task } = this.props;
     const taskLabelsIds = get(task, 'labels', []);
 
-    const labelIndex = findIndex(taskLabelsIds, labelId => labelId === clickedLabelId);
-    if (labelIndex > -1) {
-      // console.log(taskLabelsIds.filter(labelId => labelId === clickedLabelId));
-    } else {
-      // console.log(clickedLabelId)
-      // console.log([...taskLabelsIds, clickedLabelId]);
-    }
+    return taskLabelsIds.indexOf(labelId) > -1;
   };
 
   render() {
@@ -37,6 +48,7 @@ class TaskWorkspaceContainer extends Component {
         task={task}
         columnNames={columnNames}
         toggleLabel={this.toggleLabel}
+        isLabelActive={this.isLabelActive}
       />
     );
   }
@@ -47,6 +59,7 @@ TaskWorkspaceContainer.propTypes = {
   task: TaskModel,
   boardId: PropTypes.string,
   columnNames: PropTypes.shape(),
+  onUpdateTask: PropTypes.func.isRequired,
 };
 TaskWorkspaceContainer.defaultProps = {
   boardId: '',
@@ -81,4 +94,10 @@ function mapStateToProps({
   };
 }
 
-export default withRouter(connect(mapStateToProps)(TaskWorkspaceContainer));
+function mapDispatchToProps(dispatch) {
+  return {
+    onUpdateTask: (taskId, newData) => dispatch(updateTask(taskId, newData)),
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TaskWorkspaceContainer));

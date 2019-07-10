@@ -35,3 +35,48 @@ export function addNewTask(task) {
       });
   };
 }
+
+export const UPDATE_TASK_REQUEST = 'UPDATE_TASK_REQUEST';
+export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS';
+export const UPDATE_TASK_FAILURE = 'UPDATE_TASK_FAILURE';
+
+function updateTaskRequest(taskId) {
+  return {
+    type: UPDATE_TASK_REQUEST,
+    taskId,
+  };
+}
+
+function updateTaskSuccess(taskId, updatedTask) {
+  return {
+    type: UPDATE_TASK_SUCCESS,
+    taskId,
+    updatedTask,
+  };
+}
+
+function updateTaskFailure(taskId, error) {
+  return {
+    type: UPDATE_TASK_FAILURE,
+    taskId,
+    error,
+  };
+}
+
+export function updateTask(taskId, newData) {
+  return (dispatch) => {
+    dispatch(updateTaskRequest(taskId));
+
+    return APIService.put(`/api/tasks/${taskId}`, {
+      updatedObject: {
+        ...newData,
+      },
+    })
+      .then((updatedTask) => {
+        dispatch(updateTaskSuccess(taskId, updatedTask.data));
+      })
+      .catch((error) => {
+        dispatch(updateTaskFailure(taskId, error));
+      });
+  };
+}
