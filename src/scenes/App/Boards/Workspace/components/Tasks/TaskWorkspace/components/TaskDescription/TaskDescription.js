@@ -1,55 +1,48 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import Header3 from '../../../../../../../../common_components/Texts/Header3';
-import TaskModel from '../../../../../../../../../models/Task';
-import handleInputChange from '../../../../../../../../../utilities/handleInputChange';
 import TaskDescriptionPresenter from './TaskDescriptionPresenter';
 import TaskDescriptionEditor from './TaskDescriptionEditor';
 
-class TaskDescription extends Component {
-  constructor(props) {
-    super(props);
-
-    const { task } = this.props;
-
-    this.state = {
-      // editMode: false,
-      description: task.description,
-    };
-
-    this.handleInputChange = handleInputChange.bind(this);
-  }
-
-  // toggleEditMode = () => this.setState(prevState => ({ editMode: !prevState.editMode }));
-
-  render() {
-    const { task } = this.props;
-    const { description: stateDescription, editMode } = this.state;
-
-    return (
-      <Fragment>
-        <Header3 withMargin>
-          Description
-        </Header3>
-        {!task.description || !editMode
-          ? (
-            <TaskDescriptionEditor
-              description={stateDescription}
-              onChange={this.handleInputChange}
-            />
-          )
-          : (
-            <TaskDescriptionPresenter description={task.description} />
-          )
-        }
-      </Fragment>
-    );
-  }
-}
+const TaskDescription = ({
+  editMode, description, handleInputChange, updateTask, formErrors, toggleEditMode,
+}) => (
+  <Fragment>
+    <Header3 withMargin>
+      Description
+    </Header3>
+    {editMode
+      ? (
+        <TaskDescriptionEditor
+          description={description}
+          onChange={handleInputChange}
+          updateTask={updateTask}
+          formErrors={formErrors}
+        />
+      )
+      : (
+        <TaskDescriptionPresenter
+          description={description}
+          toggleEditMode={toggleEditMode}
+          escription={description}
+        />
+      )
+    }
+  </Fragment>
+);
 
 TaskDescription.propTypes = {
-  task: TaskModel.isRequired,
+  editMode: PropTypes.bool.isRequired,
+  description: PropTypes.string,
+  handleInputChange: PropTypes.func.isRequired,
+  updateTask: PropTypes.func.isRequired,
+  formErrors: PropTypes.arrayOf(PropTypes.string),
+  toggleEditMode: PropTypes.func.isRequired,
 };
-TaskDescription.defaultProps = {};
+TaskDescription.defaultProps = {
+  description: '',
+  formErrors: [],
+};
 
 export default TaskDescription;

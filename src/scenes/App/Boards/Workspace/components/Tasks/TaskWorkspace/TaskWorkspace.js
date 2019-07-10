@@ -5,7 +5,7 @@ import { Popup } from '../../../../../../common_components';
 import TaskModel from '../../../../../../../models/Task';
 
 import './TaskWorkspace.css';
-import TaskDescription from './components/TaskDescription/TaskDescription';
+import TaskDescription from './components/TaskDescription';
 import TaskHistory from './components/TaskHistory';
 import TaskSettings from './components/TaskSettings/TaskSettings';
 
