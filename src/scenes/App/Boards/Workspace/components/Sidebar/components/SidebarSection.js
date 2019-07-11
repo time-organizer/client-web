@@ -4,7 +4,7 @@ import Header3 from '../../../../../../common_components/Texts/Header3';
 
 const SidebarSection = ({ title, children }) => (
   <div className="sidebar-section">
-    <Header3 withMargin>
+    <Header3 withMargin className="text-bold">
       {title}
     </Header3>
     {children}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ParticipantListItem = ({ participant }) => (
-  <div>
+  <div className="margin-bottom-8">
     {participant}
   </div>
 );
