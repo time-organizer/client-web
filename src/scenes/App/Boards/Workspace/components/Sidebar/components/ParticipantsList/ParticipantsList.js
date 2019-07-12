@@ -5,7 +5,10 @@ import ParticipantListItem from './ParticipantListItem';
 const ParticipantsList = ({ participants }) => participants.length > 0 && (
   <div className="margin-bottom-8">
     {participants.map(participant => (
-      <ParticipantListItem participant={participant} />
+      <ParticipantListItem
+        key={participant}
+        participant={participant}
+      />
     ))}
   </div>
 );

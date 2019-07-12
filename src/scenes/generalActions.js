@@ -28,3 +28,8 @@ export const TOGGLE_NEW_LABEL_FORM = 'TOGGLE_NEW_LABEL_FORM';
 export const toggleNewLabelForm = () => ({
   type: TOGGLE_NEW_LABEL_FORM,
 });
+
+export const TOGGLE_WIDGETS_CHOOSER = 'TOGGLE_WIDGETS_CHOOSER';
+export const toggleWidgetsChooser = () => ({
+  type: TOGGLE_WIDGETS_CHOOSER,
+});

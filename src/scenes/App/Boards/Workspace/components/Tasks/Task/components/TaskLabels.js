@@ -6,6 +6,7 @@ import intersection from 'lodash/intersection';
 
 import { connect } from 'react-redux';
 import { fetchLabelsIfNeeded } from '../../../Labels/actions';
+import LabelModel from '../../../../../../../../models/Label';
 
 class TaskLabels extends Component {
   componentDidMount() {
@@ -20,7 +21,11 @@ class TaskLabels extends Component {
     return activeLabels.length > 0 && (
       <div className="task-labels">
         {activeLabels.map(label => (
-          <div className="task-label" style={{ backgroundColor: label.color }} />
+          <div
+            key={label._id}
+            className="task-label"
+            style={{ backgroundColor: label.color }}
+          />
         ))}
       </div>
     );
@@ -30,7 +35,7 @@ class TaskLabels extends Component {
 TaskLabels.propTypes = {
   onFetchLabelsIfNeeded: PropTypes.func.isRequired,
   boardId: PropTypes.string.isRequired,
-  activeLabels: PropTypes.arrayOf(PropTypes.string),
+  activeLabels: PropTypes.arrayOf(LabelModel),
 };
 TaskLabels.defaultProps = {
   activeLabels: [],

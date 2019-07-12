@@ -33,7 +33,7 @@ const ParticipantForm = ({
 ParticipantForm.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
-  toggleFormOpened: PropTypes.string.isRequired,
+  toggleFormOpened: PropTypes.func.isRequired,
   formOpened: PropTypes.bool.isRequired,
   addNewParticipant: PropTypes.func.isRequired,
 };

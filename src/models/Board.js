@@ -4,7 +4,7 @@ const BoardModel = PropTypes.shape({
   _id: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   ownerId: PropTypes.string.isRequired,
-  participants: PropTypes.arrayOf(PropTypes.shape({})),
+  participants: PropTypes.arrayOf(PropTypes.string),
   theme: PropTypes.number,
   title: PropTypes.string.isRequired,
 });

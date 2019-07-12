@@ -33,6 +33,12 @@
     }
   }
 
+  &.neutral {
+    &:hover {
+      box-shadow: $box-shadow-clickable;
+    }
+  }
+
   &.underlined {
     width: auto;
     border: none;

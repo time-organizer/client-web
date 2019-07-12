@@ -4,6 +4,7 @@ export const initialState = {
   fullscreenLoading: false,
   userSidebarOpened: false,
   menuSidebarOpened: false,
+  widgetsChoosedOpened: false,
   forms: {
     newBoardFormOpened: false,
     newLabelFormOpened: false,
@@ -56,6 +57,12 @@ const general = (state = initialState, action) => {
         ...state.forms,
         newLabelFormOpened: !state.forms.newLabelFormOpened,
       },
+    });
+  }
+
+  case actions.TOGGLE_WIDGETS_CHOOSER: {
+    return Object.assign({}, state, {
+      widgetsChoosedOpened: !state.widgetsChoosedOpened,
     });
   }
 
