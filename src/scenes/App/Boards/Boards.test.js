@@ -18,12 +18,14 @@ describe('<Boards />', () => {
   });
 
   it('renders <Route /> for List and Workspace', () => {
-    expect(wrapper.find(Route)).toHaveLength(3);
+    expect(wrapper.find(Route)).toHaveLength(4);
     expect(wrapper.find(Route).at(0).props().path)
       .toEqual('/boards/:id/:taskId');
     expect(wrapper.find(Route).at(1).props().path)
-      .toEqual('/boards/:id');
+      .toEqual('/boards/:id/dashboard');
     expect(wrapper.find(Route).at(2).props().path)
+      .toEqual('/boards/:id');
+    expect(wrapper.find(Route).at(3).props().path)
       .toEqual('/boards/');
   });
 
