@@ -10,6 +10,7 @@ import handleInputChange from '../../../../../../../utilities/handleInputChange'
 import { updateColumn } from '../actions';
 import ColumnEditor from './ColumnEditor';
 import handleSelectChange from '../../../../../../../utilities/handleSelectChange';
+import ColumnModel from '../../../../../../../models/Column';
 
 class ColumnContainer extends Component {
   constructor(props) {
@@ -96,7 +97,7 @@ ColumnContainer.propTypes = {
   onSwitchOffColumnEditor: PropTypes.func.isRequired,
   onSwitchOnColumnEditor: PropTypes.func.isRequired,
   onColumnUpdate: PropTypes.func.isRequired,
-  column: PropTypes.shape({}).isRequired,
+  column: ColumnModel.isRequired,
   index: PropTypes.number.isRequired,
   columnIdEditMode: PropTypes.string,
 };

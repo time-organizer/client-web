@@ -2,7 +2,6 @@
 
 .labels-list-item {
   display: flex;
-  padding: 4px;
   align-items: center;
   margin: 4px 0;
   cursor: pointer;
@@ -10,8 +9,7 @@
   transition: .3s;
 
   &.active {
-    color: $accent-color;
-    font-weight: 400;
+    font-weight: bold;
   }
 
   &:hover {

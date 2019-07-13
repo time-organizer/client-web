@@ -1,5 +1,11 @@
-.dashboard-widgets-button {
+.dashboard-widgets-buttons {
   position: fixed;
-  right: 24px;
-  top: 94px;
+  right: 16px;
+  top: 86px;
+  z-index: 3;
+
+  .icon {
+    width: 12px;
+    height: 12px;
+  }
 }

@@ -32,7 +32,11 @@ class WorkspaceContainer extends Component {
 }
 
 WorkspaceContainer.propTypes = {
-  match: PropTypes.shape({}).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
   boardData: BoardModel,
   refreshBoard: PropTypes.func.isRequired,
   newLabelFormOpened: PropTypes.bool.isRequired,

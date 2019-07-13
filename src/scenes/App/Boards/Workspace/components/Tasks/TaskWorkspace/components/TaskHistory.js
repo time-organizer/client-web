@@ -9,7 +9,7 @@ import TaskHistoryListItem from './TaskHistoryListItem';
 
 const TaskHistory = ({ task, columnNames }) => (
   <Fragment>
-    <Header3 withMargin>
+    <Header3 withMargin className="task-workspace-section-header">
       History
     </Header3>
     <div className="tasks-history-wrapper">
