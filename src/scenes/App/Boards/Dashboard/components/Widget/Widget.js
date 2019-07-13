@@ -22,12 +22,10 @@ Widget.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
-  ]),
+  ]).isRequired,
   name: PropTypes.string.isRequired,
   editMode: PropTypes.bool.isRequired,
 };
-Widget.defaultProps = {
-  children: null,
-};
+Widget.defaultProps = {};
 
 export default Widget;

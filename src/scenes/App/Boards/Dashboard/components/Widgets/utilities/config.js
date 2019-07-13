@@ -23,9 +23,14 @@ const widgetsList = [
   widgetKeys.COMPLETED_TASKS,
 ];
 
-const WidgetComponents = {
+const WidgetsComponents = {
   [widgetKeys.TASKS_NUMBER]: WidgetAllTasks,
   [widgetKeys.COMPLETED_TASKS]: WidgetCompletedTasks,
+};
+
+const widgetsPaths = {
+  [widgetKeys.TASKS_NUMBER]: '/stats/all-tasks',
+  [widgetKeys.COMPLETED_TASKS]: '/stats/completed-tasks',
 };
 
 export {
@@ -33,5 +38,6 @@ export {
   widgetNames,
   defaultActiveWidgets,
   widgetsList,
-  WidgetComponents,
+  WidgetsComponents,
+  widgetsPaths,
 };

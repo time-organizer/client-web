@@ -5,9 +5,9 @@ import c from 'classnames';
 
 import { breakPoints, columnsNumber } from '../../utilities/config';
 
-import Widget from '../Widget/Widget';
+import Widget from '../Widget';
 import './Grid.css';
-import { WidgetComponents, widgetNames } from '../Widgets/utilities/config';
+import { WidgetsComponents, widgetNames } from '../Widgets/utilities/config';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -44,11 +44,12 @@ class Grid extends Component {
         onLayoutChange={editLayoutsConfig}
       >
         {activeWidgets.map((widgetKey) => {
-          const WidgetComponent = WidgetComponents[widgetKey];
+          const WidgetComponent = WidgetsComponents[widgetKey];
 
           return (
             <div key={widgetKey}>
               <Widget
+                widgetKey={widgetKey}
                 name={widgetNames[widgetKey]}
                 editMode={editMode}
               >

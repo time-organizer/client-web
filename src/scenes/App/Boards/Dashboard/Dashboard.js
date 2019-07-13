@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ContentLayoutFull from '../../components/ContentLayoutFull';
-
-import './Dashboard.css';
 import WidgetsChooser from './components/WidgetsChooser';
 import Grid from './components/Grid';
 import DashboardButtons from './components/DashboardButtons';
+import './components/Widgets/reducer';
+import './Dashboard.css';
 
 const Dashboard = ({
   onToggleWidgetsChooser, widgetsChooserOpened, toggleEditMode, editMode, layoutsConfig,
