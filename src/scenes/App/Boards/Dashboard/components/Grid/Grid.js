@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Responsive, WidthProvider } from 'react-grid-layout';
+import c from 'classnames';
 
-import { defaultDashboardLayout } from '../../utilities/config';
+import { breakPoints, columnsNumber, defaultDashboardLayouts } from '../../utilities/config';
 
 import Widget from '../Widget/Widget';
 import './Grid.css';
@@ -28,27 +29,21 @@ class Grid extends Component {
   };
 
   render() {
+    const { editMode } = this.props;
+
     return (
       <ResponsiveGridLayout
-        className="layout"
-        layout={defaultDashboardLayout}
+        className={c('grid', { 'edit-mode': editMode })}
+        layouts={defaultDashboardLayouts}
         {...this.getEditableProps()}
-        breakpoints={{
-          lg: 640,
-        }}
-        cols={{
-          lg: 12,
-        }}
+        breakpoints={breakPoints}
+        cols={columnsNumber}
       >
-        <div key="a">
-          <Widget name="TTestt" />
-        </div>
-        <div key="b">
-          <Widget name="TTestt" />
-        </div>
-        <div key="c">
-          <Widget name="TTestt" />
-        </div>
+        {['a', 'b', 'c'].map(widgetKey => (
+          <div key={widgetKey}>
+            <Widget name="TTestt" editMode={editMode} />
+          </div>
+        ))}
       </ResponsiveGridLayout>
     );
   }

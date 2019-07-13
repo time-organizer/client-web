@@ -3,6 +3,12 @@
   right: 16px;
   top: 86px;
   z-index: 3;
+  opacity: .3;
+  transition: .3s;
+
+  &:hover {
+    opacity: 1;
+  }
 
   .icon {
     width: 12px;

@@ -1,50 +1,63 @@
 @import '../../../../../../common_styles/variables';
 
-.react-grid-layout {
-  position: relative;
-}
-.react-grid-item {
-  transition: all 200ms ease;
-  transition-property: left;
-}
-.react-grid-item.cssTransforms {
-  transition-property: transform;
-}
-.react-grid-item.resizing {
-  z-index: 1;
-  will-change: width, height;
-}
+.grid {
+  &.edit-mode {
+    .widget {
+      box-shadow: $box-shadow-clickable;
+    }
+  }
 
-.react-grid-item.react-draggable-dragging {
-  transition: none;
-  z-index: 3;
-  will-change: transform;
-}
+  .react-grid-layout {
+    position: relative;
+  }
 
-.react-grid-item.react-grid-placeholder {
-  background: $accent-color;
-  opacity: 0.2;
-  transition-duration: 100ms;
-  z-index: 2;
-  user-select: none;
-}
+  .react-grid-item {
+    transition: all 200ms ease;
+    transition-property: left;
+  }
 
-.react-grid-item > .react-resizable-handle {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  bottom: 0;
-  right: 0;
-  cursor: se-resize;
-}
+  .react-grid-item.cssTransforms {
+    transition-property: transform;
+  }
 
-.react-grid-item > .react-resizable-handle::after {
-  content: "";
-  position: absolute;
-  right: 3px;
-  bottom: 3px;
-  width: 5px;
-  height: 5px;
-  border-right: 2px solid rgba(0, 0, 0, 0.4);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  .react-grid-item.resizing {
+    z-index: 1;
+    will-change: width, height;
+  }
+
+  .react-grid-item.react-draggable-dragging {
+    transition: none;
+    z-index: 3;
+    will-change: transform;
+  }
+
+  .react-grid-item.react-grid-placeholder {
+    background: $accent-color;
+    opacity: 0.2;
+    transition-duration: 100ms;
+    z-index: 2;
+    user-select: none;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-clickable;
+  }
+
+  .react-grid-item > .react-resizable-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+  }
+
+  .react-grid-item > .react-resizable-handle::after {
+    content: "";
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 5px;
+    height: 5px;
+    border-right: 2px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  }
 }
