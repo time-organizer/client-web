@@ -4,7 +4,7 @@ export const initialState = {
   fullscreenLoading: false,
   userSidebarOpened: false,
   menuSidebarOpened: false,
-  widgetsChoosedOpened: false,
+  widgetsChooserOpened: false,
   forms: {
     newBoardFormOpened: false,
     newLabelFormOpened: false,
@@ -62,7 +62,7 @@ const general = (state = initialState, action) => {
 
   case actions.TOGGLE_WIDGETS_CHOOSER: {
     return Object.assign({}, state, {
-      widgetsChoosedOpened: !state.widgetsChoosedOpened,
+      widgetsChooserOpened: !state.widgetsChooserOpened,
     });
   }
 

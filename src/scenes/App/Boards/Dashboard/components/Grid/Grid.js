@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Responsive, WidthProvider } from 'react-grid-layout';
 import c from 'classnames';
 
-import { breakPoints, columnsNumber, defaultDashboardLayouts } from '../../utilities/config';
+import { breakPoints, columnsNumber } from '../../utilities/config';
 
 import Widget from '../Widget/Widget';
 import './Grid.css';
@@ -29,15 +29,16 @@ class Grid extends Component {
   };
 
   render() {
-    const { editMode } = this.props;
+    const { editMode, layoutsConfig, editLayoutsConfig } = this.props;
 
     return (
       <ResponsiveGridLayout
         className={c('grid', { 'edit-mode': editMode })}
-        layouts={defaultDashboardLayouts}
+        layouts={layoutsConfig}
         {...this.getEditableProps()}
         breakpoints={breakPoints}
         cols={columnsNumber}
+        onLayoutChange={editLayoutsConfig}
       >
         {['a', 'b', 'c'].map(widgetKey => (
           <div key={widgetKey}>
@@ -51,6 +52,8 @@ class Grid extends Component {
 
 Grid.propTypes = {
   editMode: PropTypes.bool.isRequired,
+  layoutsConfig: PropTypes.shape().isRequired,
+  editLayoutsConfig: PropTypes.func.isRequired,
 };
 Grid.defaultProps = {};
 

@@ -6,6 +6,8 @@ import Dashboard from './Dashboard';
 import { fetchBoardIfNeeded } from '../Workspace/actions';
 import { BoardModel } from '../../../../models/Board';
 import { toggleWidgetsChooser } from '../../../generalActions';
+import getDashboardLayouts from './utilities/getDashboardLayouts';
+import setDashboardLayouts from './utilities/setDashboardLayouts';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class DashboardContainer extends Component {
 
     this.state = {
       editMode: false,
+      layoutsConfig: getDashboardLayouts(),
     };
   }
 
@@ -24,16 +27,23 @@ class DashboardContainer extends Component {
 
   toggleEditMode = () => this.setState(prevState => ({ editMode: !prevState.editMode }));
 
+  editLayoutsConfig = (newLayouts, allNewLayouts) => {
+    this.setState({ layoutsConfig: allNewLayouts });
+    setDashboardLayouts(allNewLayouts);
+  };
+
   render() {
-    const { editMode } = this.state;
-    const { boardData, onToggleWidgetsChooser, widgetsChoosedOpened } = this.props;
+    const { editMode, layoutsConfig } = this.state;
+    const { boardData, onToggleWidgetsChooser, widgetsChooserOpened } = this.props;
 
     return boardData && (
       <Dashboard
         onToggleWidgetsChooser={onToggleWidgetsChooser}
-        widgetsChoosedOpened={widgetsChoosedOpened}
+        widgetsChooserOpened={widgetsChooserOpened}
         toggleEditMode={this.toggleEditMode}
         editMode={editMode}
+        layoutsConfig={layoutsConfig}
+        editLayoutsConfig={this.editLayoutsConfig}
       />
     );
   }
@@ -48,7 +58,7 @@ DashboardContainer.propTypes = {
   boardData: BoardModel,
   refreshBoard: PropTypes.func.isRequired,
   onToggleWidgetsChooser: PropTypes.func.isRequired,
-  widgetsChoosedOpened: PropTypes.bool.isRequired,
+  widgetsChooserOpened: PropTypes.bool.isRequired,
 };
 DashboardContainer.defaultProps = {
   boardData: null,
@@ -56,14 +66,14 @@ DashboardContainer.defaultProps = {
 
 function mapStateToProps({
   boards: { workspace: { board } },
-  general: { widgetsChoosedOpened },
+  general: { widgetsChooserOpened },
 }) {
   const boardData = board.data;
 
   return {
     board,
     boardData,
-    widgetsChoosedOpened,
+    widgetsChooserOpened,
   };
 }
 

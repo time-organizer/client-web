@@ -9,7 +9,8 @@ import Grid from './components/Grid';
 import DashboardButtons from './components/DashboardButtons';
 
 const Dashboard = ({
-  onToggleWidgetsChooser, widgetsChoosedOpened, toggleEditMode, editMode,
+  onToggleWidgetsChooser, widgetsChooserOpened, toggleEditMode, editMode, layoutsConfig,
+  editLayoutsConfig,
 }) => (
   <ContentLayoutFull>
     <DashboardButtons
@@ -17,18 +18,24 @@ const Dashboard = ({
       toggleEditMode={toggleEditMode}
       editMode={editMode}
     />
-    {widgetsChoosedOpened && (
+    {widgetsChooserOpened && (
       <WidgetsChooser onToggleWidgetsChooser={onToggleWidgetsChooser} />
     )}
-    <Grid editMode={editMode} />
+    <Grid
+      editMode={editMode}
+      layoutsConfig={layoutsConfig}
+      editLayoutsConfig={editLayoutsConfig}
+    />
   </ContentLayoutFull>
 );
 
 Dashboard.propTypes = {
   onToggleWidgetsChooser: PropTypes.func.isRequired,
-  widgetsChoosedOpened: PropTypes.bool.isRequired,
+  widgetsChooserOpened: PropTypes.bool.isRequired,
   toggleEditMode: PropTypes.string.isRequired,
   editMode: PropTypes.bool.isRequired,
+  layoutsConfig: PropTypes.shape().isRequired,
+  editLayoutsConfig: PropTypes.func.isRequired,
 };
 Dashboard.defaultProps = {};
 
