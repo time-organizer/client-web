@@ -29,7 +29,9 @@ class Grid extends Component {
   };
 
   render() {
-    const { editMode, layoutsConfig, editLayoutsConfig } = this.props;
+    const {
+      editMode, layoutsConfig, editLayoutsConfig, activeWidgets,
+    } = this.props;
 
     return (
       <ResponsiveGridLayout
@@ -40,7 +42,7 @@ class Grid extends Component {
         cols={columnsNumber}
         onLayoutChange={editLayoutsConfig}
       >
-        {['a', 'b', 'c'].map(widgetKey => (
+        {activeWidgets.map(widgetKey => (
           <div key={widgetKey}>
             <Widget name="TTestt" editMode={editMode} />
           </div>
@@ -54,7 +56,10 @@ Grid.propTypes = {
   editMode: PropTypes.bool.isRequired,
   layoutsConfig: PropTypes.shape().isRequired,
   editLayoutsConfig: PropTypes.func.isRequired,
+  activeWidgets: PropTypes.arrayOf(PropTypes.string),
 };
-Grid.defaultProps = {};
+Grid.defaultProps = {
+  activeWidgets: [],
+};
 
 export default Grid;

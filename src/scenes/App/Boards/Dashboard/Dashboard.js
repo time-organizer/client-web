@@ -10,7 +10,7 @@ import DashboardButtons from './components/DashboardButtons';
 
 const Dashboard = ({
   onToggleWidgetsChooser, widgetsChooserOpened, toggleEditMode, editMode, layoutsConfig,
-  editLayoutsConfig,
+  editLayoutsConfig, toggleWidget, activeWidgets,
 }) => (
   <ContentLayoutFull>
     <DashboardButtons
@@ -19,12 +19,17 @@ const Dashboard = ({
       editMode={editMode}
     />
     {widgetsChooserOpened && (
-      <WidgetsChooser onToggleWidgetsChooser={onToggleWidgetsChooser} />
+      <WidgetsChooser
+        activeWidgets={activeWidgets}
+        toggleWidget={toggleWidget}
+        onToggleWidgetsChooser={onToggleWidgetsChooser}
+      />
     )}
     <Grid
       editMode={editMode}
       layoutsConfig={layoutsConfig}
       editLayoutsConfig={editLayoutsConfig}
+      activeWidgets={activeWidgets}
     />
   </ContentLayoutFull>
 );
@@ -32,11 +37,15 @@ const Dashboard = ({
 Dashboard.propTypes = {
   onToggleWidgetsChooser: PropTypes.func.isRequired,
   widgetsChooserOpened: PropTypes.bool.isRequired,
-  toggleEditMode: PropTypes.string.isRequired,
+  toggleEditMode: PropTypes.func.isRequired,
   editMode: PropTypes.bool.isRequired,
   layoutsConfig: PropTypes.shape().isRequired,
   editLayoutsConfig: PropTypes.func.isRequired,
+  toggleWidget: PropTypes.func.isRequired,
+  activeWidgets: PropTypes.arrayOf(PropTypes.string),
 };
-Dashboard.defaultProps = {};
+Dashboard.defaultProps = {
+  activeWidgets: [],
+};
 
 export default Dashboard;

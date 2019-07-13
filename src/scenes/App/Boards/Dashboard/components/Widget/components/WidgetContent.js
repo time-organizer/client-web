@@ -12,8 +12,10 @@ WidgetContent.propTypes = {
     PropTypes.string,
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
-  ]).isRequired,
+  ]),
 };
-WidgetContent.defaultProps = {};
+WidgetContent.defaultProps = {
+  children: null,
+};
 
 export default WidgetContent;

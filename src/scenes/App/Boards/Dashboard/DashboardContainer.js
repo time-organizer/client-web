@@ -8,6 +8,8 @@ import { BoardModel } from '../../../../models/Board';
 import { toggleWidgetsChooser } from '../../../generalActions';
 import getDashboardLayouts from './utilities/getDashboardLayouts';
 import setDashboardLayouts from './utilities/setDashboardLayouts';
+import getActiveWidgets from './utilities/getActiveWidgets';
+import setActiveWidgets from './utilities/setActiveWidgets';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class DashboardContainer extends Component {
     this.state = {
       editMode: false,
       layoutsConfig: getDashboardLayouts(),
+      activeWidgets: getActiveWidgets(),
     };
   }
 
@@ -32,8 +35,25 @@ class DashboardContainer extends Component {
     setDashboardLayouts(allNewLayouts);
   };
 
+  toggleWidget = (widgetkey) => {
+    const { activeWidgets } = this.state;
+    let newActiveWidgets;
+
+    if (activeWidgets.indexOf(widgetkey) > -1) {
+      newActiveWidgets = activeWidgets.filter(activeWidgetKey => activeWidgetKey !== widgetkey);
+    } else {
+      newActiveWidgets = [
+        ...activeWidgets,
+        widgetkey,
+      ];
+    }
+
+    this.setState({ activeWidgets: newActiveWidgets });
+    setActiveWidgets(newActiveWidgets);
+  };
+
   render() {
-    const { editMode, layoutsConfig } = this.state;
+    const { editMode, layoutsConfig, activeWidgets } = this.state;
     const { boardData, onToggleWidgetsChooser, widgetsChooserOpened } = this.props;
 
     return boardData && (
@@ -44,6 +64,8 @@ class DashboardContainer extends Component {
         editMode={editMode}
         layoutsConfig={layoutsConfig}
         editLayoutsConfig={this.editLayoutsConfig}
+        activeWidgets={activeWidgets}
+        toggleWidget={this.toggleWidget}
       />
     );
   }
