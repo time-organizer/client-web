@@ -27,7 +27,7 @@
   &.submit {
     background: $accent-color;
     color: $text-color-light;
-    border: none;
+    border: 1px solid $accent-color;
 
     .icon {
       fill: $text-color-light;

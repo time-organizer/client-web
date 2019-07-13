@@ -7,6 +7,7 @@ import { breakPoints, columnsNumber } from '../../utilities/config';
 
 import Widget from '../Widget/Widget';
 import './Grid.css';
+import { WidgetComponents, widgetNames } from '../Widgets/utilities/config';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -42,11 +43,20 @@ class Grid extends Component {
         cols={columnsNumber}
         onLayoutChange={editLayoutsConfig}
       >
-        {activeWidgets.map(widgetKey => (
-          <div key={widgetKey}>
-            <Widget name="TTestt" editMode={editMode} />
-          </div>
-        ))}
+        {activeWidgets.map((widgetKey) => {
+          const WidgetComponent = WidgetComponents[widgetKey];
+
+          return (
+            <div key={widgetKey}>
+              <Widget
+                name={widgetNames[widgetKey]}
+                editMode={editMode}
+              >
+                <WidgetComponent />
+              </Widget>
+            </div>
+          );
+        })}
       </ResponsiveGridLayout>
     );
   }

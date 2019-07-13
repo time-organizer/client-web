@@ -5,6 +5,8 @@
   z-index: 3;
   opacity: .3;
   transition: .3s;
+  display: flex;
+  align-items: flex-start;
 
   &:hover {
     opacity: 1;
