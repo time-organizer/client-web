@@ -48,7 +48,7 @@ export const fetchWidgetDataIfNeeded = (widgetKey, boardId) => (dispatch, getSta
       boardId,
     })
       .then(widgetData => dispatch(fetchWidgetDataSuccess(widgetKey, widgetData.data)))
-      .catch(error => dispatch(fetchWidgetDataFailure(widgetKey, get(error, 'response.data.message'))));
+      .catch(error => dispatch(fetchWidgetDataFailure(widgetKey, get(error, 'message'))));
   }
 
   return new Promise(() => {});
