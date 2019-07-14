@@ -52,7 +52,7 @@ const LabelForms = ({
     </Row>
     <Label value="Color" />
     <Row>
-      <Col desktopWidth={columnsWidths.W50} mobileWidth={columnsWidths.W100}>
+      <Col desktopWidth={columnsWidths.W25} mobileWidth={columnsWidths.W25}>
         <Select
           onChange={value => handleSelectChange(value, 'color')}
           value={color}

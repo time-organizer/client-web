@@ -35,7 +35,7 @@ const getStyles = (options, value) => {
       boxShadow: '0px 0px 10px -3px rgba(0, 0, 0, 0.2)',
       border: 'none',
       padding: '4px',
-      fontSize: '1rem',
+      fontSize: '1.4rem',
     }),
     option: (libStyles, {
       data, isDisabled, isFocused, isSelected,
@@ -59,6 +59,7 @@ const getStyles = (options, value) => {
     singleValue: libStyles => ({
       ...libStyles,
       color: '#7b7b7b',
+      fontSize: '1.4rem',
     }),
     input: libStyles => ({
       ...libStyles,

@@ -13,6 +13,10 @@ const colors = [
 
 const labelColorsSelectOptions = [
   {
+    value: 'none',
+    label: 'None',
+  },
+  {
     value: colors[0],
     withShape: true,
     shapeColor: colors[0],
