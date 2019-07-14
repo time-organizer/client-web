@@ -1,12 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const WidgetCompletedTasks = () => (
-  <div>
-    123
-  </div>
+import SimpleWidget from '../../Widget/types/SimpleWidget';
+
+const WidgetCompletedTasks = ({ data }) => (
+  <SimpleWidget
+    value={data.completedTasksNumber}
+    title="Tasks"
+  />
 );
 
-WidgetCompletedTasks.propTypes = {};
+WidgetCompletedTasks.propTypes = {
+  data: PropTypes.shape({
+    completedTasksNumber: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
+  }).isRequired,
+};
 WidgetCompletedTasks.defaultProps = {};
 
 export default WidgetCompletedTasks;

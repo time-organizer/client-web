@@ -43,7 +43,7 @@ class WidgetContainer extends Component {
 }
 
 WidgetContainer.propTypes = {
-  WidgetComponent: PropTypes.element.isRequired,
+  WidgetComponent: PropTypes.func.isRequired,
   editMode: PropTypes.bool.isRequired,
   onFetchWidgetData: PropTypes.func.isRequired,
   match: PropTypes.shape({

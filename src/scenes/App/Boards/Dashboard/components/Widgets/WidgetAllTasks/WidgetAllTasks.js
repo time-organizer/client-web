@@ -11,7 +11,10 @@ const WidgetAllTasks = ({ data }) => (
 
 WidgetAllTasks.propTypes = {
   data: PropTypes.shape({
-    allTasks: PropTypes.string.isRequired,
+    allTasks: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
   }).isRequired,
 };
 WidgetAllTasks.defaultProps = {};
