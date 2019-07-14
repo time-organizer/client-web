@@ -5,7 +5,7 @@ import {
 
 const widgetKeys = {
   TASKS_NUMBER: 'tasksNumber',
-  COMPLETED_TASKS: 'completedtaslsNumber',
+  COMPLETED_TASKS: 'completedTasksNumber',
 };
 
 const widgetNames = {

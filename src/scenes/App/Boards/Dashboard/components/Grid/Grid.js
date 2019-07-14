@@ -7,7 +7,7 @@ import { breakPoints, columnsNumber } from '../../utilities/config';
 
 import Widget from '../Widget';
 import './Grid.css';
-import { WidgetsComponents, widgetNames } from '../Widgets/utilities/config';
+import { WidgetsComponents } from '../Widgets/utilities/config';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -50,11 +50,9 @@ class Grid extends Component {
             <div key={widgetKey}>
               <Widget
                 widgetKey={widgetKey}
-                name={widgetNames[widgetKey]}
                 editMode={editMode}
-              >
-                <WidgetComponent />
-              </Widget>
+                WidgetComponent={WidgetComponent}
+              />
             </div>
           );
         })}

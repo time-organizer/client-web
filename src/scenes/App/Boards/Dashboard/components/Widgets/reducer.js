@@ -16,13 +16,13 @@ const initialState = {
 const widgets = (state = initialState, action) => {
   switch (action.type) {
   case actions.FETCH_WIDGET_DATA_REQUEST: {
-    return Object.assign({
+    return Object.assign({}, state, {
       [action.widgetKey]: {
         ...state[action.widgetKey],
         isFetching: true,
         error: null,
       },
-    }, state, {});
+    });
   }
 
   case actions.FETCH_WIDGET_DATA_SUCCESS: {

@@ -1,47 +1,82 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import get from 'lodash/get';
 
 import { fetchWidgetDataIfNeeded } from '../Widgets/actions';
 import Widget from './Widget';
+import { widgetNames } from '../Widgets/utilities/config';
+import WidgetError from './components/WidgetError';
+import WidgetLoader from './components/WidgetLoader';
 
 class WidgetContainer extends Component {
   componentDidMount() {
-    const { onFetchWidgetData, widgetKey } = this.props;
+    const { onFetchWidgetData } = this.props;
+    const { match: { params } } = this.props;
 
-    onFetchWidgetData(widgetKey);
+    onFetchWidgetData(params.id);
   }
 
   render() {
-    const { children, name, editMode } = this.props;
+    const {
+      WidgetComponent, editMode, widgetKey, isFetching, data, error,
+    } = this.props;
 
     return (
       <Widget
-        name={name}
+        name={widgetNames[widgetKey]}
         editMode={editMode}
       >
-        {children}
+        {isFetching && (
+          <WidgetLoader />
+        )}
+        {!isFetching && error && (
+          <WidgetError />
+        )}
+        {!isFetching && !error && data && (
+          <WidgetComponent data={data} />
+        )}
       </Widget>
     );
   }
 }
 
 WidgetContainer.propTypes = {
-  children: PropTypes.oneOf([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node),
-  ]).isRequired,
-  name: PropTypes.string.isRequired,
+  WidgetComponent: PropTypes.element.isRequired,
   editMode: PropTypes.bool.isRequired,
   onFetchWidgetData: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
   widgetKey: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  data: PropTypes.shape(),
+  error: PropTypes.string,
 };
-WidgetContainer.defaultProps = {};
+WidgetContainer.defaultProps = {
+  error: '',
+  data: null,
+};
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapStateToProps(state, props) {
+  const { widgetKey } = props;
+  const widget = get(state, `boards.workspace.widgets[${widgetKey}]`, {});
+  const { isFetching, data, error } = widget;
+
   return {
-    onFetchWidgetData: () => dispatch(fetchWidgetDataIfNeeded(ownProps.widgetKey)),
+    isFetching,
+    data,
+    error,
   };
 }
 
-export default connect(null, mapDispatchToProps)(WidgetContainer);
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    onFetchWidgetData: boardId => dispatch(fetchWidgetDataIfNeeded(ownProps.widgetKey, boardId)),
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WidgetContainer));

@@ -24,7 +24,7 @@ const fetchWidgetDataFailure = (widgetKey, error) => ({
 
 const shouldFetchWidgetData = (state, widgetKey) => {
   const { boards: { workspace: { widgets } } } = state;
-  const widget = widgets[widgetKey];
+  const widget = widgets[widgetKey] || {};
   const { isFetching, didInvalidate, data } = widget;
 
   if (isFetching) {
@@ -38,16 +38,18 @@ const shouldFetchWidgetData = (state, widgetKey) => {
   return didInvalidate;
 };
 
-export const fetchWidgetDataIfNeeded = widgetKey => (dispatch, getState) => {
+export const fetchWidgetDataIfNeeded = (widgetKey, boardId) => (dispatch, getState) => {
   if (shouldFetchWidgetData(getState(), widgetKey)) {
     dispatch(fetchWidgetDataRequest(widgetKey));
 
-    return APIService.get(widgetsPaths[widgetKey])
+    return APIService.post(widgetsPaths[widgetKey], {
+      boardId,
+    })
       .then(widgetData => dispatch(fetchWidgetDataSuccess(widgetKey, widgetData.data)))
       .catch(error => dispatch(fetchWidgetDataFailure(widgetKey, error)));
   }
 
-  return new Promise();
+  return new Promise(() => {});
 };
 
 export default fetchWidgetDataIfNeeded;
