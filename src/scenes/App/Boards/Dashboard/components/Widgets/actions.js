@@ -1,3 +1,5 @@
+import get from 'lodash/get';
+
 import APIService from '../../../../../../services/APIService';
 import { widgetsPaths } from './utilities/config';
 
@@ -46,7 +48,7 @@ export const fetchWidgetDataIfNeeded = (widgetKey, boardId) => (dispatch, getSta
       boardId,
     })
       .then(widgetData => dispatch(fetchWidgetDataSuccess(widgetKey, widgetData.data)))
-      .catch(error => dispatch(fetchWidgetDataFailure(widgetKey, error)));
+      .catch(error => dispatch(fetchWidgetDataFailure(widgetKey, get(error, 'response.data.message'))));
   }
 
   return new Promise(() => {});
