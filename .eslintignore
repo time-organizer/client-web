@@ -1,3 +1,4 @@
 src/registerServiceWorker.js
 src/__test__
+src/setupTests.js
 *.test.js
