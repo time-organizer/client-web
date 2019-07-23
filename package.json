@@ -2,7 +2,7 @@
   "name": "client-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Miriloth.github.io/client-web",
+  "homepage": "https://time-organizer.herokuapp.com/",
   "engines": {
     "yarn": "1.17.3",
     "node": "8.12.0"
@@ -47,9 +47,6 @@
     "test:watch": "NODE_ENV=test react-scripts test --env=jsdom",
     "lint": "./node_modules/.bin/eslint src",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "heroku-postbuild": "yarn run build"
   },
   "devDependencies": {
     "enzyme": "^3.10.0",
