@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://time-organizer.herokuapp.com/",
   "engines": {
+    "npm": "6.5.0",
     "node": "8.12.0"
   },
   "dependencies": {
