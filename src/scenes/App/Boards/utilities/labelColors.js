@@ -1,17 +1,23 @@
 const colors = [
-  '#f8b595',
-  '#ececec',
-  '#9fd3c7',
-  '#385170',
-  '#142d4c',
-  '#f0f69f',
-  '#b0e0a8',
-  '#d8eff0',
-  '#8fbbaf',
-  '#c06c84',
+  '#4d79a7',
+  '#f28e2c',
+  '#e15659',
+  '#76b7b2',
+  '#59a14e',
+  '#eec849',
+  '#af79a1',
+  '#ff9da8',
+  '#9d7460',
+  '#bbafac',
+  '#ffffff',
+  '#000000',
 ];
 
 const labelColorsSelectOptions = [
+  {
+    value: 'none',
+    label: 'None',
+  },
   {
     value: colors[0],
     withShape: true,

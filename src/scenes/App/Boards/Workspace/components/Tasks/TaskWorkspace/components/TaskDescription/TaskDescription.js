@@ -9,7 +9,7 @@ const TaskDescription = ({
   editMode, description, handleInputChange, updateTask, formErrors, toggleEditMode,
 }) => (
   <Fragment>
-    <Header3 withMargin>
+    <Header3 withMargin className="task-workspace-section-header">
       Description
     </Header3>
     {editMode

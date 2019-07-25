@@ -9,7 +9,7 @@ $task-margin: 8px;
   flex-wrap: wrap;
   align-items: center;
   min-height: 30px;
-  border-radius: 4px;
+  border-radius: $border-radius;
   padding: 8px;
   margin: $task-margin $task-margin 0;
   box-shadow: $box-shadow-flat;

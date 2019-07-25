@@ -1,31 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, buttonTypes } from '../../../common_components';
 import ContentLayoutFull from '../../components/ContentLayoutFull';
-
-import './Dashboard.css';
 import WidgetsChooser from './components/WidgetsChooser';
+import Grid from './components/Grid';
+import DashboardButtons from './components/DashboardButtons';
+import './components/Widgets/reducer';
+import './Dashboard.css';
 
-const Dashboard = ({ onToggleWidgetsChooser, widgetsChoosedOpened }) => (
+const Dashboard = ({
+  onToggleWidgetsChooser, widgetsChooserOpened, toggleEditMode, editMode, layoutsConfig,
+  editLayoutsConfig, toggleWidget, activeWidgets,
+}) => (
   <ContentLayoutFull>
-    <Button
-      className="dashboard-widgets-button"
-      onClick={onToggleWidgetsChooser}
-      buttonType={buttonTypes.NEUTRAL}
-    >
-      Widgets
-    </Button>
-    {widgetsChoosedOpened && (
-      <WidgetsChooser onToggleWidgetsChooser={onToggleWidgetsChooser} />
+    <DashboardButtons
+      onToggleWidgetsChooser={onToggleWidgetsChooser}
+      toggleEditMode={toggleEditMode}
+      editMode={editMode}
+    />
+    {widgetsChooserOpened && (
+      <WidgetsChooser
+        activeWidgets={activeWidgets}
+        toggleWidget={toggleWidget}
+        onToggleWidgetsChooser={onToggleWidgetsChooser}
+      />
     )}
+    <Grid
+      editMode={editMode}
+      layoutsConfig={layoutsConfig}
+      editLayoutsConfig={editLayoutsConfig}
+      activeWidgets={activeWidgets}
+    />
   </ContentLayoutFull>
 );
 
 Dashboard.propTypes = {
   onToggleWidgetsChooser: PropTypes.func.isRequired,
-  widgetsChoosedOpened: PropTypes.bool.isRequired,
+  widgetsChooserOpened: PropTypes.bool.isRequired,
+  toggleEditMode: PropTypes.func.isRequired,
+  editMode: PropTypes.bool.isRequired,
+  layoutsConfig: PropTypes.shape().isRequired,
+  editLayoutsConfig: PropTypes.func.isRequired,
+  toggleWidget: PropTypes.func.isRequired,
+  activeWidgets: PropTypes.arrayOf(PropTypes.string),
 };
-Dashboard.defaultProps = {};
+Dashboard.defaultProps = {
+  activeWidgets: [],
+};
 
 export default Dashboard;

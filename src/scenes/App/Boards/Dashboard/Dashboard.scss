@@ -1,5 +1,14 @@
-.dashboard-widgets-button {
+.dashboard-widgets-buttons {
   position: fixed;
-  right: 24px;
-  top: 94px;
+  right: 16px;
+  top: 86px;
+  z-index: 3;
+  transition: .3s;
+  display: flex;
+  align-items: flex-start;
+
+  .icon {
+    width: 12px;
+    height: 12px;
+  }
 }
