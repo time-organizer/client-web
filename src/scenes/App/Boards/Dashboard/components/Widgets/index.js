@@ -1,9 +1,5 @@
-import WidgetAllTasks from './WidgetAllTasks';
-import WidgetCompletedTasks from './WidgetCompletedTasks';
-import WidgetInProgressTasks from './WidgetInProgressTasks';
+import WidgetTasksNumber from './WidgetTasksNumber';
 
 export {
-  WidgetAllTasks,
-  WidgetCompletedTasks,
-  WidgetInProgressTasks,
+  WidgetTasksNumber, // eslint-disable-line
 };
