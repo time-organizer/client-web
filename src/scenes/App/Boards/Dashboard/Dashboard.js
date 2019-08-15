@@ -25,12 +25,14 @@ const Dashboard = ({
         onToggleWidgetsChooser={onToggleWidgetsChooser}
       />
     )}
-    <Grid
-      editMode={editMode}
-      layoutsConfig={layoutsConfig}
-      editLayoutsConfig={editLayoutsConfig}
-      activeWidgets={activeWidgets}
-    />
+    <div className="grid-scroll">
+      <Grid
+        editMode={editMode}
+        layoutsConfig={layoutsConfig}
+        editLayoutsConfig={editLayoutsConfig}
+        activeWidgets={activeWidgets}
+      />
+    </div>
   </ContentLayoutFull>
 );
 

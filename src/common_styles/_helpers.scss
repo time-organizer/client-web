@@ -44,6 +44,12 @@
 
 .scrollable {
   overflow: auto;
+  position: relative;
+}
+
+.scrollable-y {
+  overflow-y: auto;
+  position: relative;
 }
 
 .fade {
