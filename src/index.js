@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 
 import AppRoot from './AppRoot';
-import configureStore from './store/configureStore';
+import { store, sagaMiddleware } from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import history from './history';
+import sagas from './sagas/index';
 
-const store = configureStore();
+sagaMiddleware.run(sagas);
 
 ReactDOM.render((
   <Router history={history}>

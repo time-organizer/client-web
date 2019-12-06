@@ -5,13 +5,12 @@ import map from 'lodash/map';
 import { withRouter } from 'react-router-dom';
 
 import BoardsList from './BoardsList';
-import { fetchBoardsIfNeeded } from '../actions';
+import { fetchBoardsIfNeeded } from '../sagas';
 import { BoardModel } from '../../../../../models/Board';
 
 class BoardsListContainer extends Component {
   componentDidMount() {
-    const { refreshBoards } = this.props;
-    refreshBoards();
+    fetchBoardsIfNeeded();
   }
 
   render() {
@@ -24,7 +23,6 @@ class BoardsListContainer extends Component {
 }
 
 BoardsListContainer.propTypes = {
-  refreshBoards: PropTypes.func.isRequired,
   boards: PropTypes.arrayOf(BoardModel),
   isFetching: PropTypes.bool,
 };
@@ -42,10 +40,4 @@ function mapStateToProps({ boards: { list: { boardsById, isFetching } } }) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    refreshBoards: () => dispatch(fetchBoardsIfNeeded()),
-  };
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BoardsListContainer));
+export default withRouter(connect(mapStateToProps)(BoardsListContainer));
