@@ -6,7 +6,7 @@ import get from 'lodash/get';
 import ParticipantsList from './ParticipantsList';
 import ParticipantForm from './ParticipantForm';
 import handleInputChange from '../../../../../../../../utilities/handleInputChange';
-import { updateBoard } from '../../../../actions';
+import { updateBoard } from '../../../../sagas';
 
 class ParticipantsListContainer extends Component {
   constructor(props) {
