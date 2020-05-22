@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 
 import Workspace from './Workspace';
-import { fetchBoardIfNeeded } from './actions';
+import { fetchBoardIfNeeded } from './sagas';
 import { BoardModel } from '../../../../models/Board';
 import { Loader } from '../../../common_components';
 
 class WorkspaceContainer extends Component {
   componentDidMount() {
-    const { refreshBoard, match: { params } } = this.props;
+    const { match: { params } } = this.props;
 
-    refreshBoard(params.id);
+    fetchBoardIfNeeded(params.id);
   }
 
   render() {
@@ -46,7 +46,6 @@ WorkspaceContainer.propTypes = {
     }),
   }).isRequired,
   boardData: BoardModel,
-  refreshBoard: PropTypes.func.isRequired,
   newLabelFormOpened: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
 };

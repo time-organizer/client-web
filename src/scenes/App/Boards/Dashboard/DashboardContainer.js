@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Dashboard from './Dashboard';
-import { fetchBoardIfNeeded } from '../Workspace/actions';
+import { fetchBoardIfNeeded } from '../Workspace/sagas';
 import { BoardModel } from '../../../../models/Board';
 import { toggleWidgetsChooser } from '../../../generalActions';
 import getDashboardLayouts from './utilities/getDashboardLayouts';
@@ -23,9 +23,9 @@ class DashboardContainer extends Component {
   }
 
   componentDidMount() {
-    const { refreshBoard, match: { params } } = this.props;
+    const { match: { params } } = this.props;
 
-    refreshBoard(params.id);
+    fetchBoardIfNeeded(params.id);
   }
 
   toggleEditMode = () => this.setState(prevState => ({ editMode: !prevState.editMode }));
@@ -78,7 +78,6 @@ DashboardContainer.propTypes = {
     }),
   }).isRequired,
   boardData: BoardModel,
-  refreshBoard: PropTypes.func.isRequired,
   onToggleWidgetsChooser: PropTypes.func.isRequired,
   widgetsChooserOpened: PropTypes.bool.isRequired,
 };
