@@ -14,7 +14,7 @@
     "chroma-js": "^2.0.3",
     "classnames": "^2.2.6",
     "event-stream": "^3.3.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-favicon": "^2.0.1",
     "history": "^4.9.0",
     "jwt-decode": "^2.2.0",
