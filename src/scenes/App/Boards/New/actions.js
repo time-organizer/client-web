@@ -2,7 +2,7 @@ import get from 'lodash/get';
 
 import APIService from '../../../../services/APIService';
 import { toggleNewBoardForm } from '../../../generalActions';
-import { fetchBoardsIfNeeded } from '../List/actions';
+import { FETCH_BOARDS_REQUEST } from '../List/actions';
 
 export const ADD_BOARD_REQUEST = 'ADD_BOARD_REQUEST';
 export const ADD_BOARD_SUCCESS = 'ADD_BOARD_SUCCESS';
@@ -36,7 +36,7 @@ export function addNewBoard(board) {
       .then((newBoard) => {
         dispatch(addBoardSuccess(newBoard.data));
         dispatch(toggleNewBoardForm());
-        dispatch(fetchBoardsIfNeeded());
+        dispatch({ type: FETCH_BOARDS_REQUEST }); // temporary
       })
       .catch((error) => {
         dispatch(addBoardFailure(get(error, 'response.data.message', 'Something went wrong')));

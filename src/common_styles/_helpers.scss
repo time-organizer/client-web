@@ -38,8 +38,18 @@
   margin: 24px !important;
 }
 
+.padding-8 {
+  padding: 8px !important;
+}
+
 .scrollable {
   overflow: auto;
+  position: relative;
+}
+
+.scrollable-y {
+  overflow-y: auto;
+  position: relative;
 }
 
 .fade {

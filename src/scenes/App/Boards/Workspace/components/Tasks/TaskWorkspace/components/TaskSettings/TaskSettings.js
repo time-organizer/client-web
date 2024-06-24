@@ -6,7 +6,7 @@ import LabelsList from '../../../../Labels/LabelsList';
 
 const TaskSettings = ({ toggleLabel, isLabelActive }) => (
   <Fragment>
-    <Header3 withMargin>
+    <Header3 withMargin className="task-workspace-section-header">
       Settings
     </Header3>
     <LabelsList

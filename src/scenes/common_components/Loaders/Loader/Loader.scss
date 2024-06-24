@@ -12,6 +12,22 @@
     }
   }
 
+  &.small {
+    .icon {
+      fill: $accent-color;
+
+      svg {
+        transform: scale(1);
+      }
+    }
+
+    .loader-content {
+      p {
+        margin-top: 8px;
+      }
+    }
+  }
+
   &.absolute {
     position: absolute;
     top: 50%;
@@ -39,7 +55,7 @@
   .loader-content {
     text-align: center;
 
-    h3 {
+    p {
       margin-top: 24px;
     }
   }

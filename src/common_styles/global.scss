@@ -2,6 +2,10 @@
 @import './_variables.scss';
 @import './_helpers.scss';
 
+html {
+  font-size: 62.5% !important;
+}
+
 html, body, #root {
   width: 100%;
   height: 100%;
@@ -9,6 +13,7 @@ html, body, #root {
   font-family: 'Lato', sans-serif;
   transition: .3s;
   font-weight: 300;
+  font-size: 1.4rem;
 }
 
 a {
@@ -17,7 +22,7 @@ a {
 }
 
 p {
-  font-size: 0.9em;
+  font-size: 1.4rem;
   white-space: normal;
   line-height: 1.4;
 }
@@ -26,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 
   &.with-margin {
-    margin: 16px 0 8px 0;
+    margin: 8px 0;
   }
 
   &.accent-color {
@@ -39,15 +44,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: 2.1rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.7rem;
 }
 
 .label {
@@ -68,4 +73,8 @@ h3 {
 
 .text-bold {
   font-weight: bold;
+}
+
+.text-light {
+  font-weight: lighter;
 }

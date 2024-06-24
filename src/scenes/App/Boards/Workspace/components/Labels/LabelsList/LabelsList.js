@@ -14,7 +14,7 @@ const LabelsList = ({
     {!!withNewButton && (
       <Button
         onClick={toggleNewLabelForm}
-        buttonType={buttonTypes.SUBMIT}
+        buttonType={buttonTypes.NEUTRAL}
         fullWidth
       >
         Add new label

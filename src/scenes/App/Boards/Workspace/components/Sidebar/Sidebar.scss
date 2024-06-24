@@ -3,10 +3,21 @@
 .sidebar {
   box-shadow: $box-shadow;
   background: $bg-color;
-  width: 250px;
   padding: 16px;
+  height: 100%;
+}
+
+.sidebar-section {
+  padding: 8px 0;
+
+  .siebar-section-title {
+    text-transform: uppercase;
+    color: $accent-color;
+  }
 }
 
 .sidebar-scroll {
   overflow-y: auto;
+  height: 100%;
+  width: 250px;
 }

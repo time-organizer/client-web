@@ -7,11 +7,13 @@ import './Icon.css';
 import { ReactComponent as EditIcon } from './icons/icon-edit.svg';
 import { ReactComponent as LogoIcon } from './icons/icon-logo.svg';
 import { ReactComponent as UserIcon } from './icons/icon-user.svg';
+import { ReactComponent as ErrorIcon } from './icons/icon-error.svg';
 
 export const iconNames = {
   edit: 'edit',
   logo: 'logo',
   user: 'user',
+  error: 'error',
 };
 
 class Icon extends Component {
@@ -27,6 +29,9 @@ class Icon extends Component {
 
     case iconNames.user:
       return <UserIcon {...this.props} />;
+
+    case iconNames.error:
+      return <ErrorIcon {...this.props} />;
 
     default:
       return '';

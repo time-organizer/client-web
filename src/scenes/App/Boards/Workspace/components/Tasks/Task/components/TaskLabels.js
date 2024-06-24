@@ -22,6 +22,7 @@ class TaskLabels extends Component {
       <div className="task-labels">
         {activeLabels.map(label => (
           <div
+            title={label.title}
             key={label._id}
             className="task-label"
             style={{ backgroundColor: label.color }}

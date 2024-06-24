@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   height: 30px;
-  border-radius: 4px;
+  border-radius: $border-radius;
   box-shadow: $box-shadow-flat;
   transition: color, box-shadow 0.3s;
 
